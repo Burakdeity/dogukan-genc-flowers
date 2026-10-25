@@ -1,12 +1,8 @@
 /* shop photos: the drifting strip on the home page, the full grid on galeri.html, one lightbox for both.
    Colors and fonts come from the page's own :root tokens. */
 
-/* header: title on the left, three numbers on the right */
-.gal-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:32px 64px}
-.gal-stats{display:flex;gap:clamp(24px,4vw,56px);margin:0;padding-bottom:6px}
-.gal-stats div{display:flex;flex-direction:column-reverse;gap:10px;border-left:1px solid var(--line);padding-left:18px}
-.gal-stats dt{font:400 .7rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--text-secondary)}
-.gal-stats dd{margin:0;font:300 clamp(2rem,3.4vw,3.2rem)/1 var(--display);color:var(--text-primary);white-space:nowrap}
+/* header */
+.gal-head{display:block}
 
 /* one photo tile, used by both the strip and the grid */
 .gtile,.gs-track button,.gal-grid button{display:block;padding:0;border:0;background:var(--panel);border-radius:2px;overflow:hidden;cursor:zoom-in;aspect-ratio:4/5;position:relative;color:var(--text-primary);text-align:left}
@@ -60,10 +56,6 @@
 .glb-x{position:absolute;top:clamp(12px,2vw,24px);right:clamp(12px,2vw,24px);z-index:2}
 
 @media (max-width:900px){
-  .gal-head{grid-template-columns:1fr}
-  .gal-stats{gap:20px}
-  .gal-stats div{padding-left:14px}
-  .gal-stats dd{font-size:1.7rem}
   .gal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .gtabs{flex-wrap:nowrap;overflow-x:auto;margin-left:-16px;margin-right:-16px;padding:0 16px;scrollbar-width:none;gap:24px}
   .gtab{flex:none}

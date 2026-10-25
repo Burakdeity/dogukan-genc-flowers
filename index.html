@@ -15,7 +15,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231B1219'/%3E%3Cpath d='M32 14c-7 6-9 12-6 17 2 3 6 4 6 4s4-1 6-4c3-5 1-11-6-17z' fill='%23E3A3A0'/%3E%3Cpath d='M32 35v15M32 44c-4-1-7-4-8-8M32 41c4-1 6-3 7-6' stroke='%238FA393' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="assets/galeri.css">
+<link rel="stylesheet" href="assets/galeri.css?v=202610252123">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Caveat:wght@500&family=DM+Mono&family=Jost:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -307,8 +307,6 @@ form .btn{justify-self:start;margin-top:8px}
 
 /* 8. footer */
 footer{position:relative;overflow:hidden;padding-top:clamp(80px,12vh,140px);padding-bottom:clamp(56px,9vh,96px);border-top:1px solid var(--line)}
-footer .cta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px}
-footer .cta p{font:300 clamp(1.8rem,3vw,2.6rem)/1.15 var(--display);max-width:18ch}
 
 @media (max-width:900px){
   #sss .grid{grid-template-columns:1fr}
@@ -402,7 +400,6 @@ h1,h2,h3{font-weight:500}
 label{font-size:.8rem}
 input,textarea{font-weight:400;font-size:1.05rem}
 .cardnote{font-size:.8rem}
-footer .cta p{font-weight:500}
 .brand small{font-size:.7rem}
 .gal-count{font-size:.8rem}
 .dil-nav li{font-size:.8rem;opacity:.6}
@@ -572,7 +569,7 @@ body.lv-open{overflow:hidden}
 [hidden]{display:none!important}
 
 /* contact: address, phone and the shop on the map */
-.contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:stretch;margin-top:clamp(56px,9vh,96px);padding-top:clamp(40px,6vh,64px);border-top:1px solid var(--line)}
+.contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:stretch}
 .contact h3{font-size:clamp(2rem,3.2vw,3rem);margin:14px 0 30px;max-width:14ch}
 .contact dl{margin:0;display:grid;gap:22px}
 .contact dl div{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:baseline;padding-bottom:20px;border-bottom:1px solid var(--line)}
@@ -728,7 +725,7 @@ body.lv-open{overflow:hidden}
   <div class="marquee" aria-hidden="true">
     <div class="row r1" data-dir="-1" data-speed="38"><div class="set"><span class="w" data-img=gul>Gül</span><i></i><span class="w" data-img=lilyum>Lilyum</span><i></i><span class="w" data-img=orkide>Orkide</span><i></i><span class="w" data-img=papatya>Papatya</span><i></i><span class="w" data-img=aycicegi>Ayçiçeği</span><i></i><span class="w" data-img=lale>Lale</span><i></i><span class="w" data-img=gerbera>Gerbera</span><i></i><span class="w" data-img=krizantem>Krizantem</span><i></i></div><div class="set"><span class="w" data-img=gul>Gül</span><i></i><span class="w" data-img=lilyum>Lilyum</span><i></i><span class="w" data-img=orkide>Orkide</span><i></i><span class="w" data-img=papatya>Papatya</span><i></i><span class="w" data-img=aycicegi>Ayçiçeği</span><i></i><span class="w" data-img=lale>Lale</span><i></i><span class="w" data-img=gerbera>Gerbera</span><i></i><span class="w" data-img=krizantem>Krizantem</span><i></i></div></div>
     <div class="row r2" data-dir="1" data-speed="30"><div class="set"><span class="w">Sevgiliye</span><i></i><span class="w">Anneme</span><i></i><span class="w">Tebrikler</span><i></i><span class="w">Teşekkürler</span><i></i><span class="w">Doğum günü</span><i></i><span class="w">Geçmiş olsun</span><i></i><span class="w">Yeni eve</span><i></i><span class="w">İyi ki varsın</span><i></i></div><div class="set"><span class="w">Sevgiliye</span><i></i><span class="w">Anneme</span><i></i><span class="w">Tebrikler</span><i></i><span class="w">Teşekkürler</span><i></i><span class="w">Doğum günü</span><i></i><span class="w">Geçmiş olsun</span><i></i><span class="w">Yeni eve</span><i></i><span class="w">İyi ki varsın</span><i></i></div></div>
-    <div class="row r3" data-dir="-1" data-speed="22"><div class="set"><span>Karasu</span><i></i><span>Aynı gün teslim</span><i></i><span>Göndermeden önce fotoğraf</span><i></i><span>Elde bağlanır</span><i></i><span>Kapına kadar</span><i></i><span>Karasu</span><i></i><span>Aynı gün teslim</span><i></i><span>Göndermeden önce fotoğraf</span><i></i><span>Elde bağlanır</span><i></i><span>Kapına kadar</span><i></i></div><div class="set"><span>Karasu</span><i></i><span>Aynı gün teslim</span><i></i><span>Göndermeden önce fotoğraf</span><i></i><span>Elde bağlanır</span><i></i><span>Kapına kadar</span><i></i><span>Karasu</span><i></i><span>Aynı gün teslim</span><i></i><span>Göndermeden önce fotoğraf</span><i></i><span>Elde bağlanır</span><i></i><span>Kapına kadar</span><i></i></div></div>
+    <div class="row r3" data-dir="-1" data-speed="22"><div class="set"><span>Karasu</span><i></i><span>Aynı gün teslim</span><i></i><span>Göndermeden önce fotoğraf</span><i></i><span>Özenle hazırlanır</span><i></i><span>Kapına kadar</span><i></i><span>Karasu</span><i></i><span>Aynı gün teslim</span><i></i><span>Göndermeden önce fotoğraf</span><i></i><span>Özenle hazırlanır</span><i></i><span>Kapına kadar</span><i></i></div><div class="set"><span>Karasu</span><i></i><span>Aynı gün teslim</span><i></i><span>Göndermeden önce fotoğraf</span><i></i><span>Özenle hazırlanır</span><i></i><span>Kapına kadar</span><i></i><span>Karasu</span><i></i><span>Aynı gün teslim</span><i></i><span>Göndermeden önce fotoğraf</span><i></i><span>Özenle hazırlanır</span><i></i><span>Kapına kadar</span><i></i></div></div>
   </div>
   <div class="peek" aria-hidden="true"><img src="assets/pk-gul.jpg" data-k="gul" alt="" loading="lazy"><img src="assets/pk-lilyum.jpg" data-k="lilyum" alt="" loading="lazy"><img src="assets/pk-orkide.jpg" data-k="orkide" alt="" loading="lazy"><img src="assets/pk-papatya.jpg" data-k="papatya" alt="" loading="lazy"><img src="assets/pk-aycicegi.jpg" data-k="aycicegi" alt="" loading="lazy"><img src="assets/pk-lale.jpg" data-k="lale" alt="" loading="lazy"><img src="assets/pk-gerbera.jpg" data-k="gerbera" alt="" loading="lazy"><img src="assets/pk-krizantem.jpg" data-k="krizantem" alt="" loading="lazy"></div>
 
@@ -737,11 +734,11 @@ body.lv-open{overflow:hidden}
       <div class="rail">
         <div class="intro head">
           <span class="kicker">Buketler</span>
-          <h2 id="buket-h">Her gün taze gelir, her gün yeniden bağlanır.</h2>
+          <h2 id="buket-h">Her gün taze çiçek, her gün yeni bir buket.</h2>
           <p>Kaydırdıkça bak. Fotoğrafların hepsi dükkanımızdan. Beğendiğinin fiyatını tek dokunuşla sor.</p>
         </div>
         <article class="bq">
-          <div class="ph"><img src="assets/bq-gul.jpg" alt="Kırmızı güllerden, palmiye yapraklarıyla bağlanmış buket" width="1200" height="1500" loading="lazy" decoding="async"></div>
+          <div class="ph"><img src="assets/bq-gul.jpg" alt="Kırmızı güllerden, palmiye yapraklarıyla hazırlanmış buket" width="1200" height="1500" loading="lazy" decoding="async"></div>
           <div class="cap"><div><h3>Güller</h3><p>Kırmızı, pembe, beyaz. En açık haliyle.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, gül buketi için fiyat almak istiyorum.">Fiyat sor</a></div>
         </article>
         <article class="bq">
@@ -774,7 +771,7 @@ body.lv-open{overflow:hidden}
         </article>
         <div class="endcard">
           <h3>Aklındaki buket burada yok mu?</h3>
-          <p>Bütçeni ve zevkini söyle, sana özel bağlayalım.</p>
+          <p>Bütçeni ve zevkini söyle, sana özel hazırlayalım.</p>
           <a class="btn btn-accent" href="#iletisim" data-wa data-msg="Merhaba, bana özel bir buket istiyorum.">Özel buket iste</a>
         </div>
       </div>
@@ -787,14 +784,9 @@ body.lv-open{overflow:hidden}
       <div class="gal-head reveal">
         <div class="head">
           <span class="kicker part">Galeri</span>
-          <h2 id="galeri-h" class="part" style="--i:1">Bugüne kadar bağladıklarımız.</h2>
+          <h2 id="galeri-h" class="part" style="--i:1">Örnek çalışmalarımız.</h2>
           <p class="part" style="--i:2">Her biri Karasu'daki dükkanımızda, elde hazırlandı. Birine dokun, büyüt, aynısını ya da benzerini iste.</p>
         </div>
-        <dl class="gal-stats part" style="--i:3">
-          <div><dt>Çalışma</dt><dd id="galTotal">81</dd></div>
-          <div><dt>Kategori</dt><dd>6</dd></div>
-          <div><dt>Teslimat</dt><dd>Aynı gün</dd></div>
-        </dl>
       </div>
     </div>
     <div class="gstrip" id="gstrip" aria-label="Galeriden son çalışmalar"></div>
@@ -927,7 +919,7 @@ body.lv-open{overflow:hidden}
         <details class="part"><summary>Çiçek fotoğraftaki gibi mi gelir?<i aria-hidden="true"></i></summary><div class="a"><p>Evet. Göndermeden önce senin buketinin fotoğrafını atarız. Gelen, gördüğün buket olur.</p></div></details>
         <details class="part" style="--i:1"><summary>Aynı gün teslim var mı?<i aria-hidden="true"></i></summary><div class="a"><p>Var. Karasu içinde aynı gün teslim ederiz. Saat için WhatsApp'tan yazman yeterli.</p></div></details>
         <details class="part" style="--i:2"><summary>Teslim edildiğini nasıl bileceğim?<i aria-hidden="true"></i></summary><div class="a"><p>Çiçek alıcıya ulaşınca sana haber veririz.</p></div></details>
-        <details class="part" style="--i:3"><summary>Bütçeme göre buket yapar mısınız?<i aria-hidden="true"></i></summary><div class="a"><p>Yaparız. Bütçeni söyle, o bütçeyle en güzel buketi bağlayalım.</p></div></details>
+        <details class="part" style="--i:3"><summary>Bütçeme göre buket yapar mısınız?<i aria-hidden="true"></i></summary><div class="a"><p>Yaparız. Bütçeni söyle, o bütçeyle en güzel buketi hazırlayalım.</p></div></details>
       </div>
     </div>
   </section>
@@ -935,10 +927,6 @@ body.lv-open{overflow:hidden}
 
 <footer class="gut" id="iletisim" data-scrub="view">
   <div class="wrap">
-    <div class="cta">
-      <p>Söylemek istediğin bir şey varsa, çiçekler hazır.</p>
-      <a class="btn btn-accent" href="#iletisim" data-wa data-msg="Merhaba, çiçek siparişi vermek istiyorum.">WhatsApp'tan sipariş ver</a>
-    </div>
     <div class="contact">
       <div class="c-info">
         <span class="kicker">İletişim</span>
@@ -960,8 +948,8 @@ body.lv-open{overflow:hidden}
 <a class="fab" href="#iletisim" data-wa data-msg="Merhaba, çiçek siparişi vermek istiyorum." aria-label="WhatsApp'tan sipariş ver"><span class="tip">Sipariş için yaz</span><span class="bub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></span></a>
 
 
-<script src="assets/site-ayar.js"></script>
-<script src="assets/galeri.js"></script>
+<script src="assets/site-ayar.js?v=202610252123"></script>
+<script src="assets/galeri.js?v=202610252123"></script>
 <script src="assets/qrcode.js"></script>
 <script>
 (() => {
@@ -1640,7 +1628,7 @@ body.lv-open{overflow:hidden}
   })();
 
   /* ---------- gallery strip (assets/galeri.js) ---------- */
-  if (window.Galeri) { Galeri.strip($('#gstrip')); $('#galTotal').textContent = Galeri.ITEMS.length; }
+  if (window.Galeri) { Galeri.strip($('#gstrip')); }
 
   /* ---------- pause on hidden tab ---------- */
   document.addEventListener('visibilitychange', () => document.body.classList.toggle('paused', document.hidden));
