@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kart Paneli · Doğukan Genç Flowers</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231B1219'/%3E%3Cpath d='M32 14c-7 6-9 12-6 17 2 3 6 4 6 4s4-1 6-4c3-5 1-11-6-17z' fill='%23E3A3A0'/%3E%3Cpath d='M32 35v15M32 44c-4-1-7-4-8-8M32 41c4-1 6-3 7-6' stroke='%238FA393' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Caveat:wght@500&family=DM+Mono&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* layout: form on the left, the printable card on the right */
+:root{
+  color-scheme:dark;
+  --canvas:#1B1219;--panel:#261A23;--line:rgba(205,184,180,.2);--line-strong:#8A7480;
+  --accent:#E3A3A0;--accent-hover:#EDB8B5;--sage:#A9BEAE;--text:#F5ECE8;--text-2:#E0CFCB;
+  --paper:#F4E7E1;--ink:#2B1B25;
+  --display:"Cormorant Garamond",Georgia,serif;--body:"Jost",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace;--hand:"Caveat",cursive;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:var(--canvas);color:var(--text)}
+body{font:400 1.05rem/1.6 var(--body);padding:clamp(24px,5vw,64px) max(16px,env(safe-area-inset-right,0px)) 64px max(16px,env(safe-area-inset-left,0px))}
+.wrap{max-width:1180px;margin:0 auto}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px 24px;margin-bottom:36px}
+h1{font:500 clamp(2.2rem,4vw,3.4rem)/1.05 var(--display);margin:0}
+.kicker{font:400 .8rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--sage)}
+header p{margin:10px 0 0;color:var(--text-2);max-width:56ch}
+header a{color:var(--accent);font-size:.95rem}
+.grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,72px);align-items:start}
+form{display:grid;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:clamp(20px,3vw,32px)}
+label{display:grid;gap:8px;font:400 .8rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text-2)}
+input,textarea{font:400 1.05rem/1.4 var(--body);color:var(--text);background:rgba(27,18,25,.7);border:1px solid var(--line-strong);border-radius:12px;padding:13px 15px;width:100%}
+textarea{min-height:84px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+.count{justify-self:end;font:400 .75rem/1 var(--mono);color:var(--text-2);margin-top:-8px}
+.hint{font-size:.9rem;color:var(--text-2);margin:0}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 20px;border-radius:999px;font:500 .95rem/1 var(--body);text-decoration:none;border:0;cursor:pointer;transition:background .3s,transform .3s}
+.btn-accent{background:var(--accent);color:var(--canvas)}
+.btn-accent:hover{background:var(--accent-hover);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line-strong)}
+.btn-ghost:hover{border-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.out{display:grid;gap:18px;position:sticky;top:24px}
+.status{font:400 .8rem/1.4 var(--mono);letter-spacing:.08em;color:var(--sage);min-height:1.4em;margin:0}
+.link{font:400 .85rem/1.4 var(--mono);color:var(--text-2);word-break:break-all;background:rgba(27,18,25,.6);border:1px dashed var(--line-strong);border-radius:12px;padding:12px 14px;margin:0}
+
+/* the printable card: 5:3.5, like a florist's gift card */
+.card{position:relative;width:100%;aspect-ratio:10/7;background:linear-gradient(135deg,#F8EEEA,var(--paper) 55%,#EAD8D0);color:var(--ink);border-radius:10px;box-shadow:0 40px 80px -30px rgba(0,0,0,.75);display:grid;grid-template-columns:1fr auto;gap:5%;padding:6.5% 7%;overflow:hidden}
+.card::before{content:"";position:absolute;inset:3.2%;border:1px solid rgba(43,27,37,.18);border-radius:5px;pointer-events:none}
+.card .l{display:flex;flex-direction:column;min-width:0}
+.card .brand{font:400 clamp(.5rem,1vw,.68rem)/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:#7D5A6A}
+.card .to{font:500 clamp(1.4rem,3.4vw,2.5rem)/1.1 var(--hand);margin-top:auto;overflow-wrap:anywhere}
+.card .say{font:italic 500 clamp(.95rem,1.9vw,1.35rem)/1.3 var(--display);margin-top:6%;color:#4A2E3D}
+.card .from{font:500 clamp(1.1rem,2.4vw,1.7rem)/1.1 var(--hand);margin-top:5%;color:#6B4757}
+.card .r{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.card .qr{width:clamp(96px,18vw,190px);aspect-ratio:1;background:#fff;border-radius:8px;padding:6px;display:grid;place-items:center}
+.card .qr svg{width:100%;height:100%;display:block}
+.card .scan{font:400 clamp(.48rem,.9vw,.62rem)/1.3 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#7D5A6A;text-align:center;max-width:22ch}
+.card .petal{position:absolute;width:12%;aspect-ratio:1;right:-3%;top:-4%;opacity:.9}
+.photo{border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:12px;margin:0}
+.photo legend{font:400 .8rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--sage);padding:0 6px}
+.pick{display:flex;align-items:center;justify-content:center;min-height:52px;border:1px dashed var(--line-strong);border-radius:12px;cursor:pointer;text-transform:none;letter-spacing:0;font:500 1rem/1 var(--body);color:var(--text);transition:border-color .3s}
+.pick:hover{border-color:var(--accent)}
+.pick input{position:absolute;width:1px;height:1px;opacity:0}
+.phrow{display:flex;align-items:center;gap:14px}
+.phrow img{width:64px;height:80px;object-fit:cover;border-radius:4px;border:4px solid #FBF6F2}
+.card .tags{display:flex;gap:8px;margin-top:4%}
+.card .tags span{font:400 clamp(.5rem,.9vw,.62rem)/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#7D5A6A;border:1px solid rgba(43,27,37,.25);border-radius:999px;padding:5px 8px}
+@media (max-width:860px){.grid{grid-template-columns:1fr}.out{position:static}}
+@media print{
+  @page{size:150mm 105mm;margin:0}
+  body{background:#fff;padding:0}
+  header,form,.status,.link,.btns2{display:none!important}
+  .grid{display:block}
+  .card{width:150mm;height:105mm;aspect-ratio:auto;border-radius:0;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <span class="kicker">Doğukan Genç Flowers · Kart paneli</span>
+      <h1>Kişiye özel QR kart</h1>
+      <p>Siparişteki notu yaz, kartı indir ya da yazdır, bukete ekle. Çiçeği alan kişi QR'ı telefonuyla okutunca gül yapraklarının yazdığı mektubu görür.</p>
+    </div>
+    <a href="./">Siteye dön</a>
+  </header>
+
+  <div class="grid">
+    <form id="f" novalidate>
+      <label for="site">Sitenin adresi<input id="site" type="url" value="https://dogukangencflowers.com/" autocomplete="off"></label>
+      <p class="hint">Site yayına girdiği adres. Bir kez yazman yeterli, panel hatırlar.</p>
+      <label for="to">Kime<input id="to" type="text" maxlength="24" value="Elif" autocomplete="off"></label>
+      <label for="msg">Mesaj<textarea id="msg" maxlength="60">Seni çok seviyorum</textarea></label>
+      <span class="count" id="count">18 / 60</span>
+      <label for="from">Kimden<input id="from" type="text" maxlength="24" value="Burak" autocomplete="off"></label>
+      <label for="song">En sevdiği şarkı (isteğe bağlı)<input id="song" type="url" placeholder="Spotify veya YouTube bağlantısı" autocomplete="off"></label>
+      <p class="hint" id="songHint">Mektubu açan kişi tek dokunuşla dinler.</p>
+      <fieldset class="photo">
+        <legend>Fotoğraf (isteğe bağlı)</legend>
+        <label for="key">Panel şifresi<input id="key" type="password" autocomplete="current-password" placeholder="Fotoğraf yüklemek için gerekli"></label>
+        <label class="pick" for="ph"><span id="phName">Fotoğraf seç</span><input id="ph" type="file" accept="image/jpeg,image/png,image/webp"></label>
+        <div class="phrow" id="phRow" hidden><img id="phPrev" alt="Seçilen fotoğraf"><button class="btn btn-ghost" type="button" id="phDel">Fotoğrafı kaldır</button></div>
+      </fieldset>
+      <div class="btns">
+        <button class="btn btn-accent" type="button" id="dl">Kartı indir (PNG)</button>
+        <button class="btn btn-ghost" type="button" id="pr">Yazdır</button>
+        <button class="btn btn-ghost" type="button" id="cp">Bağlantıyı kopyala</button>
+        <a class="btn btn-ghost" id="open" href="#" target="_blank" rel="noopener">Mektubu aç</a>
+      </div>
+    </form>
+
+    <div class="out">
+      <div class="card" id="card">
+        <svg class="petal" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 38C34 28 34 8 20 2 6 8 6 28 20 38z" fill="#E3A3A0" opacity=".55"/></svg>
+        <div class="l">
+          <span class="brand">Doğukan Genç Flowers · Karasu</span>
+          <span class="to" id="cTo">Sevgili Elif,</span>
+          <span class="say">Sana bir mektubum var.<br>Kameranla okut, aç bak.</span>
+          <span class="from" id="cFrom">Sevgiyle, Burak</span>
+          <span class="tags" id="cTags"></span>
+        </div>
+        <div class="r">
+          <div class="qr" id="qr" role="img" aria-label="Mektubun QR kodu"></div>
+          <span class="scan">Telefonunun kamerasıyla okut</span>
+        </div>
+      </div>
+      <p class="status" id="st" role="status" aria-live="polite"></p>
+      <p class="link" id="lk"></p>
+    </div>
+  </div>
+</div>
+
+<script src="assets/qrcode.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const f = { site: $('#site'), to: $('#to'), msg: $('#msg'), from: $('#from'), song: $('#song') };
+  let photoId = '';
+  try { const s = localStorage.getItem('dg-site'); if (s) f.site.value = s; } catch (e) {}
+  const enc = obj => { const b = new TextEncoder().encode(JSON.stringify(obj)); let s = ''; b.forEach(x => s += String.fromCharCode(x)); return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); };
+  const base = () => { let u = f.site.value.trim() || 'https://dogukangencflowers.com/'; if (!/^https?:\/\//.test(u)) u = 'https://' + u; return u.replace(/#.*$/, ''); };
+  let link = '', qr = null;
+  const songOf = url => {
+    if (!url) return '';
+    let m = url.match(/spotify\.com\/(?:intl-[a-z]+\/)?track\/([A-Za-z0-9]{22})/); if (m) return 'sp:' + m[1];
+    m = url.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/)([A-Za-z0-9_-]{11})/); if (m) return 'yt:' + m[1];
+    return null;
+  };
+  function update() {
+    const to = f.to.value.trim() || 'sana', msg = f.msg.value.trim() || 'İyi ki varsın', from = f.from.value.trim() || 'Seni seven biri';
+    $('#count').textContent = f.msg.value.length + ' / 60';
+    $('#cTo').textContent = 'Sevgili ' + to + ',';
+    $('#cFrom').textContent = 'Sevgiyle, ' + from;
+    const sg = songOf(f.song.value.trim());
+    $('#songHint').textContent = sg === null ? 'Bu bağlantıyı tanıyamadım. Spotify şarkı ya da YouTube video bağlantısı yapıştır.' : sg ? 'Şarkı eklendi.' : 'Mektubu açan kişi tek dokunuşla dinler.';
+    const data = { t: to, m: msg, f: from }; if (sg) data.s = sg; if (photoId) data.p = photoId;
+    $('#cTags').innerHTML = (photoId ? '<span>Fotoğraf</span>' : '') + (sg ? '<span>Şarkı</span>' : '');
+    link = base() + '#m' + enc(data);
+    $('#lk').textContent = link; $('#open').href = link;
+    qr = qrcode(0, 'M'); qr.addData(link); qr.make();
+    $('#qr').innerHTML = qr.createSvgTag({ cellSize: 4, margin: 0, scalable: true });
+    const p = $('#qr path') || $('#qr rect:last-child'); if (p) p.setAttribute('fill', '#2B1B25');
+    try { localStorage.setItem('dg-site', f.site.value.trim()); } catch (e) {}
+  }
+  Object.values(f).forEach(el => el.addEventListener('input', update));
+
+  /* photo: shrink in the browser, then upload with the panel password */
+  const shrink = file => new Promise((res, rej) => {
+    const im = new Image(); im.onload = () => {
+      const s = Math.min(1, 1600 / Math.max(im.width, im.height)), c = document.createElement('canvas');
+      c.width = Math.round(im.width * s); c.height = Math.round(im.height * s);
+      c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
+      c.toBlob(b => b ? res(b) : rej(), 'image/jpeg', .88); URL.revokeObjectURL(im.src);
+    }; im.onerror = rej; im.src = URL.createObjectURL(file);
+  });
+  $('#ph').addEventListener('change', async e => {
+    const file = e.target.files[0], st = $('#st'); if (!file) return;
+    if (!$('#key').value) { st.textContent = 'Önce panel şifresini yaz, sonra fotoğrafı seç.'; e.target.value = ''; $('#key').focus(); return; }
+    st.textContent = 'Fotoğraf yükleniyor...'; $('#phName').textContent = file.name;
+    try {
+      const fd = new FormData(); fd.append('key', $('#key').value); fd.append('photo', await shrink(file), 'foto.jpg');
+      const r = await fetch('mektup-yukle.php', { method: 'POST', body: fd });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.id) throw new Error(j.error || 'Yükleme başarısız. Bu özellik site yayındayken çalışır.');
+      photoId = j.id; $('#phPrev').src = URL.createObjectURL(file); $('#phRow').hidden = false;
+      st.textContent = 'Fotoğraf yüklendi.'; update();
+    } catch (err) { st.textContent = err.message || 'Yükleme başarısız.'; $('#phName').textContent = 'Fotoğraf seç'; e.target.value = ''; }
+  });
+  $('#phDel').addEventListener('click', () => { photoId = ''; $('#phRow').hidden = true; $('#ph').value = ''; $('#phName').textContent = 'Fotoğraf seç'; update(); });
+  update();
+
+  $('#cp').addEventListener('click', () => {
+    const st = $('#st');
+    const fb = () => { const r = document.createRange(); r.selectNodeContents($('#lk')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); st.textContent = 'Bağlantı seçildi, kopyalayabilirsin.'; };
+    try { navigator.clipboard.writeText(link).then(() => { st.textContent = 'Bağlantı kopyalandı.'; }, fb); } catch (e) { fb(); }
+  });
+  $('#pr').addEventListener('click', () => window.print());
+
+  /* draw the card on a canvas at print resolution, then download */
+  $('#dl').addEventListener('click', async () => {
+    const st = $('#st'); st.textContent = 'Kart hazırlanıyor...';
+    try { await Promise.all([document.fonts.load('500 80px Caveat'), document.fonts.load('italic 500 40px "Cormorant Garamond"'), document.fonts.load('20px "DM Mono"')]); } catch (e) {}
+    const W = 1772, H = 1240, c = document.createElement('canvas'); c.width = W; c.height = H; const g = c.getContext('2d');
+    const bg = g.createLinearGradient(0, 0, W, H); bg.addColorStop(0, '#F8EEEA'); bg.addColorStop(.55, '#F4E7E1'); bg.addColorStop(1, '#EAD8D0');
+    g.fillStyle = bg; g.fillRect(0, 0, W, H);
+    g.strokeStyle = 'rgba(43,27,37,.18)'; g.lineWidth = 2; g.strokeRect(56, 56, W - 112, H - 112);
+    g.fillStyle = 'rgba(227,163,160,.55)'; g.save(); g.translate(W - 70, 40); g.rotate(.5); g.beginPath(); g.moveTo(0, 90); g.bezierCurveTo(70, 50, 70, -40, 0, -70); g.bezierCurveTo(-70, -40, -70, 50, 0, 90); g.fill(); g.restore();
+    const pad = 124;
+    g.fillStyle = '#7D5A6A'; g.font = '30px "DM Mono", monospace'; g.textBaseline = 'top';
+    const brand = 'DOĞUKAN GENÇ FLOWERS · KARASU'; let x = pad; for (const ch of brand) { g.fillText(ch, x, pad); x += g.measureText(ch).width + 6; }
+    const qs = 520, qx = W - pad - qs, qy = (H - qs) / 2 - 30;
+    g.fillStyle = '#fff'; g.beginPath(); g.roundRect ? g.roundRect(qx - 20, qy - 20, qs + 40, qs + 40, 20) : g.rect(qx - 20, qy - 20, qs + 40, qs + 40); g.fill();
+    const n = qr.getModuleCount(), cell = qs / n; g.fillStyle = '#2B1B25';
+    for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (qr.isDark(r, k)) g.fillRect(qx + k * cell, qy + r * cell, Math.ceil(cell), Math.ceil(cell));
+    g.fillStyle = '#7D5A6A'; g.font = '26px "DM Mono", monospace'; g.textAlign = 'center'; g.fillText('TELEFONUNUN KAMERASIYLA OKUT', qx + qs / 2, qy + qs + 46); g.textAlign = 'left';
+    const maxW = qx - pad - 80;
+    const fit = (txt, font, size) => { let s = size; do { g.font = font.replace('{s}', s); s -= 4; } while (g.measureText(txt).width > maxW && s > 30); };
+    g.fillStyle = '#2B1B25'; g.textBaseline = 'alphabetic';
+    fit($('#cTo').textContent, '500 {s}px Caveat, cursive', 130); g.fillText($('#cTo').textContent, pad, 640);
+    g.fillStyle = '#4A2E3D'; g.font = 'italic 500 60px "Cormorant Garamond", Georgia, serif';
+    g.fillText('Sana bir mektubum var.', pad, 760); g.fillText('Kameranla okut, aç bak.', pad, 836);
+    g.fillStyle = '#6B4757'; fit($('#cFrom').textContent, '500 {s}px Caveat, cursive', 88); g.fillText($('#cFrom').textContent, pad, 1010);
+    c.toBlob(b => {
+      const a = document.createElement('a'); a.href = URL.createObjectURL(b);
+      a.download = 'kart-' + (f.to.value.trim() || 'mektup').toLowerCase().replace(/[^a-z0-9çğıöşü]+/gi, '-') + '.png';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+      st.textContent = 'Kart indirildi. 15 x 10,5 cm basıma uygun.';
+    }, 'image/png');
+  });
+})();
+</script>
+</body>
+</html>

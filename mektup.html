@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1B1219">
+<title>Sana bir mektup var · Doğukan Genç Flowers</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231B1219'/%3E%3Cpath d='M32 14c-7 6-9 12-6 17 2 3 6 4 6 4s4-1 6-4c3-5 1-11-6-17z' fill='%23E3A3A0'/%3E%3Cpath d='M32 35v15M32 44c-4-1-7-4-8-8M32 41c4-1 6-3 7-6' stroke='%238FA393' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500;1,600&family=Caveat:wght@500;600&family=DM+Mono&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* one long love letter: petals write the line, then the letter, the photos, the song, the bouquet */
+:root{
+  color-scheme:dark;
+  --canvas:#1B1219;--panel:#261A23;--line:rgba(205,184,180,.2);
+  --accent:#E3A3A0;--accent-hover:#EDB8B5;--gold:#F3D3B0;--sage:#A9BEAE;
+  --text:#F5ECE8;--text-2:#E0CFCB;--paper:#F6EDE7;--ink:#3A2430;
+  --display:"Cormorant Garamond",Georgia,serif;--body:"Jost",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace;--hand:"Caveat",cursive;
+  --ease:cubic-bezier(.22,.8,.24,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--canvas);scroll-behavior:smooth;overflow-x:hidden;overflow-x:clip}
+body{margin:0;background:var(--canvas);color:var(--text);font:400 1.1rem/1.7 var(--body);overflow-x:hidden;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.kicker{font:400 .8rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--sage)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+section{position:relative;padding:clamp(90px,14vh,150px) max(20px,env(safe-area-inset-right,0px)) clamp(90px,14vh,150px) max(20px,env(safe-area-inset-left,0px))}
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+
+/* 0. the sealed envelope: layered paper, a real wax seal, a lined flap */
+.env{position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(22px,4vh,40px);padding:20px;background:radial-gradient(ellipse 60% 50% at 50% 52%,rgba(227,163,160,.18),transparent 70%),radial-gradient(ellipse 120% 90% at 50% 120%,rgba(0,0,0,.5),transparent 60%),var(--canvas);transition:opacity 1s ease;perspective:1600px}
+.env.gone{opacity:0;pointer-events:none}
+.env-brand{position:absolute;top:max(22px,env(safe-area-inset-top,0px));font:400 .74rem/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--text-2)}
+.env-to{font:600 clamp(2rem,5vw,3.2rem)/1.1 var(--hand);color:#F3D9C6;margin:0;opacity:0;animation:envIn 1.2s var(--ease) .2s forwards;transition:opacity .5s}
+.env.opened .env-to{opacity:0!important}
+@keyframes envIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-.6deg)}50%{transform:translateY(-8px) rotate(.4deg)}}
+.env-stage{opacity:0;animation:envIn 1.2s var(--ease) .45s forwards}
+.env-float{animation:float 6s ease-in-out infinite}
+.env.opened .env-float{animation:none}
+.envelope{position:relative;width:min(440px,84vw);aspect-ratio:1.45;transform:rotateX(calc(var(--ty,0) * 1deg)) rotateY(calc(var(--tx,0) * 1deg));transition:transform .4s ease}
+.envelope::after{content:"";position:absolute;left:6%;right:6%;bottom:-9%;height:14%;background:radial-gradient(ellipse at center,rgba(0,0,0,.55),transparent 70%);filter:blur(6px);z-index:-1;transform:translateZ(-40px)}
+
+.env-back,.env-front,.env-flap .face{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012 .35' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .22 -.1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .3 0 0 0 0 .32 0 0 0 .28 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-blend-mode:screen,multiply}
+.env-back{position:absolute;inset:0;border-radius:5px;background-color:#B98A92;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46'%3E%3Crect width='46' height='46' fill='%23C98E97'/%3E%3Cpath d='M23 8c-4 3-5 7-3 10 1 2 3 2 3 2s2 0 3-2c2-3 1-7-3-10z' fill='%23E9B9BE' opacity='.8'/%3E%3Cpath d='M23 20v8' stroke='%238FA393' stroke-width='1.4'/%3E%3Ccircle cx='4' cy='40' r='1.6' fill='%23F3D3B0' opacity='.7'/%3E%3Ccircle cx='42' cy='38' r='1.6' fill='%23F3D3B0' opacity='.7'/%3E%3C/svg%3E");background-size:46px 46px;box-shadow:inset 0 0 40px rgba(60,25,40,.45)}
+.env-letter{position:absolute;left:5.5%;right:5.5%;top:6%;height:88%;z-index:2;border-radius:3px;background:linear-gradient(175deg,#FFFAF6,#F5EBE4);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .3 0 0 0 0 .32 0 0 0 .28 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),linear-gradient(175deg,#FFFAF6,#F5EBE4);background-blend-mode:multiply;display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:10%;text-align:center;color:var(--ink);box-shadow:0 -2px 10px rgba(60,25,40,.18);transition:transform 1.3s var(--ease) 1.35s}
+.env-letter span{font:400 clamp(.5rem,1.4vw,.66rem)/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:#8E6E7C}
+.env-letter b{font:600 clamp(1.3rem,3.6vw,1.9rem)/1.1 var(--hand);color:#4A2E3D}
+.env-letter i{width:46%;height:1px;background:rgba(74,46,61,.18);margin-top:6px}
+.env-front{position:absolute;inset:0;z-index:3;border-radius:5px;background-color:#F6E6DD;clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);box-shadow:inset 0 -30px 50px -30px rgba(90,50,65,.35)}
+.env-front::before{content:"";position:absolute;inset:0;background:linear-gradient(32deg,rgba(255,255,255,.0) 49.3%,rgba(110,70,85,.22) 49.8%,rgba(255,255,255,.35) 50.4%,transparent 51%),linear-gradient(-32deg,rgba(255,255,255,0) 49.3%,rgba(110,70,85,.22) 49.8%,rgba(255,255,255,.35) 50.4%,transparent 51%)}
+.env-front::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(80,40,55,.10),transparent 18%,transparent 82%,rgba(80,40,55,.10))}
+.env-flap{position:absolute;left:0;right:0;top:0;height:61%;z-index:4;transform-origin:50% 0;transform-style:preserve-3d;transform:perspective(1500px) rotateX(0deg)}
+.env-flap .face{position:absolute;inset:0;clip-path:polygon(0 0,100% 0,50% 100%);backface-visibility:hidden;border-radius:5px 5px 0 0}
+.env-flap .out{background-color:#F8EAE2;box-shadow:inset 0 -26px 40px -24px rgba(90,50,65,.35)}
+.env-flap .out::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.35),transparent 40%)}
+.env-flap .in{transform:rotateX(180deg);clip-path:polygon(0 100%,100% 100%,50% 0);background-color:#B98A92;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='46' height='46'%3E%3Crect width='46' height='46' fill='%23C98E97'/%3E%3Cpath d='M23 8c-4 3-5 7-3 10 1 2 3 2 3 2s2 0 3-2c2-3 1-7-3-10z' fill='%23E9B9BE' opacity='.8'/%3E%3Cpath d='M23 20v8' stroke='%238FA393' stroke-width='1.4'/%3E%3Ccircle cx='4' cy='40' r='1.6' fill='%23F3D3B0' opacity='.7'/%3E%3Ccircle cx='42' cy='38' r='1.6' fill='%23F3D3B0' opacity='.7'/%3E%3C/svg%3E");background-size:46px 46px;box-shadow:inset 0 0 0 7px #F1E0D8}
+.env-flapshadow{position:absolute;left:4%;right:4%;top:2%;height:62%;z-index:3;clip-path:polygon(0 0,100% 0,50% 100%);background:rgba(60,25,40,.28);filter:blur(5px);transform:translateY(6px);transition:opacity .3s .2s}
+.env.opened .env-flapshadow{opacity:0}
+.seal{border-radius:50%;position:absolute;left:50%;top:61%;width:clamp(70px,18vw,92px);aspect-ratio:1;transform:translate(-50%,-50%);z-index:6;border:0;padding:0;background:none;cursor:pointer;filter:drop-shadow(0 7px 8px rgba(40,10,20,.45))}
+.seal::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(243,211,176,.55);animation:sealPing 2.4s ease-out infinite}
+@keyframes sealPing{0%{transform:scale(.8);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+.seal svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;transition:transform .9s cubic-bezier(.3,.6,.4,1),opacity .9s ease}
+.seal .crumb{transition:transform .8s cubic-bezier(.2,.7,.3,1),opacity .8s ease}
+.env.opened .seal::before{display:none}
+.env.opened .seal .hl{transform:translate(-26px,46px) rotate(-38deg);opacity:0}
+.env.opened .seal .hr{transform:translate(30px,54px) rotate(34deg);opacity:0}
+.env.opened .seal .crumb{opacity:0}
+.env.opened .env-flap{animation:flapOpen 1.25s cubic-bezier(.45,.05,.25,1) .3s forwards}
+@keyframes flapOpen{0%{transform:perspective(1500px) rotateX(0deg);z-index:4}12%{transform:perspective(1500px) rotateX(calc(var(--fd,1) * 14deg));z-index:4}49.9%{z-index:4}50%{z-index:1}100%{transform:perspective(1500px) rotateX(calc(var(--fd,1) * 180deg));z-index:1}}
+.env.opened .env-flap .out{animation:shadeOut 1.25s ease .3s forwards}
+.env.opened .env-flap .in{animation:shadeIn 1.25s ease .3s forwards}
+@keyframes shadeOut{0%{filter:brightness(1)}50%{filter:brightness(.9) saturate(1.05)}100%{filter:brightness(.9)}}
+@keyframes shadeIn{0%,50%{filter:brightness(.82)}100%{filter:brightness(1)}}
+.env.opened .env-letter{transform:translateY(-44%)}
+.env-hint{font:400 .78rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--text-2);margin:0;opacity:0;animation:envIn 1s ease 1.1s forwards,hint 2.4s ease-in-out 2.1s infinite}
+@keyframes hint{50%{opacity:.45}}
+.env.opened .env-hint{animation:none;opacity:0;transition:opacity .4s}
+
+/* 1. opening */
+.open{overflow:hidden;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:0;padding-bottom:0;background:radial-gradient(ellipse 70% 60% at 50% 45%,rgba(227,163,160,.14),transparent 70%)}
+.open canvas{position:absolute;inset:0;width:100%;height:100%}
+.brand{position:absolute;top:max(22px,env(safe-area-inset-top,0px));left:0;right:0;text-align:center;font:400 .74rem/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--text-2)}
+.brand b{font:italic 600 1.15rem/1 var(--display);letter-spacing:.02em;text-transform:none;background:linear-gradient(100deg,#E3A3A0,#F7DFC2 50%,#E3A3A0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.to,.from{position:absolute;left:0;right:0;text-align:center;font-family:var(--hand);font-weight:500;color:#F3D9C6;opacity:0;transition:opacity 1.2s ease}
+.to{top:16%;font-size:clamp(2.2rem,5vw,3.6rem)}
+.from{bottom:22%;font-size:clamp(1.8rem,3.8vw,2.8rem)}
+.from::before{content:"Sevgiyle, ";color:var(--text-2)}
+.open.done .to,.open.done .from{opacity:1}
+.cue{position:absolute;bottom:max(28px,env(safe-area-inset-bottom,0px));left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:10px;font:400 .74rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--text-2);opacity:0;transition:opacity 1s ease .8s;text-decoration:none}
+.open.done .cue{opacity:1}
+.cue i{width:1px;height:40px;background:linear-gradient(var(--accent),transparent);animation:cue 2.4s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* 2. the letter on paper */
+.letter{display:flex;justify-content:center}
+.paper{position:relative;width:min(680px,100%);background:linear-gradient(170deg,#FBF4EF,var(--paper) 60%,#EFE1D9);color:var(--ink);border-radius:6px;padding:clamp(34px,6vw,72px) clamp(26px,6vw,70px);box-shadow:0 60px 120px -50px rgba(0,0,0,.9);transform:rotate(-.6deg)}
+.paper::before{content:"";position:absolute;inset:14px;border:1px solid rgba(58,36,48,.14);border-radius:3px;pointer-events:none}
+.paper .seal{position:absolute;top:-26px;right:clamp(24px,8%,60px);width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#E8A3A6,#B4566A 70%);box-shadow:0 10px 20px -6px rgba(0,0,0,.5),inset 0 -4px 8px rgba(0,0,0,.25);display:grid;place-items:center}
+.paper .seal svg{width:28px;height:28px}
+.paper .hi{font:600 clamp(2rem,4.4vw,2.8rem)/1.1 var(--hand);margin:0 0 18px}
+.paper .body p{font:500 clamp(1.45rem,2.6vw,1.75rem)/1.45 var(--hand);margin:0 0 .7em;color:#4A2E3D}
+.paper .sign{font:600 clamp(1.7rem,3vw,2.2rem)/1.1 var(--hand);text-align:right;margin-top:26px;color:#6B4757}
+.paper .date{font:400 .72rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:#8E6E7C;margin-top:10px;text-align:right}
+
+/* 3. memories: scattered polaroids */
+.head{text-align:center;margin:0 auto 54px;max-width:30rem}
+.head h2{font:500 clamp(2.4rem,5.4vw,4rem)/1.05 var(--display);margin:14px 0 0}
+.head h2 em{color:var(--accent);font-style:italic}
+.wall{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(18px,3vw,40px);max-width:1100px;margin:0 auto}
+.pol{background:#FBF6F2;padding:12px 12px 46px;border:0;border-radius:3px;box-shadow:0 34px 60px -26px rgba(0,0,0,.85);cursor:zoom-in;width:min(280px,42vw);transform:rotate(var(--r,0deg)) translateY(var(--y,0px));transition:transform .7s var(--ease),opacity 1s var(--ease);position:relative}
+.pol img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.pol:hover{transform:rotate(0) scale(1.04);z-index:2}
+.pol::after{content:"";position:absolute;top:-12px;left:50%;width:70px;height:24px;margin-left:-35px;background:rgba(243,211,176,.55);transform:rotate(-3deg);box-shadow:0 2px 4px rgba(0,0,0,.15)}
+.pol.rv{transform:rotate(var(--r,0deg)) translateY(60px)}
+.pol.rv.in{transform:rotate(var(--r,0deg)) translateY(var(--y,0px))}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(12,6,10,.92);display:flex;align-items:center;justify-content:center;padding:max(20px,env(safe-area-inset-top,0px)) 16px}
+.lb[hidden]{display:none}
+.lb figure{margin:0;background:#FBF6F2;padding:12px 12px 44px;border-radius:3px;max-width:min(92vw,720px)}
+.lb img{max-height:76svh;width:auto;margin:0 auto}
+.lb button{position:absolute;background:rgba(38,26,35,.8);color:var(--text);border:1px solid var(--line);width:52px;height:52px;border-radius:50%;font:400 1.4rem/1 var(--body);cursor:pointer;display:grid;place-items:center}
+.lb .x{top:max(18px,env(safe-area-inset-top,0px));right:18px}
+.lb .pv{left:14px;top:50%;transform:translateY(-50%)}
+.lb .nx{right:14px;top:50%;transform:translateY(-50%)}
+
+/* 4. the song: a record that spins once it plays */
+.song{display:flex;flex-direction:column;align-items:center}
+.deck{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:clamp(24px,5vw,56px);max-width:860px;width:100%}
+.vinyl{width:clamp(180px,30vw,300px);aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle,#140C11 0 2px,#1E1419 2px 4px);box-shadow:0 40px 80px -30px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.04);display:grid;place-items:center;position:relative}
+.vinyl::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 30deg,transparent 0 10%,rgba(255,255,255,.08) 14%,transparent 20% 60%,rgba(255,255,255,.06) 64%,transparent 70%)}
+.vinyl .lbl{width:36%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 35%,#EBB0B4,#C26A7C);display:grid;place-items:center;position:relative}
+.vinyl .lbl::after{content:"";width:12%;aspect-ratio:1;border-radius:50%;background:var(--canvas)}
+.vinyl .lbl span{position:absolute;font:italic 600 clamp(.7rem,1.2vw,.95rem)/1 var(--display);color:#3A1E2A;top:26%}
+.vinyl.spin{animation:spin 3.2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.deck h2{font:500 clamp(2.4rem,5vw,3.6rem)/1.05 var(--display);margin:12px 0 10px}
+.deck p{color:var(--text-2);margin:0 0 22px}
+.play{display:inline-flex;align-items:center;gap:14px;min-height:56px;padding:14px 26px;border-radius:999px;border:0;background:var(--accent);color:var(--canvas);font:500 1.05rem/1 var(--body);cursor:pointer;transition:background .3s,transform .3s}
+.play:hover{background:var(--accent-hover);transform:translateY(-2px)}
+.play svg{width:20px;height:20px}
+.player{border:0;border-radius:14px;width:100%;max-width:440px}
+.player.sp{height:152px}
+.player.yt{aspect-ratio:16/9;height:auto}
+.player.spl{height:352px}
+.open-song.solo{font:500 1rem/1 var(--body);letter-spacing:0;text-transform:none;background:var(--accent);color:var(--canvas);border:0;border-radius:999px;padding:16px 26px}
+.open-song{display:inline-block;margin-top:16px;font:400 .76rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;padding:8px 0;border-bottom:1px solid rgba(227,163,160,.4)}
+
+/* 5. finale */
+.fin{text-align:center;display:flex;flex-direction:column;align-items:center}
+.arch{width:min(320px,70vw);aspect-ratio:3/4;border-radius:999px 999px 18px 18px;overflow:hidden;outline:1px solid rgba(243,211,176,.3);outline-offset:12px;box-shadow:0 0 120px -20px rgba(227,163,160,.35);margin-bottom:46px}
+.arch img{width:100%;height:100%;object-fit:cover}
+.fin h2{font:500 clamp(2rem,4.6vw,3.2rem)/1.1 var(--display);margin:0 0 14px;max-width:18ch}
+.fin p{color:var(--text-2);max-width:40ch;margin:0 auto 30px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:14px 24px;border-radius:999px;font:500 1rem/1 var(--body);text-decoration:none;border:0;cursor:pointer;transition:background .3s,transform .3s,border-color .3s}
+.btn-a{background:var(--accent);color:var(--canvas)}
+.btn-a:hover{background:var(--accent-hover);transform:translateY(-2px)}
+.btn-g{border:1px solid rgba(243,211,176,.35);color:var(--text)}
+.btn-g:hover{border-color:var(--accent)}
+footer{text-align:center;padding:30px 20px calc(30px + env(safe-area-inset-bottom,0px));font:400 .74rem/1.6 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);border-top:1px solid var(--line)}
+footer a{color:var(--text)}
+
+.state{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px}
+.state h1{font:500 clamp(2rem,5vw,3rem)/1.1 var(--display);margin:0}
+.state p{color:var(--text-2);margin:0 0 10px;max-width:34ch}
+
+/* ---------- richer letter page ---------- */
+main{position:relative;z-index:1}
+.bgpetals{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.open::before{content:"";position:absolute;inset:-4%;background:url("assets/hero-poster.jpg") center/cover;opacity:.3;animation:kb 40s ease-in-out infinite alternate}
+.open::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 47%,rgba(27,18,25,.35),rgba(27,18,25,.92) 80%),linear-gradient(transparent 70%,var(--canvas))}
+.open > *{z-index:1}
+.open canvas{z-index:1}
+@keyframes kb{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.16) translate(-2%,-2%)}}
+.letter{background:radial-gradient(ellipse 50% 60% at 50% 45%,rgba(227,163,160,.14),transparent 70%)}
+.paper{overflow:visible}
+.sprig{position:absolute;width:clamp(140px,24vw,220px);height:auto;pointer-events:none;z-index:2}
+.sprig.tl{left:-52px;top:-60px;transform:rotate(-6deg)}
+.sprig.br{right:-48px;bottom:-56px;transform:rotate(174deg)}
+.divider{display:flex;justify-content:center;padding:0 20px;position:relative;z-index:1}
+.vine{width:min(520px,80vw);height:46px;overflow:visible}
+.vine .vl{fill:none;stroke:#8FA393;stroke-width:1.4;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.2s ease}
+.vine .vb{opacity:0;transform-origin:center;transition:opacity 1s ease 1.4s}
+.divider.in .vl{stroke-dashoffset:0}
+.divider.in .vb{opacity:1}
+#anilar{background:radial-gradient(ellipse 60% 50% at 50% 55%,rgba(143,163,147,.10),transparent 70%)}
+.song .deck{background:linear-gradient(150deg,rgba(47,32,41,.75),rgba(38,26,35,.45));border:1px solid rgba(243,211,176,.18);border-radius:32px;padding:clamp(26px,5vw,52px);box-shadow:0 50px 100px -50px rgba(0,0,0,.8)}
+.turntable{position:relative;padding:14px;border-radius:24px;background:linear-gradient(145deg,#2C1F27,#1C1218);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 30px 60px -30px rgba(0,0,0,.8)}
+.arm{position:absolute;right:-18px;top:-4px;width:clamp(58px,9vw,88px);height:auto;transform-origin:80% 10%;transform:rotate(-14deg);transition:transform 1.2s cubic-bezier(.4,0,.2,1);filter:drop-shadow(0 6px 6px rgba(0,0,0,.5))}
+.turntable.on .arm{transform:rotate(24deg)}
+footer.sent{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;padding:clamp(60px,10vh,100px) 20px calc(40px + env(safe-area-inset-bottom,0px));border-top:0;text-transform:none;letter-spacing:0;font:400 1rem/1.5 var(--body)}
+footer.sent p{margin:0;color:var(--text-2)}
+footer.sent b{font:italic 600 1.2rem/1 var(--display);background:linear-gradient(100deg,#E3A3A0,#F7DFC2 50%,#E3A3A0);-webkit-background-clip:text;background-clip:text;color:transparent}
+footer.sent a{font:400 .78rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);text-decoration:none;padding:12px 0;border-bottom:1px solid rgba(227,163,160,.4)}
+.heart{width:18px;height:18px;background:var(--accent);transform:rotate(45deg);position:relative;margin-bottom:8px;animation:beat 1.6s ease-in-out infinite}
+.heart::before,.heart::after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;background:var(--accent)}
+.heart::before{left:-9px}.heart::after{top:-9px}
+@keyframes beat{0%,100%{transform:rotate(45deg) scale(1)}15%{transform:rotate(45deg) scale(1.18)}30%{transform:rotate(45deg) scale(1)}}
+@media (max-width:640px){.sprig{width:118px}.sprig.tl{left:-30px;top:-62px}.sprig.br{right:-28px;bottom:-58px}.arm{right:-12px}}
+@media (prefers-reduced-motion: reduce){.bgpetals{display:none}.vine .vl{stroke-dashoffset:0}.vine .vb{opacity:1}}
+[hidden]{display:none!important}
+@media (max-width:640px){.deck{grid-template-columns:1fr;justify-items:center;text-align:center}.pol{width:min(250px,76vw)}.to{top:13%}.from{bottom:20%}}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv,.pol.rv{opacity:1;transform:rotate(var(--r,0deg))}.to,.from,.cue{opacity:1}}
+</style>
+</head>
+<body>
+
+<div class="state" id="loading"><span class="kicker">Doğukan Genç Flowers</span><h1>Mektubun açılıyor...</h1></div>
+<div class="state" id="missing" hidden>
+  <span class="kicker">Doğukan Genç Flowers · Karasu</span>
+  <h1>Bu mektubu bulamadık.</h1>
+  <p>Bağlantı eksik ya da mektup kaldırılmış olabilir. Kartındaki QR'ı tekrar okutmayı dene.</p>
+  <a class="btn btn-a" href="./">Siteye git</a>
+</div>
+
+<div class="env" id="env" hidden>
+  <span class="env-brand">Doğukan Genç Flowers · Karasu</span>
+  <p class="env-to" id="envTo"></p>
+  <div class="env-stage"><div class="env-float">
+  <div class="envelope" id="envelope">
+    <div class="env-back"></div>
+    <div class="env-letter" aria-hidden="true"><span>Doğukan Genç Flowers</span><b>Sana bir mektup var</b><i></i></div>
+    <div class="env-front"></div>
+    <div class="env-flapshadow"></div>
+    <div class="env-flap"><div class="face out"></div><div class="face in"></div></div>
+    <button class="seal" type="button" id="seal" aria-label="Mührü kır ve mektubu aç">
+      <svg class="hl" viewBox="0 0 100 100" aria-hidden="true"><clipPath id="cl"><path d="M0 0H52L46 22 55 38 45 55 54 72 47 100H0z"/></clipPath><g clip-path="url(#cl)"><defs><radialGradient id="wax" cx="36%" cy="30%" r="75%"><stop offset="0" stop-color="#F0B6B8"/><stop offset=".45" stop-color="#C0606F"/><stop offset="1" stop-color="#7E2E44"/></radialGradient></defs>
+<path d="M50 3C60 2 67 7 74 10c9 4 16 10 20 19 4 8 3 16 4 24 0 9-4 16-8 22-5 8-12 15-21 18-8 3-15 4-23 3-9-1-17-4-24-10C15 81 9 74 6 66 3 58 2 50 3 42 5 33 9 26 15 19 22 12 30 7 38 5c4-1 8-2 12-2z" fill="url(#wax)"/>
+<circle cx="50" cy="50" r="29" fill="none" stroke="#8C3A50" stroke-width="3" opacity=".55"/>
+<circle cx="50" cy="50" r="29" fill="none" stroke="#F4C6C6" stroke-width="1" opacity=".5" transform="translate(-.8 -.8)"/>
+<g transform="translate(18 16) scale(1)"><path d="M32 12c-8 7-10 14-7 20 2 3 7 5 7 5s5-2 7-5c3-6 1-13-7-20z" fill="#9A4258" transform="translate(.9 .9)"/><path d="M32 12c-8 7-10 14-7 20 2 3 7 5 7 5s5-2 7-5c3-6 1-13-7-20z" fill="#E7A2A8"/><path d="M32 37v14M32 46c-5-1-8-4-9-9M32 43c5-1 7-3 8-7" stroke="#9A4258" stroke-width="2.6" fill="none" stroke-linecap="round" transform="translate(.8 .8)"/><path d="M32 37v14M32 46c-5-1-8-4-9-9M32 43c5-1 7-3 8-7" stroke="#E7A2A8" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>
+<ellipse cx="34" cy="26" rx="14" ry="7" fill="#fff" opacity=".22" transform="rotate(-28 34 26)"/></g></svg>
+      <svg class="hr" viewBox="0 0 100 100" aria-hidden="true"><clipPath id="cr"><path d="M52 0H100V100H47L54 72 45 55 55 38 46 22z"/></clipPath><g clip-path="url(#cr)"><defs><radialGradient id="wax2" cx="36%" cy="30%" r="75%"><stop offset="0" stop-color="#F0B6B8"/><stop offset=".45" stop-color="#C0606F"/><stop offset="1" stop-color="#7E2E44"/></radialGradient></defs>
+<path d="M50 3C60 2 67 7 74 10c9 4 16 10 20 19 4 8 3 16 4 24 0 9-4 16-8 22-5 8-12 15-21 18-8 3-15 4-23 3-9-1-17-4-24-10C15 81 9 74 6 66 3 58 2 50 3 42 5 33 9 26 15 19 22 12 30 7 38 5c4-1 8-2 12-2z" fill="url(#wax2)"/>
+<circle cx="50" cy="50" r="29" fill="none" stroke="#8C3A50" stroke-width="3" opacity=".55"/>
+<circle cx="50" cy="50" r="29" fill="none" stroke="#F4C6C6" stroke-width="1" opacity=".5" transform="translate(-.8 -.8)"/>
+<g transform="translate(18 16) scale(1)"><path d="M32 12c-8 7-10 14-7 20 2 3 7 5 7 5s5-2 7-5c3-6 1-13-7-20z" fill="#9A4258" transform="translate(.9 .9)"/><path d="M32 12c-8 7-10 14-7 20 2 3 7 5 7 5s5-2 7-5c3-6 1-13-7-20z" fill="#E7A2A8"/><path d="M32 37v14M32 46c-5-1-8-4-9-9M32 43c5-1 7-3 8-7" stroke="#9A4258" stroke-width="2.6" fill="none" stroke-linecap="round" transform="translate(.8 .8)"/><path d="M32 37v14M32 46c-5-1-8-4-9-9M32 43c5-1 7-3 8-7" stroke="#E7A2A8" stroke-width="2.2" fill="none" stroke-linecap="round"/></g>
+<ellipse cx="34" cy="26" rx="14" ry="7" fill="#fff" opacity=".22" transform="rotate(-28 34 26)"/></g></svg>
+      <svg viewBox="0 0 100 100" aria-hidden="true" style="pointer-events:none"><g fill="#B4566A"><circle class="crumb" cx="50" cy="40" r="2.2" style="--x:-40px"/><circle class="crumb" cx="52" cy="58" r="1.8"/><circle class="crumb" cx="48" cy="70" r="2.4"/><circle class="crumb" cx="50" cy="28" r="1.5"/><circle class="crumb" cx="51" cy="50" r="1.6"/></g></svg>
+    </button>
+  </div>
+  </div></div>
+  <p class="env-hint">Mührü kırmak için dokun</p>
+</div>
+
+<canvas class="bgpetals" id="bgp" aria-hidden="true"></canvas>
+<main id="letter" hidden>
+  <section class="open" id="open" aria-label="Mektubun açılışı">
+    <span class="brand"><b>Doğukan Genç Flowers</b> · Karasu</span>
+    <canvas aria-hidden="true"></canvas>
+    <p class="to" id="to"></p>
+    <h1 class="sr" id="headSr"></h1>
+    <p class="from" id="from"></p>
+    <a class="cue" href="#mektup">Aşağı kaydır, dahası var<i aria-hidden="true"></i></a>
+  </section>
+
+  <section class="letter" id="mektup" hidden>
+    <article class="paper rv">
+      <svg class="sprig tl" viewBox="0 0 160 160" aria-hidden="true"><g fill="#8FA393" fill-opacity=".35" stroke="#7E9483" stroke-width="2.2" stroke-linecap="round"><path d="M8 152C40 120 70 92 118 40"/><path d="M40 122c-14-4-22-14-24-26 12 2 22 10 24 26zM58 104c4-14 14-22 26-24-2 12-10 22-26 24zM74 86c-14-4-22-14-24-26 12 2 22 10 24 26zM92 68c4-14 14-22 26-24-2 12-10 22-26 24z"/></g><g transform="translate(118 40)"><circle r="11" fill="#E3A3A0"/><circle r="6.5" fill="#D98892"/><circle r="2.6" fill="#B4566A"/></g><g transform="translate(58 104)"><circle r="6" fill="#F0C4C4"/><circle r="2.4" fill="#D98892"/></g><circle cx="96" cy="64" r="3" fill="#F3D3B0"/><circle cx="36" cy="126" r="2.5" fill="#F3D3B0"/></svg>
+      <svg class="sprig br" viewBox="0 0 160 160" aria-hidden="true"><g fill="#8FA393" fill-opacity=".35" stroke="#7E9483" stroke-width="2.2" stroke-linecap="round"><path d="M8 152C40 120 70 92 118 40"/><path d="M40 122c-14-4-22-14-24-26 12 2 22 10 24 26zM58 104c4-14 14-22 26-24-2 12-10 22-26 24zM74 86c-14-4-22-14-24-26 12 2 22 10 24 26zM92 68c4-14 14-22 26-24-2 12-10 22-26 24z"/></g><g transform="translate(118 40)"><circle r="11" fill="#E3A3A0"/><circle r="6.5" fill="#D98892"/><circle r="2.6" fill="#B4566A"/></g><g transform="translate(58 104)"><circle r="6" fill="#F0C4C4"/><circle r="2.4" fill="#D98892"/></g><circle cx="96" cy="64" r="3" fill="#F3D3B0"/><circle cx="36" cy="126" r="2.5" fill="#F3D3B0"/></svg>
+      <span class="seal" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 12c-8 7-10 14-7 20 2 3 7 5 7 5s5-2 7-5c3-6 1-13-7-20z" fill="#FBEAE4"/><path d="M32 37v15" stroke="#FBEAE4" stroke-width="3" stroke-linecap="round"/></svg></span>
+      <p class="hi" id="hi"></p>
+      <div class="body" id="body"></div>
+      <p class="sign" id="sign"></p>
+      <p class="date" id="date"></p>
+    </article>
+  </section>
+
+  <div class="divider" aria-hidden="true"><svg class="vine" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true"><path class="vl" pathLength="1" d="M0 30C80 6 120 54 200 30S320 6 400 30 520 54 600 30"/><g class="vb"><circle cx="200" cy="30" r="5" fill="#E3A3A0"/><circle cx="300" cy="22" r="3.5" fill="#F3D3B0"/><circle cx="400" cy="30" r="5" fill="#E3A3A0"/><path d="M200 30c-8-8-18-8-24-2 8 6 18 6 24 2zM400 30c8-8 18-8 24-2-8 6-18 6-24 2z" fill="#8FA393"/></g></svg></div>
+  <section id="anilar" hidden>
+    <div class="head rv"><span class="kicker">Anılarımız</span><h2>Birlikte <em>biriktirdiklerimiz.</em></h2></div>
+    <div class="wall" id="wall"></div>
+  </section>
+
+  <div class="divider" aria-hidden="true"><svg class="vine" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true"><path class="vl" pathLength="1" d="M0 30C80 6 120 54 200 30S320 6 400 30 520 54 600 30"/><g class="vb"><circle cx="200" cy="30" r="5" fill="#E3A3A0"/><circle cx="300" cy="22" r="3.5" fill="#F3D3B0"/><circle cx="400" cy="30" r="5" fill="#E3A3A0"/><path d="M200 30c-8-8-18-8-24-2 8 6 18 6 24 2zM400 30c8-8 18-8 24-2-8 6-18 6-24 2z" fill="#8FA393"/></g></svg></div>
+  <section class="song" id="sarki" hidden>
+    <div class="deck rv">
+      <div class="turntable" aria-hidden="true"><div class="vinyl" id="vinyl"><div class="lbl"><span>senin için</span></div></div><svg class="arm" id="arm" viewBox="0 0 120 220"><circle cx="96" cy="22" r="14" fill="#3A2A33" stroke="#C9A98F" stroke-width="2"/><circle cx="96" cy="22" r="5" fill="#C9A98F"/><path d="M96 22 L96 150 L70 196" fill="none" stroke="#C9A98F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="58" y="190" width="22" height="14" rx="3" fill="#2A1E25" stroke="#C9A98F" stroke-width="2" transform="rotate(30 69 197)"/></svg></div>
+      <div>
+        <span class="kicker">Senin şarkın</span>
+        <h2>Bu şarkı sana.</h2>
+        <p>Sesi aç, gözlerini kapat.</p>
+        <div id="playWrap"><button class="play" type="button" id="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>Şarkıyı çal</button></div>
+        <a class="open-song" id="openSong" href="#" target="_blank" rel="noopener">Spotify'da aç</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="sent"><span class="heart" aria-hidden="true"></span><p>Bu mektup <b>Doğukan Genç Flowers</b> ile gönderildi.</p><a href="./#mektup">Sen de birine gönder</a></footer>
+</main>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Fotoğraf">
+  <button class="x" type="button" aria-label="Kapat">×</button>
+  <button class="pv" type="button" aria-label="Önceki fotoğraf">‹</button>
+  <figure><img id="lbImg" alt=""></figure>
+  <button class="nx" type="button" aria-label="Sonraki fotoğraf">›</button>
+</div>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const rmq = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const id = new URLSearchParams(location.search).get('id') || '';
+  const LIVE = new URLSearchParams(location.search).get('live') === '1';   // live preview inside the site form: no envelope
+  const show = el => { $('#loading').hidden = true; el.hidden = false; };
+  const SAMPLE = { id: 'ornek', to: 'Zeynep', from: 'Emre', head: 'Seninle her gün bahar', song: 'sp:4uLU6hMCjMI75M1A2tKUQC', created: new Date().toISOString(),
+    body: 'Seni ilk gördüğüm gün Karasu sahilinde rüzgar saçlarını savuruyordu.\nO günden beri her sabah aklımdaki ilk şey sensin.\nBu çiçekleri senin için seçtim, her biri bir gülüşün kadar güzel.\nİyi ki varsın, iyi ki benimlesin.',
+    photos: ['assets/buket-gul.jpg', 'assets/buket-mevsim.jpg', 'assets/buket-beyaz.jpg'] };
+  if (id === 'ornek') return render(SAMPLE, true);
+  // live preview from the form on the site: the page that holds this frame sends the letter
+  if (id === 'onizleme') {
+    let got = false;
+    addEventListener('message', e => {
+      if (got || e.origin !== location.origin || !e.data || e.data.type !== 'dg-preview') return;
+      got = true; const L = e.data.letter;
+      render({ id: 'onizleme', to: L.to || 'sana', from: L.from || 'Seni seven biri', head: L.head || 'İyi ki varsın', body: L.body || '', song: L.song || '', photos: L.photos || [], created: new Date().toISOString() }, true);
+    });
+    try { parent.postMessage({ type: 'dg-preview-ready' }, location.origin); } catch (e) {}
+    setTimeout(() => { if (!got) render(SAMPLE, true); }, 4000);
+    return;
+  }
+  if (!/^[a-z0-9]{10}$/.test(id)) return show($('#missing'));
+
+  fetch('mektup-api.php?id=' + id).then(r => r.ok ? r.json() : Promise.reject()).then(render).catch(() => show($('#missing')));
+
+  function render(m, sample) {
+    document.title = 'Sevgili ' + m.to + ', sana bir mektup var';
+    show($('#letter'));
+    $('#to').textContent = 'Sevgili ' + m.to + ',';
+    $('#from').textContent = m.from;
+    $('#headSr').textContent = m.head;
+
+    if (m.body) {
+      $('#mektup').hidden = false;
+      $('#hi').textContent = 'Sevgili ' + m.to + ',';
+      m.body.split(/\r?\n+/).filter(Boolean).forEach(t => { const p = document.createElement('p'); p.textContent = t; $('#body').appendChild(p); });
+      $('#sign').textContent = 'Sevgiyle, ' + m.from;
+      try { $('#date').textContent = new Date(m.created).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) {}
+    } else $('.cue').href = m.photos?.length ? '#anilar' : (m.song ? '#sarki' : '.sent');
+
+    const photos = (m.photos || []).filter(p => /^mektup-foto\/[a-z0-9]{10}-\d+\.jpg$/.test(p) || (sample && (/^assets\/buket-[a-z]+\.jpg$/.test(p) || /^blob:/.test(p))));
+    if (photos.length) {
+      $('#anilar').hidden = false;
+      const rot = [-5, 3, -2, 4, -4, 2];
+      photos.forEach((src, i) => {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'pol rv'; b.setAttribute('aria-label', 'Fotoğraf ' + (i + 1) + ', büyüt');
+        b.style.setProperty('--r', rot[i % 6] + 'deg'); b.style.setProperty('--y', (i % 2 ? 26 : 0) + 'px'); b.style.transitionDelay = (i * 120) + 'ms';
+        const im = new Image(); im.src = src; im.alt = ''; im.loading = 'lazy'; b.appendChild(im);
+        b.addEventListener('click', () => openLb(i)); $('#wall').appendChild(b);
+      });
+      let cur = 0;
+      const lb = $('#lb'), set = i => { cur = (i + photos.length) % photos.length; $('#lbImg').src = photos[cur]; };
+      function openLb(i) { set(i); lb.hidden = false; document.body.style.overflow = 'hidden'; $('.lb .x').focus(); }
+      const close = () => { lb.hidden = true; document.body.style.overflow = ''; };
+      $('.lb .x').onclick = close; $('.lb .pv').onclick = () => set(cur - 1); $('.lb .nx').onclick = () => set(cur + 1);
+      lb.addEventListener('click', e => { if (e.target === lb) close(); });
+      addEventListener('keydown', e => { if (lb.hidden) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') set(cur - 1); if (e.key === 'ArrowRight') set(cur + 1); });
+      let sx = null; lb.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+      lb.addEventListener('touchend', e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 50) set(cur + (dx < 0 ? 1 : -1)); sx = null; });
+      if (photos.length < 2) { $('.lb .pv').hidden = true; $('.lb .nx').hidden = true; }
+    }
+
+    const songEmbed = s => {
+      const [k, id] = (s || '').split(':'), sp = { sp: 'track', spa: 'album', spp: 'playlist', spe: 'episode' }[k];
+      if (sp && /^[A-Za-z0-9]{22}$/.test(id)) return { src: 'https://open.spotify.com/embed/' + sp + '/' + id + '?theme=0', cls: sp === 'track' || sp === 'episode' ? 'sp' : 'spl', open: 'https://open.spotify.com/' + sp + '/' + id, label: "Spotify'da aç" };
+      if (k === 'sl' && /^[A-Za-z0-9]{6,20}$/.test(id)) return { src: '', cls: 'sp', open: 'https://spotify.link/' + id, label: "Spotify'da aç" };
+      if (k === 'yt' && /^[A-Za-z0-9_-]{11}$/.test(id)) return { src: 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1', cls: 'yt', open: 'https://www.youtube.com/watch?v=' + id, label: "YouTube'da aç" };
+      return null;
+    };
+    const emb = songEmbed(m.song);
+    if (emb) {
+      $('#sarki').hidden = false;
+      const op = $('#openSong'); op.href = emb.open; op.textContent = emb.label;
+      if (!emb.src) { $('#playWrap').hidden = true; op.classList.add('solo'); }
+      $('#play').addEventListener('click', () => {
+        const f = document.createElement('iframe'); f.className = 'player ' + emb.cls; f.src = emb.src; f.title = 'Senin şarkın';
+        f.allow = 'autoplay; clipboard-write; encrypted-media; picture-in-picture'; f.setAttribute('allowfullscreen', '');
+        $('#playWrap').replaceChildren(f); $('.turntable').classList.add('on'); setTimeout(() => $('#vinyl').classList.add('spin'), 900);
+      });
+    }
+
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 });
+    document.querySelectorAll('.rv, .divider').forEach(el => io.observe(el));
+    bgPetals();
+
+    const fontReady = document.fonts && document.fonts.load ? document.fonts.load('italic 600 80px "Cormorant Garamond"').catch(() => {}) : Promise.resolve();
+    const startPetals = () => fontReady.then(() => petals($('#open canvas'), m.head, $('#open')));
+    if (rmq || LIVE) return startPetals();
+    // the sealed envelope comes first; breaking the seal opens the letter
+    const env = $('#env'), envl = $('#envelope'); $('#envTo').textContent = 'Sevgili ' + m.to + ',';
+    env.hidden = false; document.body.style.overflow = 'hidden';
+    const tilt = e => { if (e.pointerType !== 'mouse') return; envl.style.setProperty('--tx', ((e.clientX / innerWidth - .5) * 14).toFixed(2)); envl.style.setProperty('--ty', ((e.clientY / innerHeight - .5) * -10).toFixed(2)); };
+    env.addEventListener('pointermove', tilt);
+    // soft paper sounds, made on the fly; they only start after the tap
+    const sfx = (() => {
+      let ac; try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { return () => {}; }
+      return (dur, freq, q, gain, at = 0) => {
+        const n = Math.round(ac.sampleRate * dur), buf = ac.createBuffer(1, n, ac.sampleRate), d = buf.getChannelData(0);
+        for (let i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / n, 2.2);
+        const src = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain();
+        src.buffer = buf; f.type = 'bandpass'; f.frequency.value = freq; f.Q.value = q; g.gain.value = gain;
+        src.connect(f).connect(g).connect(ac.destination); src.start(ac.currentTime + at);
+      };
+    })();
+    $('#seal').addEventListener('click', () => {
+      env.removeEventListener('pointermove', tilt); envl.style.setProperty('--tx', 0); envl.style.setProperty('--ty', 0);
+      document.querySelectorAll('.seal .crumb').forEach((c, i) => { const a = (i / 5) * Math.PI * 2 + .4; c.style.transform = `translate(${Math.cos(a) * 34}px,${Math.sin(a) * 34 + 20}px)`; });
+      env.classList.add('opened');
+      sfx(.07, 2600, 1.2, .5); sfx(.05, 1700, 1, .35, .05);      // wax crack
+      sfx(.6, 1300, .7, .22, .3);                                // flap rustle
+      sfx(.9, 800, .6, .14, 1.4);                                // letter sliding out
+      setTimeout(() => { env.classList.add('gone'); document.body.style.overflow = ''; scrollTo(0, 0); startPetals(); }, 3300);
+      setTimeout(() => env.remove(), 4400);
+    }, { once: true });
+  }
+
+
+  /* a few petals drifting behind the whole letter */
+  function bgPetals() {
+    if (rmq) return;
+    const cv = document.getElementById('bgp'), ctx = cv.getContext('2d'), DPR = Math.min(2, devicePixelRatio || 1), R = Math.random;
+    const COLS = [['#F2B8C0', '#D9788C'], ['#F7D0D2', '#E5A0AA'], ['#F6D6C2', '#E7A98C']];
+    const SPR = COLS.map(c => { const o = document.createElement('canvas'); o.width = o.height = 48; const g = o.getContext('2d'); g.translate(24, 24); const gr = g.createLinearGradient(0, -16, 0, 16); gr.addColorStop(0, c[0]); gr.addColorStop(1, c[1]); g.fillStyle = gr; g.beginPath(); g.moveTo(0, 16); g.bezierCurveTo(14, 6, 12, -14, 0, -16); g.bezierCurveTo(-12, -14, -14, 6, 0, 16); g.fill(); return o; });
+    let W, H; const size = () => { W = innerWidth; H = innerHeight; cv.width = W * DPR; cv.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0); };
+    size(); addEventListener('resize', size);
+    const P = Array.from({ length: W < 600 ? 10 : 16 }, () => ({ x: R() * W, y: R() * H, vy: 14 + R() * 18, s: 10 + R() * 14, r: R() * 6.28, vr: (R() - .5) * .8, f: R() * 6.28, vf: .6 + R(), sw: R() * 6.28, c: (R() * 3) | 0, a: .25 + R() * .3 }));
+    let last = 0;
+    (function tick(now) {
+      const dt = Math.min(.05, (now - (last || now)) / 1000); last = now;
+      ctx.clearRect(0, 0, W, H);
+      if (!document.hidden) for (const p of P) {
+        p.y += p.vy * dt; p.sw += dt * .7; p.r += p.vr * dt; p.f += p.vf * dt;
+        if (p.y > H + 30) { p.y = -30; p.x = R() * W; }
+        ctx.save(); ctx.globalAlpha = p.a; ctx.translate(p.x + Math.sin(p.sw) * 30, p.y); ctx.rotate(p.r); ctx.scale(Math.max(.15, Math.abs(Math.cos(p.f))), 1);
+        ctx.drawImage(SPR[p.c], -p.s / 2, -p.s / 2, p.s, p.s); ctx.restore();
+      }
+      requestAnimationFrame(tick);
+    })(0);
+  }
+
+  /* petals fly in and write the line, then the words glow under them */
+  function petals(canvas, text, host) {
+    const COLS = [['#F2B8C0', '#D9788C'], ['#F7D0D2', '#E5A0AA'], ['#E8909F', '#B9506A'], ['#F6D6C2', '#E7A98C']];
+    const SPR = COLS.map(c => { const s = 48, o = document.createElement('canvas'); o.width = o.height = s; const g = o.getContext('2d'); g.translate(24, 24); const gr = g.createLinearGradient(0, -16, 0, 16); gr.addColorStop(0, c[0]); gr.addColorStop(1, c[1]); g.fillStyle = gr; g.beginPath(); g.moveTo(0, 16); g.bezierCurveTo(14, 6, 12, -14, 0, -16); g.bezierCurveTo(-12, -14, -14, 6, 0, 16); g.fill(); return o; });
+    const ctx = canvas.getContext('2d'), DPR = Math.min(2, devicePixelRatio || 1), R = Math.random;
+    let W, H, P, loose, lines, fs, y0, lh, total, t0 = null, raf = null;
+    function layout() {
+      W = canvas.clientWidth; H = canvas.clientHeight; canvas.width = Math.round(W * DPR); canvas.height = Math.round(H * DPR); ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      const o = document.createElement('canvas'); o.width = W; o.height = H; const g = o.getContext('2d');
+      fs = Math.min(H * .2, W * .15);
+      const wrap = () => { const ws = text.split(/\s+/), out = []; let l = ''; ws.forEach(w => { const t = l ? l + ' ' + w : w; if (g.measureText(t).width > W * .84 && l) { out.push(l); l = w; } else l = t; }); if (l) out.push(l); return out; };
+      for (;;) { g.font = `italic 600 ${fs}px "Cormorant Garamond", Georgia, serif`; lines = wrap(); if (lines.length * fs * 1.05 <= H * .34 && lines.every(l => g.measureText(l).width <= W * .88)) break; fs *= .92; if (fs < 16) break; }
+      lh = fs * 1.05; y0 = H * .47 - (lines.length - 1) * lh / 2;
+      g.fillStyle = '#fff'; g.textAlign = 'center'; g.textBaseline = 'middle'; lines.forEach((l, i) => g.fillText(l, W / 2, y0 + i * lh));
+      const d = g.getImageData(0, 0, W, H).data, pts = [], gap = Math.max(3, Math.round(fs / 15));
+      for (let y = 0; y < H; y += gap) for (let x = 0; x < W; x += gap) if (d[(y * W + x) * 4 + 3] > 140) pts.push([x + (R() - .5) * gap * .6, y + (R() - .5) * gap * .6]);
+      const max = W < 600 ? 900 : 1500; while (pts.length > max) pts.splice((R() * pts.length) | 0, 1);
+      const size = Math.max(5, gap * 1.9);
+      P = pts.map(([tx, ty]) => ({ tx, ty, x0: R() * W, y0: -30 - R() * H * .7, d: (tx / W) * .9 + R() * .6, dur: 1.6 + R() * .8, rot: R() * 6.28, vr: (R() - .5) * 2, s: size * (.75 + R() * .5), c: (R() * 4) | 0, ph: R() * 6.28 }));
+      loose = Array.from({ length: W < 600 ? 12 : 22 }, () => ({ x: R() * W, y: R() * H, vy: 12 + R() * 22, s: 8 + R() * 10, rot: R() * 6.28, vr: R() - .5, c: (R() * 4) | 0, sw: R() * 6.28 }));
+      total = Math.max(...P.map(p => p.d + p.dur), 1);
+    }
+    layout();
+    let doneSet = false;
+    function draw(now) {
+      if (t0 === null) t0 = now;
+      const t = rmq ? 999 : (now - t0) / 1000;
+      ctx.clearRect(0, 0, W, H);
+      for (const l of loose) { if (!rmq) { l.y += l.vy / 60; l.sw += .02; l.rot += l.vr / 60; if (l.y > H + 20) { l.y = -20; l.x = R() * W; } } ctx.save(); ctx.globalAlpha = .35; ctx.translate(l.x + Math.sin(l.sw) * 12, l.y); ctx.rotate(l.rot); ctx.drawImage(SPR[l.c], -l.s / 2, -l.s / 2, l.s, l.s); ctx.restore(); }
+      const ta = Math.min(1, Math.max(0, (t - total * .62) / 1.2));
+      if (ta > 0) { ctx.save(); ctx.globalAlpha = ta * .95; ctx.fillStyle = '#FBEAE4'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.shadowColor = 'rgba(227,163,160,.55)'; ctx.shadowBlur = 18; ctx.font = `italic 600 ${fs}px "Cormorant Garamond", Georgia, serif`; lines.forEach((l, i) => ctx.fillText(l, W / 2, y0 + i * lh)); ctx.restore(); }
+      for (const p of P) {
+        const k = Math.min(1, Math.max(0, (t - p.d) / p.dur)); if (k <= 0) continue;
+        const e = 1 - Math.pow(1 - k, 3), x = p.x0 + (p.tx - p.x0) * e + Math.sin(k * 9 + p.ph) * 26 * (1 - e), y = p.y0 + (p.ty - p.y0) * e;
+        const r = p.rot + p.vr * (1 - e) * 3 + (k >= 1 ? Math.sin(t * 1.4 + p.ph) * .12 : 0);
+        ctx.save(); ctx.globalAlpha = 1 - ta * .45; ctx.translate(x, y); ctx.rotate(r); ctx.drawImage(SPR[p.c], -p.s / 2, -p.s / 2, p.s, p.s); ctx.restore();
+      }
+      if (!doneSet && t > total * .85) { doneSet = true; host.classList.add('done'); }
+      raf = !rmq && visible && !document.hidden ? requestAnimationFrame(draw) : null;
+    }
+    let visible = true;
+    new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible && !raf && !rmq) raf = requestAnimationFrame(draw); }).observe(host);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden && visible && !raf && !rmq) raf = requestAnimationFrame(draw); });
+    let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { layout(); t0 = performance.now() - 99999; if (!raf) raf = requestAnimationFrame(draw); }, 200); });
+    raf = requestAnimationFrame(draw);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+Options -Indexes
+DirectoryIndex index.html
+
+# ayarlar ve yardımcı dosya doğrudan açılamaz
+<FilesMatch "^(ayarlar|ayarlar\.ornek|mektup-ortak)\.php$|^(guncelle\.(bat|ps1)|\.son-surum)$">
+  Require all denied
+</FilesMatch>
+
+# kart paneli arama motorlarında görünmesin
+<IfModule mod_headers.c>
+  <Files "kart.html">
+    Header set X-Robots-Tag "noindex, nofollow"
+  </Files>
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType video/mp4 "access plus 30 days"
+  ExpiresByType text/javascript "access plus 7 days"
+</IfModule>
+
+AddType video/mp4 .mp4
