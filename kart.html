@@ -101,7 +101,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--accent)}
       <p class="hint" id="songHint">Mektubu açan kişi tek dokunuşla dinler.</p>
       <fieldset class="photo">
         <legend>Fotoğraf (isteğe bağlı)</legend>
-        <label for="key">Panel şifresi<input id="key" type="password" autocomplete="current-password" placeholder="Fotoğraf yüklemek için gerekli"></label>
+        <label for="key">Panel şifresi<input id="key" type="password" autocomplete="current-password" placeholder="Panele girdiysen boş bırakabilirsin"></label>
         <label class="pick" for="ph"><span id="phName">Fotoğraf seç</span><input id="ph" type="file" accept="image/jpeg,image/png,image/webp"></label>
         <div class="phrow" id="phRow" hidden><img id="phPrev" alt="Seçilen fotoğraf"><button class="btn btn-ghost" type="button" id="phDel">Fotoğrafı kaldır</button></div>
       </fieldset>
@@ -179,7 +179,6 @@ input:focus,textarea:focus{outline:none;border-color:var(--accent)}
   });
   $('#ph').addEventListener('change', async e => {
     const file = e.target.files[0], st = $('#st'); if (!file) return;
-    if (!$('#key').value) { st.textContent = 'Önce panel şifresini yaz, sonra fotoğrafı seç.'; e.target.value = ''; $('#key').focus(); return; }
     st.textContent = 'Fotoğraf yükleniyor...'; $('#phName').textContent = file.name;
     try {
       const fd = new FormData(); fd.append('key', $('#key').value); fd.append('photo', await shrink(file), 'foto.jpg');

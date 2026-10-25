@@ -1,0 +1,563 @@
+{
+ "whatsapp": "905314556356",
+ "iletisim": {
+  "telefon": "0531 455 63 56",
+  "adres1": "İncilli, Cumhuriyet Cd. No:11",
+  "adres2": "54500 Karasu / Sakarya",
+  "harita": "Karasu Doğukan Genç Çiçekçilik, İncilli, Cumhuriyet Cd. No:11, 54500 Karasu/Sakarya"
+ },
+ "buketler": [
+  {
+   "img": "assets/bq-gul.jpg",
+   "alt": "Kırmızı güllerden, palmiye yapraklarıyla hazırlanmış buket",
+   "baslik": "Güller",
+   "metin": "Kırmızı, pembe, beyaz. En açık haliyle.",
+   "mesaj": "Merhaba, gül buketi için fiyat almak istiyorum.",
+   "gizli": false
+  },
+  {
+   "img": "assets/bq-mevsim.jpg",
+   "alt": "Pembe güller ve krizantemlerle renkli mevsim buketi",
+   "baslik": "Mevsim buketi",
+   "metin": "O hafta en güzel ne açtıysa.",
+   "mesaj": "Merhaba, mevsim buketi için fiyat almak istiyorum.",
+   "gizli": false
+  },
+  {
+   "img": "assets/bq-beyaz.jpg",
+   "alt": "Beyaz lilyum ve krizantemlerden zarif buket",
+   "baslik": "Beyazlar",
+   "metin": "Teşekkür, tebrik, başsağlığı.",
+   "mesaj": "Merhaba, beyaz çiçek buketi için fiyat almak istiyorum.",
+   "gizli": false
+  },
+  {
+   "img": "assets/bq-orkide.jpg",
+   "alt": "Pembe kurdeleli saksıda mor orkide",
+   "baslik": "Orkideler",
+   "metin": "Saksıda, uzun ömürlü bir hediye.",
+   "mesaj": "Merhaba, orkide için fiyat almak istiyorum.",
+   "gizli": false
+  },
+  {
+   "img": "assets/bq-kutu.jpg",
+   "alt": "Pembe kutuda şeftali ve sarı güller",
+   "baslik": "Kutuda çiçek",
+   "metin": "Kutuda, oyuncakla, çikolatayla.",
+   "mesaj": "Merhaba, kutuda çiçek için fiyat almak istiyorum.",
+   "gizli": false
+  },
+  {
+   "img": "assets/bq-bitki.jpg",
+   "alt": "Hasır sargılı saksıda yeşil şeflera bitkisi",
+   "baslik": "Saksı bitkileri",
+   "metin": "Yeni eve, yeni işe, yıllarca yeşil.",
+   "mesaj": "Merhaba, saksı bitkisi için fiyat almak istiyorum.",
+   "gizli": false
+  },
+  {
+   "img": "assets/bq-gelin.jpg",
+   "alt": "Kaputu çiçekle süslenmiş beyaz gelin arabası",
+   "baslik": "Gelin arabası",
+   "metin": "Düğün gününe çiçekten süs.",
+   "mesaj": "Merhaba, gelin arabası süsü için fiyat almak istiyorum.",
+   "gizli": false
+  },
+  {
+   "img": "assets/bq-celenk.jpg",
+   "alt": "Sarı, beyaz ve kırmızı çiçeklerle ayaklı çelenk",
+   "baslik": "Ayaklı çelenk",
+   "metin": "Açılış, düğün ve tören için.",
+   "mesaj": "Merhaba, ayaklı çelenk için fiyat almak istiyorum.",
+   "gizli": false
+  }
+ ],
+ "galeri": [
+  {
+   "n": 85,
+   "c": "buket",
+   "f": "assets/galeri/85.jpg",
+   "t": "assets/galeri/kucuk/85.jpg"
+  },
+  {
+   "n": 84,
+   "c": "kutu",
+   "f": "assets/galeri/84.jpg",
+   "t": "assets/galeri/kucuk/84.jpg"
+  },
+  {
+   "n": 83,
+   "c": "buket",
+   "f": "assets/galeri/83.jpg",
+   "t": "assets/galeri/kucuk/83.jpg"
+  },
+  {
+   "n": 81,
+   "c": "buket",
+   "f": "assets/galeri/81.jpg",
+   "t": "assets/galeri/kucuk/81.jpg"
+  },
+  {
+   "n": 80,
+   "c": "buket",
+   "f": "assets/galeri/80.jpg",
+   "t": "assets/galeri/kucuk/80.jpg"
+  },
+  {
+   "n": 79,
+   "c": "buket",
+   "f": "assets/galeri/79.jpg",
+   "t": "assets/galeri/kucuk/79.jpg"
+  },
+  {
+   "n": 78,
+   "c": "buket",
+   "f": "assets/galeri/78.jpg",
+   "t": "assets/galeri/kucuk/78.jpg"
+  },
+  {
+   "n": 77,
+   "c": "buket",
+   "f": "assets/galeri/77.jpg",
+   "t": "assets/galeri/kucuk/77.jpg"
+  },
+  {
+   "n": 76,
+   "c": "buket",
+   "f": "assets/galeri/76.jpg",
+   "t": "assets/galeri/kucuk/76.jpg"
+  },
+  {
+   "n": 75,
+   "c": "orkide",
+   "f": "assets/galeri/75.jpg",
+   "t": "assets/galeri/kucuk/75.jpg"
+  },
+  {
+   "n": 74,
+   "c": "buket",
+   "f": "assets/galeri/74.jpg",
+   "t": "assets/galeri/kucuk/74.jpg"
+  },
+  {
+   "n": 73,
+   "c": "buket",
+   "f": "assets/galeri/73.jpg",
+   "t": "assets/galeri/kucuk/73.jpg"
+  },
+  {
+   "n": 72,
+   "c": "buket",
+   "f": "assets/galeri/72.jpg",
+   "t": "assets/galeri/kucuk/72.jpg"
+  },
+  {
+   "n": 70,
+   "c": "buket",
+   "f": "assets/galeri/70.jpg",
+   "t": "assets/galeri/kucuk/70.jpg"
+  },
+  {
+   "n": 69,
+   "c": "buket",
+   "f": "assets/galeri/69.jpg",
+   "t": "assets/galeri/kucuk/69.jpg"
+  },
+  {
+   "n": 68,
+   "c": "buket",
+   "f": "assets/galeri/68.jpg",
+   "t": "assets/galeri/kucuk/68.jpg"
+  },
+  {
+   "n": 67,
+   "c": "buket",
+   "f": "assets/galeri/67.jpg",
+   "t": "assets/galeri/kucuk/67.jpg"
+  },
+  {
+   "n": 66,
+   "c": "buket",
+   "f": "assets/galeri/66.jpg",
+   "t": "assets/galeri/kucuk/66.jpg"
+  },
+  {
+   "n": 65,
+   "c": "buket",
+   "f": "assets/galeri/65.jpg",
+   "t": "assets/galeri/kucuk/65.jpg"
+  },
+  {
+   "n": 64,
+   "c": "buket",
+   "f": "assets/galeri/64.jpg",
+   "t": "assets/galeri/kucuk/64.jpg"
+  },
+  {
+   "n": 63,
+   "c": "bitki",
+   "f": "assets/galeri/63.jpg",
+   "t": "assets/galeri/kucuk/63.jpg"
+  },
+  {
+   "n": 62,
+   "c": "bitki",
+   "f": "assets/galeri/62.jpg",
+   "t": "assets/galeri/kucuk/62.jpg"
+  },
+  {
+   "n": 61,
+   "c": "gelin",
+   "f": "assets/galeri/61.jpg",
+   "t": "assets/galeri/kucuk/61.jpg"
+  },
+  {
+   "n": 60,
+   "c": "bitki",
+   "f": "assets/galeri/60.jpg",
+   "t": "assets/galeri/kucuk/60.jpg"
+  },
+  {
+   "n": 59,
+   "c": "gelin",
+   "f": "assets/galeri/59.jpg",
+   "t": "assets/galeri/kucuk/59.jpg"
+  },
+  {
+   "n": 58,
+   "c": "gelin",
+   "f": "assets/galeri/58.jpg",
+   "t": "assets/galeri/kucuk/58.jpg"
+  },
+  {
+   "n": 57,
+   "c": "orkide",
+   "f": "assets/galeri/57.jpg",
+   "t": "assets/galeri/kucuk/57.jpg"
+  },
+  {
+   "n": 56,
+   "c": "buket",
+   "f": "assets/galeri/56.jpg",
+   "t": "assets/galeri/kucuk/56.jpg"
+  },
+  {
+   "n": 55,
+   "c": "buket",
+   "f": "assets/galeri/55.jpg",
+   "t": "assets/galeri/kucuk/55.jpg"
+  },
+  {
+   "n": 54,
+   "c": "orkide",
+   "f": "assets/galeri/54.jpg",
+   "t": "assets/galeri/kucuk/54.jpg"
+  },
+  {
+   "n": 53,
+   "c": "buket",
+   "f": "assets/galeri/53.jpg",
+   "t": "assets/galeri/kucuk/53.jpg"
+  },
+  {
+   "n": 52,
+   "c": "orkide",
+   "f": "assets/galeri/52.jpg",
+   "t": "assets/galeri/kucuk/52.jpg"
+  },
+  {
+   "n": 51,
+   "c": "buket",
+   "f": "assets/galeri/51.jpg",
+   "t": "assets/galeri/kucuk/51.jpg"
+  },
+  {
+   "n": 50,
+   "c": "orkide",
+   "f": "assets/galeri/50.jpg",
+   "t": "assets/galeri/kucuk/50.jpg"
+  },
+  {
+   "n": 49,
+   "c": "buket",
+   "f": "assets/galeri/49.jpg",
+   "t": "assets/galeri/kucuk/49.jpg"
+  },
+  {
+   "n": 48,
+   "c": "buket",
+   "f": "assets/galeri/48.jpg",
+   "t": "assets/galeri/kucuk/48.jpg"
+  },
+  {
+   "n": 47,
+   "c": "kutu",
+   "f": "assets/galeri/47.jpg",
+   "t": "assets/galeri/kucuk/47.jpg"
+  },
+  {
+   "n": 46,
+   "c": "buket",
+   "f": "assets/galeri/46.jpg",
+   "t": "assets/galeri/kucuk/46.jpg"
+  },
+  {
+   "n": 45,
+   "c": "buket",
+   "f": "assets/galeri/45.jpg",
+   "t": "assets/galeri/kucuk/45.jpg"
+  },
+  {
+   "n": 44,
+   "c": "buket",
+   "f": "assets/galeri/44.jpg",
+   "t": "assets/galeri/kucuk/44.jpg"
+  },
+  {
+   "n": 43,
+   "c": "buket",
+   "f": "assets/galeri/43.jpg",
+   "t": "assets/galeri/kucuk/43.jpg"
+  },
+  {
+   "n": 42,
+   "c": "celenk",
+   "f": "assets/galeri/42.jpg",
+   "t": "assets/galeri/kucuk/42.jpg"
+  },
+  {
+   "n": 41,
+   "c": "buket",
+   "f": "assets/galeri/41.jpg",
+   "t": "assets/galeri/kucuk/41.jpg"
+  },
+  {
+   "n": 40,
+   "c": "buket",
+   "f": "assets/galeri/40.jpg",
+   "t": "assets/galeri/kucuk/40.jpg"
+  },
+  {
+   "n": 39,
+   "c": "buket",
+   "f": "assets/galeri/39.jpg",
+   "t": "assets/galeri/kucuk/39.jpg"
+  },
+  {
+   "n": 38,
+   "c": "buket",
+   "f": "assets/galeri/38.jpg",
+   "t": "assets/galeri/kucuk/38.jpg"
+  },
+  {
+   "n": 37,
+   "c": "buket",
+   "f": "assets/galeri/37.jpg",
+   "t": "assets/galeri/kucuk/37.jpg"
+  },
+  {
+   "n": 36,
+   "c": "buket",
+   "f": "assets/galeri/36.jpg",
+   "t": "assets/galeri/kucuk/36.jpg"
+  },
+  {
+   "n": 35,
+   "c": "buket",
+   "f": "assets/galeri/35.jpg",
+   "t": "assets/galeri/kucuk/35.jpg"
+  },
+  {
+   "n": 34,
+   "c": "buket",
+   "f": "assets/galeri/34.jpg",
+   "t": "assets/galeri/kucuk/34.jpg"
+  },
+  {
+   "n": 32,
+   "c": "buket",
+   "f": "assets/galeri/32.jpg",
+   "t": "assets/galeri/kucuk/32.jpg"
+  },
+  {
+   "n": 31,
+   "c": "buket",
+   "f": "assets/galeri/31.jpg",
+   "t": "assets/galeri/kucuk/31.jpg"
+  },
+  {
+   "n": 30,
+   "c": "buket",
+   "f": "assets/galeri/30.jpg",
+   "t": "assets/galeri/kucuk/30.jpg"
+  },
+  {
+   "n": 29,
+   "c": "buket",
+   "f": "assets/galeri/29.jpg",
+   "t": "assets/galeri/kucuk/29.jpg"
+  },
+  {
+   "n": 28,
+   "c": "buket",
+   "f": "assets/galeri/28.jpg",
+   "t": "assets/galeri/kucuk/28.jpg"
+  },
+  {
+   "n": 27,
+   "c": "buket",
+   "f": "assets/galeri/27.jpg",
+   "t": "assets/galeri/kucuk/27.jpg"
+  },
+  {
+   "n": 26,
+   "c": "buket",
+   "f": "assets/galeri/26.jpg",
+   "t": "assets/galeri/kucuk/26.jpg"
+  },
+  {
+   "n": 25,
+   "c": "buket",
+   "f": "assets/galeri/25.jpg",
+   "t": "assets/galeri/kucuk/25.jpg"
+  },
+  {
+   "n": 24,
+   "c": "celenk",
+   "f": "assets/galeri/24.jpg",
+   "t": "assets/galeri/kucuk/24.jpg"
+  },
+  {
+   "n": 23,
+   "c": "celenk",
+   "f": "assets/galeri/23.jpg",
+   "t": "assets/galeri/kucuk/23.jpg"
+  },
+  {
+   "n": 22,
+   "c": "buket",
+   "f": "assets/galeri/22.jpg",
+   "t": "assets/galeri/kucuk/22.jpg"
+  },
+  {
+   "n": 21,
+   "c": "buket",
+   "f": "assets/galeri/21.jpg",
+   "t": "assets/galeri/kucuk/21.jpg"
+  },
+  {
+   "n": 20,
+   "c": "buket",
+   "f": "assets/galeri/20.jpg",
+   "t": "assets/galeri/kucuk/20.jpg"
+  },
+  {
+   "n": 19,
+   "c": "buket",
+   "f": "assets/galeri/19.jpg",
+   "t": "assets/galeri/kucuk/19.jpg"
+  },
+  {
+   "n": 18,
+   "c": "buket",
+   "f": "assets/galeri/18.jpg",
+   "t": "assets/galeri/kucuk/18.jpg"
+  },
+  {
+   "n": 17,
+   "c": "buket",
+   "f": "assets/galeri/17.jpg",
+   "t": "assets/galeri/kucuk/17.jpg"
+  },
+  {
+   "n": 16,
+   "c": "buket",
+   "f": "assets/galeri/16.jpg",
+   "t": "assets/galeri/kucuk/16.jpg"
+  },
+  {
+   "n": 15,
+   "c": "buket",
+   "f": "assets/galeri/15.jpg",
+   "t": "assets/galeri/kucuk/15.jpg"
+  },
+  {
+   "n": 14,
+   "c": "gelin",
+   "f": "assets/galeri/14.jpg",
+   "t": "assets/galeri/kucuk/14.jpg"
+  },
+  {
+   "n": 13,
+   "c": "orkide",
+   "f": "assets/galeri/13.jpg",
+   "t": "assets/galeri/kucuk/13.jpg"
+  },
+  {
+   "n": 12,
+   "c": "buket",
+   "f": "assets/galeri/12.jpg",
+   "t": "assets/galeri/kucuk/12.jpg"
+  },
+  {
+   "n": 11,
+   "c": "kutu",
+   "f": "assets/galeri/11.jpg",
+   "t": "assets/galeri/kucuk/11.jpg"
+  },
+  {
+   "n": 10,
+   "c": "buket",
+   "f": "assets/galeri/10.jpg",
+   "t": "assets/galeri/kucuk/10.jpg"
+  },
+  {
+   "n": 9,
+   "c": "orkide",
+   "f": "assets/galeri/09.jpg",
+   "t": "assets/galeri/kucuk/09.jpg"
+  },
+  {
+   "n": 8,
+   "c": "orkide",
+   "f": "assets/galeri/08.jpg",
+   "t": "assets/galeri/kucuk/08.jpg"
+  },
+  {
+   "n": 7,
+   "c": "kutu",
+   "f": "assets/galeri/07.jpg",
+   "t": "assets/galeri/kucuk/07.jpg"
+  },
+  {
+   "n": 6,
+   "c": "orkide",
+   "f": "assets/galeri/06.jpg",
+   "t": "assets/galeri/kucuk/06.jpg"
+  },
+  {
+   "n": 5,
+   "c": "buket",
+   "f": "assets/galeri/05.jpg",
+   "t": "assets/galeri/kucuk/05.jpg"
+  },
+  {
+   "n": 4,
+   "c": "buket",
+   "f": "assets/galeri/04.jpg",
+   "t": "assets/galeri/kucuk/04.jpg"
+  },
+  {
+   "n": 2,
+   "c": "buket",
+   "f": "assets/galeri/02.jpg",
+   "t": "assets/galeri/kucuk/02.jpg"
+  },
+  {
+   "n": 1,
+   "c": "buket",
+   "f": "assets/galeri/01.jpg",
+   "t": "assets/galeri/kucuk/01.jpg"
+  }
+ ]
+}

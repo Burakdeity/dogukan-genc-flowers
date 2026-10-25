@@ -2,15 +2,15 @@ Options -Indexes
 DirectoryIndex index.html
 
 # ayarlar ve yardımcı dosya doğrudan açılamaz
-<FilesMatch "^(ayarlar|ayarlar\.ornek|mektup-ortak)\.php$|^(guncelle\.(bat|ps1)|\.son-surum)$">
+<FilesMatch "^(ayarlar|ayarlar\.ornek|mektup-ortak)\.php$|^varsayilan\.json$|^(guncelle\.(bat|ps1)|\.son-surum)$">
   Require all denied
 </FilesMatch>
 
 # kart paneli arama motorlarında görünmesin
 <IfModule mod_headers.c>
-  <Files "kart.html">
+  <FilesMatch "^(kart\.html|panel\.php|panel-api\.php)$">
     Header set X-Robots-Tag "noindex, nofollow"
-  </Files>
+  </FilesMatch>
 </IfModule>
 
 <IfModule mod_expires.c>
