@@ -26,7 +26,7 @@ header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:bas
 h1{font:500 clamp(2.2rem,4vw,3.4rem)/1.05 var(--display);margin:0}
 .kicker{font:400 .8rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--sage)}
 header p{margin:10px 0 0;color:var(--text-2);max-width:56ch}
-header a{color:var(--accent);font-size:.95rem}
+header a{color:var(--accent);font-size:.95rem;display:inline-block;padding:12px 0}
 .grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,72px);align-items:start}
 form{display:grid;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:clamp(20px,3vw,32px)}
 label{display:grid;gap:8px;font:400 .8rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text-2)}
@@ -144,10 +144,13 @@ input:focus,textarea:focus{outline:none;border-color:var(--accent)}
   const enc = obj => { const b = new TextEncoder().encode(JSON.stringify(obj)); let s = ''; b.forEach(x => s += String.fromCharCode(x)); return btoa(s).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, ''); };
   const base = () => { let u = f.site.value.trim() || 'https://dogukangencflowers.com/'; if (!/^https?:\/\//.test(u)) u = 'https://' + u; return u.replace(/#.*$/, ''); };
   let link = '', qr = null;
+  // same links the site's letter form accepts: Spotify song, album, playlist, episode or short link, and YouTube
   const songOf = url => {
-    if (!url) return '';
-    let m = url.match(/spotify\.com\/(?:intl-[a-z]+\/)?track\/([A-Za-z0-9]{22})/); if (m) return 'sp:' + m[1];
-    m = url.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/)([A-Za-z0-9_-]{11})/); if (m) return 'yt:' + m[1];
+    url = (url || '').trim(); if (!url) return '';
+    let m = url.match(/spotify\.com\/(?:intl-[a-z]+\/)?(track|album|playlist|episode)\/([A-Za-z0-9]{22})/) || url.match(/^spotify:(track|album|playlist|episode):([A-Za-z0-9]{22})/);
+    if (m) return { track: 'sp', album: 'spa', playlist: 'spp', episode: 'spe' }[m[1]] + ':' + m[2];
+    m = url.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/|\/live\/)([A-Za-z0-9_-]{11})/); if (m) return 'yt:' + m[1];
+    m = url.match(/spotify\.link\/([A-Za-z0-9]{6,20})/); if (m) return 'sl:' + m[1];
     return null;
   };
   function update() {
@@ -156,7 +159,7 @@ input:focus,textarea:focus{outline:none;border-color:var(--accent)}
     $('#cTo').textContent = 'Sevgili ' + to + ',';
     $('#cFrom').textContent = 'Sevgiyle, ' + from;
     const sg = songOf(f.song.value.trim());
-    $('#songHint').textContent = sg === null ? 'Bu bağlantıyı tanıyamadım. Spotify şarkı ya da YouTube video bağlantısı yapıştır.' : sg ? 'Şarkı eklendi.' : 'Mektubu açan kişi tek dokunuşla dinler.';
+    $('#songHint').textContent = sg === null ? "Bu bağlantıyı tanıyamadım. Spotify'da şarkıda Paylaş > Bağlantıyı kopyala de, ya da YouTube bağlantısı yapıştır." : sg ? 'Şarkı eklendi.' : 'Mektubu açan kişi tek dokunuşla dinler.';
     const data = { t: to, m: msg, f: from }; if (sg) data.s = sg; if (photoId) data.p = photoId;
     $('#cTags').innerHTML = (photoId ? '<span>Fotoğraf</span>' : '') + (sg ? '<span>Şarkı</span>' : '');
     link = base() + '#m' + enc(data);

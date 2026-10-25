@@ -107,7 +107,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .b4 .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 
 /* brand moments: a wordmark drifting behind the film, and a short brand beat in each gap between lines */
-.hero-mark{position:absolute;left:0;right:0;bottom:clamp(18px,5vh,56px);pointer-events:none;white-space:nowrap;--hm:clamp(0,(.72 - var(--hp,0))*9,1);opacity:calc(var(--hm) * clamp(0,var(--hp,0)*14,1))}
+.hero-mark{position:absolute;left:0;right:0;bottom:clamp(18px,5vh,56px);pointer-events:none;white-space:nowrap;--hm:clamp(0,(.47 - var(--hp,0))*12,1);opacity:calc(var(--hm) * clamp(0,var(--hp,0)*14,1))}
 .hero-mark span{display:inline-block;font:italic 300 clamp(5.5rem,17vw,17rem)/1 var(--display);letter-spacing:-.03em;color:transparent;-webkit-text-stroke:1px rgba(245,236,232,.2);transform:translate3d(calc(14vw - var(--hp,0) * 46vw),0,0)}
 .ib{left:50%;top:50%;width:min(86vw,720px);transform:translate(-50%,-50%);text-align:center;display:flex;flex-direction:column;align-items:center;--sa:.72}
 .ib-kicker{font:500 .82rem/1 var(--mono);letter-spacing:.3em;text-transform:uppercase;color:#F7DFC2;padding:10px 14px 10px 18px;border-radius:999px;background:rgba(18,10,16,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);text-shadow:0 1px 2px rgba(12,6,10,.9);opacity:clamp(0,var(--k,0)*2,1)}
@@ -316,6 +316,8 @@ footer{position:relative;overflow:hidden;padding-top:clamp(80px,12vh,140px);padd
   #buketler .intro{width:78vw}
   .bq,.endcard{width:72vw}
   .bq:nth-of-type(odd){transform:none}
+  .bq .cap{flex-direction:column;align-items:flex-start;gap:6px}
+  .bq h3{font-size:clamp(1.7rem,7vw,2.2rem)}
   .journey .vine{left:28px;transform:none}
   .step{grid-template-columns:1fr;min-height:36vh;padding-left:76px}
   .step:nth-child(odd) .txt,.step:nth-child(even) .txt{grid-column:1;text-align:left}
@@ -431,6 +433,15 @@ input,textarea{font-weight:400;font-size:1.05rem}
   .fl .giant{bottom:auto;top:34%;font-size:28vw;transform:translate3d(calc((1 - var(--k,0)) * 8vw),-50%,0)}
   .fl h3{font-size:clamp(2.6rem,12vw,4rem)}
   .fl{row-gap:26px}
+}
+/* short phones: a smaller bloom so the words and the link clear the dots and the order button */
+@media (max-width:820px) and (max-height:720px){
+  .fl .media{width:min(34vh,72vw)}
+  .fl{padding-top:clamp(96px,14vh,120px);row-gap:14px}
+  .fl h3{font-size:clamp(2.2rem,10vw,3rem);margin:10px 0 12px}
+  .fl .line{font-size:1.15rem}
+  .fl .when{font-size:.95rem;margin-top:8px}
+  .fl .link{margin-top:12px;padding:10px 0}
 }
 @media (min-width:821px) and (orientation: landscape) and (max-height:760px){.fl .giant{display:none}.fl .media{width:min(56vh,34vw)}}
 
@@ -578,12 +589,30 @@ body.lv-open{overflow:hidden}
 .contact dl div{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:baseline;padding-bottom:20px;border-bottom:1px solid var(--line)}
 .contact dt{font:400 .74rem/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--text-secondary)}
 .contact dd{margin:0;font-size:1.1rem;line-height:1.55;color:var(--text-primary)}
-.contact dd a{color:var(--text-primary);text-decoration:none;border-bottom:1px solid rgba(227,163,160,.45);transition:border-color .3s var(--ease-soft),color .3s var(--ease-soft)}
+.contact dd a{display:inline-block;padding:8px 0;color:var(--text-primary);text-decoration:none;border-bottom:1px solid rgba(227,163,160,.45);transition:border-color .3s var(--ease-soft),color .3s var(--ease-soft)}
 .contact dd a:hover{color:var(--accent);border-color:var(--accent)}
 .contact .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .c-map{position:relative;min-height:380px;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:var(--panel)}
 .c-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.85) contrast(1.02)}
 @media (max-width:900px){.contact{grid-template-columns:1fr}.c-map{min-height:300px}.contact dl div{grid-template-columns:96px 1fr}}
+/* phones and tablets: the section links live behind a menu button */
+.menu-btn{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line-strong);background:rgba(27,18,25,.5);cursor:pointer;place-items:center;padding:0;color:var(--text-primary)}
+.menu-btn i{display:block;width:18px;height:1.5px;background:currentColor;position:relative;transition:background .2s}
+.menu-btn i::before,.menu-btn i::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:currentColor;transition:transform .35s var(--ease-out)}
+.menu-btn i::before{top:-6px}.menu-btn i::after{top:6px}
+.nav.open .menu-btn i{background:transparent}
+.nav.open .menu-btn i::before{transform:translateY(6px) rotate(45deg)}
+.nav.open .menu-btn i::after{transform:translateY(-6px) rotate(-45deg)}
+@media (max-width:900px){
+  .menu-btn{display:grid}
+  .nav .btn-accent{margin-left:auto}
+  .nav{gap:10px}
+  .nav.open{background:rgba(27,18,25,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  .nav.open ul{display:flex;flex-direction:column;gap:0;position:absolute;left:0;right:0;top:100%;padding:8px clamp(16px,4vw,48px) 22px;background:rgba(27,18,25,.97);border-bottom:1px solid var(--line);box-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
+  .nav.open ul a{display:block;padding:15px 0;font:500 1.5rem/1.1 var(--display);border-bottom:1px solid var(--line)}
+  .nav.open ul li:last-child a{border-bottom:0}
+  .nav.open ul a::after{display:none}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Florist","name":"Doğukan Genç Flowers","alternateName":"Karasu Doğukan Genç Çiçekçilik","telephone":"+90 531 455 63 56","address":{"@type":"PostalAddress","streetAddress":"İncilli, Cumhuriyet Cd. No:11","postalCode":"54500","addressLocality":"Karasu","addressRegion":"Sakarya","addressCountry":"TR"},"areaServed":"Karasu"}</script>
 </head>
@@ -606,7 +635,7 @@ body.lv-open{overflow:hidden}
     <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="none" stroke="#8FA393" stroke-width="1.2"/><path d="M32 14c-7 6-9 12-6 17 2 3 6 4 6 4s4-1 6-4c3-5 1-11-6-17z" fill="#E3A3A0"/><path d="M32 35v15M32 44c-4-1-7-4-8-8M32 41c4-1 6-3 7-6" stroke="#8FA393" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
     <span><b class="rg">Doğukan Genç</b><small>Flowers · Karasu</small></span>
   </a>
-  <ul>
+  <ul id="navMenu">
     <li><a href="#buketler">Buketler</a></li>
     <li><a href="#galeri">Galeri</a></li>
     <li><a href="#nasil">Nasıl çalışır</a></li>
@@ -614,6 +643,7 @@ body.lv-open{overflow:hidden}
     <li><a href="#sss">Sorular</a></li>
   </ul>
   <a class="btn btn-accent" href="#iletisim" data-wa data-msg="Merhaba, çiçek siparişi vermek istiyorum."><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>Sipariş ver</span></a>
+  <button class="menu-btn" type="button" aria-controls="navMenu" aria-expanded="false" aria-label="Menüyü aç"><i></i></button>
 </nav>
 
 <header id="top">
@@ -997,6 +1027,16 @@ body.lv-open{overflow:hidden}
     }
   })();
 
+  /* menu button on phones and tablets */
+  (function menu() {
+    const nav = document.querySelector('.nav'), btn = nav.querySelector('.menu-btn');
+    const set = o => { nav.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); btn.setAttribute('aria-label', o ? 'Menüyü kapat' : 'Menüyü aç'); if (o) nav.classList.remove('hide'); };
+    btn.addEventListener('click', () => set(!nav.classList.contains('open')));
+    nav.querySelectorAll('ul a').forEach(a => a.addEventListener('click', () => set(false)));
+    addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) { set(false); btn.focus(); } });
+    document.addEventListener('click', e => { if (nav.classList.contains('open') && !nav.contains(e.target)) set(false); });
+  })();
+
   /* ---------- WhatsApp links ---------- */
   const waHref = msg => 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
   if (WA_NUMBER) $$('[data-wa]').forEach(a => { a.href = waHref(a.dataset.msg); a.target = '_blank'; a.rel = 'noopener'; });
@@ -1011,6 +1051,7 @@ body.lv-open{overflow:hidden}
     const y = scrollY;
     const s = y > innerHeight * 0.5; if (s !== navSolid) { navSolid = s; nav.classList.toggle('solid', s); }
     const h = y > innerHeight && y > navY + 4 ? true : (y < navY - 4 || y < innerHeight) ? false : navHidden;
+    if (nav.classList.contains('open')) { navY = y; uiRaf = null; return; }
     if (h !== navHidden) { navHidden = h; nav.classList.toggle('hide', h); }
     navY = y;
     const f = y > innerHeight * 0.9; if (f !== fabOn) { fabOn = f; fab.classList.toggle('show', f); }
