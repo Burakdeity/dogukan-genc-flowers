@@ -1,0 +1,91 @@
+/* shop photos: the drifting strip on the home page, the full grid on galeri.html, one lightbox for both.
+   Colors and fonts come from the page's own :root tokens. */
+
+/* header: title on the left, three numbers on the right */
+.gal-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:32px 64px}
+.gal-stats{display:flex;gap:clamp(24px,4vw,56px);margin:0;padding-bottom:6px}
+.gal-stats div{display:flex;flex-direction:column-reverse;gap:10px;border-left:1px solid var(--line);padding-left:18px}
+.gal-stats dt{font:400 .7rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--text-secondary)}
+.gal-stats dd{margin:0;font:300 clamp(2rem,3.4vw,3.2rem)/1 var(--display);color:var(--text-primary);white-space:nowrap}
+
+/* one photo tile, used by both the strip and the grid */
+.gtile,.gs-track button,.gal-grid button{display:block;padding:0;border:0;background:var(--panel);border-radius:2px;overflow:hidden;cursor:zoom-in;aspect-ratio:4/5;position:relative;color:var(--text-primary);text-align:left}
+.gs-track img,.gal-grid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-out)}
+.gs-track button::before,.gal-grid button::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(transparent 55%,rgba(14,8,12,.82));opacity:0;transition:opacity .5s var(--ease-soft)}
+.gs-track .tag,.gal-grid .tag{position:absolute;left:clamp(14px,1.4vw,22px);right:clamp(14px,1.4vw,22px);bottom:clamp(14px,1.4vw,20px);z-index:2;display:flex;justify-content:space-between;align-items:baseline;gap:12px;opacity:0;transform:translateY(10px);transition:opacity .45s var(--ease-soft),transform .5s var(--ease-out)}
+.gs-track .tag b,.gal-grid .tag b{font:italic 400 clamp(1.15rem,1.4vw,1.5rem)/1 var(--display)}
+.gs-track .tag span,.gal-grid .tag span{font:400 .68rem/1 var(--mono);letter-spacing:.16em;color:var(--text-secondary)}
+.gs-track button:hover img,.gal-grid button:hover img{transform:scale(1.045)}
+.gs-track button:hover::before,.gs-track button:focus-visible::before,.gal-grid button:hover::before,.gal-grid button:focus-visible::before{opacity:1}
+.gs-track button:hover .tag,.gs-track button:focus-visible .tag,.gal-grid button:hover .tag,.gal-grid button:focus-visible .tag{opacity:1;transform:none}
+
+/* home page strip: two rows drift in opposite directions; hovering a row stops it */
+.gstrip{margin-top:48px;display:grid;gap:clamp(10px,1.4vw,18px);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.gs-row{overflow:hidden}
+.gs-track{display:flex;gap:clamp(10px,1.4vw,18px);width:max-content;animation:gsdrift var(--dur,80s) linear infinite}
+.gs-track.rev{animation-direction:reverse}
+.gs-row:hover .gs-track,.gs-row:focus-within .gs-track{animation-play-state:paused}
+.gs-track button{flex:none;width:clamp(170px,17vw,260px)}
+@keyframes gsdrift{to{transform:translate3d(calc(-50% - clamp(10px,1.4vw,18px) / 2),0,0)}}
+.gal-all{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;margin-top:40px}
+.gal-all p{color:var(--text-secondary);max-width:44ch}
+.gal-all .btn svg{width:16px;height:16px}
+
+/* gallery page: filter tabs and the grid */
+.gtabs{display:flex;flex-wrap:wrap;gap:4px 28px;margin-top:56px;padding-bottom:2px;border-bottom:1px solid var(--line)}
+.gtab{position:relative;font:400 .98rem/1 var(--body);color:var(--text-secondary);background:none;border:0;padding:14px 0 16px;min-height:44px;cursor:pointer;transition:color .3s var(--ease-soft)}
+.gtab em{font:400 .66rem/1 var(--mono);font-style:normal;vertical-align:super;margin-left:3px;color:var(--accent-muted)}
+.gtab::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease-out)}
+.gtab:hover,.gtab.on{color:var(--text-primary)}
+.gtab.on::after{transform:scaleX(1)}
+.gal-grid{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:dense;gap:clamp(10px,1.4vw,20px)}
+.gal-grid li{opacity:0;transform:translateY(22px);animation:galin .8s var(--ease-out) forwards;animation-delay:calc(var(--d,0) * 50ms)}
+.gal-grid li.big{grid-column:span 2;grid-row:span 2}
+.gal-grid button{width:100%;height:100%}
+.gal-grid li.big button{aspect-ratio:auto}
+.gal-grid li.big .tag b{font-size:clamp(1.6rem,2.2vw,2.3rem)}
+@keyframes galin{to{opacity:1;transform:none}}
+.gal-more{display:flex;justify-content:center;margin-top:44px}
+.gal-more span{font:400 .72rem/1 var(--mono);letter-spacing:.12em;color:var(--text-secondary);margin-left:6px}
+
+/* lightbox */
+.glb{position:fixed;inset:0;z-index:90;background:rgba(14,8,12,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:clamp(12px,3vw,40px)}
+.glb figure{margin:0;grid-column:2;display:flex;flex-direction:column;align-items:center;gap:18px;min-height:0;height:100%;justify-content:center}
+.glb img{max-width:100%;max-height:calc(100svh - 160px);object-fit:contain;border-radius:2px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9)}
+.glb figcaption{display:flex;align-items:center;justify-content:space-between;gap:16px 32px;width:min(100%,640px)}
+.glb figcaption div{display:flex;flex-direction:column;gap:8px}
+.glb .glb-cat{color:var(--accent)}
+.glb .glb-cap{font:italic 400 1.35rem/1 var(--display);color:var(--text-primary)}
+.glb-nav,.glb-x{width:52px;height:52px;border-radius:50%;border:1px solid var(--line-strong);background:rgba(27,18,25,.6);color:var(--text-primary);font:300 2rem/1 var(--display);cursor:pointer;display:grid;place-items:center;transition:border-color .3s var(--ease-soft),background .3s var(--ease-soft)}
+.glb-nav:hover,.glb-x:hover{border-color:var(--accent);background:rgba(227,163,160,.12)}
+.glb-x{position:absolute;top:clamp(12px,2vw,24px);right:clamp(12px,2vw,24px);z-index:2}
+
+@media (max-width:900px){
+  .gal-head{grid-template-columns:1fr}
+  .gal-stats{gap:20px}
+  .gal-stats div{padding-left:14px}
+  .gal-stats dd{font-size:1.7rem}
+  .gal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gtabs{flex-wrap:nowrap;overflow-x:auto;margin-left:-16px;margin-right:-16px;padding:0 16px;scrollbar-width:none;gap:24px}
+  .gtab{flex:none}
+  .gal-grid .tag,.gs-track .tag{opacity:1;transform:none}
+  .gal-grid button::before,.gs-track button::before{opacity:.8}
+  .gal-grid .tag span,.gs-track .tag span{display:none}
+  .gal-grid .tag b,.gs-track .tag b{font-size:1.05rem}
+  .gs-track button{width:42vw}
+  .gstrip{margin-left:-16px;margin-right:-16px}
+}
+@media (max-width:640px){
+  .glb{grid-template-columns:1fr;padding:60px 8px 84px}
+  .glb-nav{position:absolute;bottom:18px;z-index:2}
+  .glb-nav.pv{left:16px}
+  .glb-nav.nx{right:16px}
+  .glb figure{grid-column:1}
+  .glb img{max-height:calc(100svh - 230px)}
+  .glb figcaption{padding:0 8px}
+}
+@media (prefers-reduced-motion:reduce){
+  .gal-grid li{animation:none;opacity:1;transform:none}
+  .gs-track{animation:none}
+  .gs-row{overflow-x:auto}
+}

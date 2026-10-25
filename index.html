@@ -15,6 +15,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231B1219'/%3E%3Cpath d='M32 14c-7 6-9 12-6 17 2 3 6 4 6 4s4-1 6-4c3-5 1-11-6-17z' fill='%23E3A3A0'/%3E%3Cpath d='M32 35v15M32 44c-4-1-7-4-8-8M32 41c4-1 6-3 7-6' stroke='%238FA393' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="assets/galeri.css">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Caveat:wght@500&family=DM+Mono&family=Jost:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -259,60 +260,6 @@ main{position:relative}
 .gal-count{position:absolute;right:max(clamp(16px,6vw,96px),env(safe-area-inset-right,0px));bottom:6vh;font:400 .74rem/1 var(--mono);letter-spacing:.18em;color:var(--text-secondary);display:flex;align-items:center;gap:14px}
 .gal-count b{display:block;width:120px;height:1px;background:var(--line);position:relative}
 .gal-count b::after{content:"";position:absolute;inset:0;background:var(--accent);transform:scaleX(var(--gp,0));transform-origin:left}
-
-/* 4. gallery: every real photo from the shop, filterable, opens large */
-.gal-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:32px 64px}
-.gal-stats{display:flex;gap:clamp(24px,4vw,56px);margin:0;padding-bottom:6px}
-.gal-stats div{display:flex;flex-direction:column-reverse;gap:10px;border-left:1px solid var(--line);padding-left:18px}
-.gal-stats dt{font:400 .7rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--text-secondary)}
-.gal-stats dd{margin:0;font:300 clamp(2rem,3.4vw,3.2rem)/1 var(--display);color:var(--text-primary)}
-.gtabs{display:flex;flex-wrap:wrap;gap:4px 28px;margin-top:56px;padding-bottom:2px;border-bottom:1px solid var(--line)}
-.gtab{position:relative;font:400 .98rem/1 var(--body);color:var(--text-secondary);background:none;border:0;padding:14px 0 16px;min-height:44px;cursor:pointer;transition:color .3s var(--ease-soft)}
-.gtab em{font:400 .66rem/1 var(--mono);font-style:normal;vertical-align:super;margin-left:3px;color:var(--accent-muted)}
-.gtab::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease-out)}
-.gtab:hover{color:var(--text-primary)}
-.gtab.on{color:var(--text-primary)}
-.gtab.on::after{transform:scaleX(1)}
-.gal-grid{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:dense;gap:clamp(10px,1.4vw,20px)}
-.gal-grid li{opacity:0;transform:translateY(22px);animation:galin .8s var(--ease-out) forwards;animation-delay:calc(var(--d,0) * 50ms)}
-.gal-grid li.big{grid-column:span 2;grid-row:span 2}
-@keyframes galin{to{opacity:1;transform:none}}
-.gal-grid button{display:block;width:100%;height:100%;padding:0;border:0;background:var(--panel);border-radius:2px;overflow:hidden;cursor:zoom-in;aspect-ratio:4/5;position:relative;color:var(--text-primary);text-align:left}
-.gal-grid li.big button{aspect-ratio:auto}
-.gal-grid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-out)}
-.gal-grid button::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(transparent 55%,rgba(14,8,12,.82));opacity:0;transition:opacity .5s var(--ease-soft)}
-.gal-grid .tag{position:absolute;left:clamp(14px,1.4vw,22px);right:clamp(14px,1.4vw,22px);bottom:clamp(14px,1.4vw,20px);z-index:2;display:flex;justify-content:space-between;align-items:baseline;gap:12px;opacity:0;transform:translateY(10px);transition:opacity .45s var(--ease-soft),transform .5s var(--ease-out)}
-.gal-grid .tag b{font:italic 400 clamp(1.2rem,1.5vw,1.6rem)/1 var(--display)}
-.gal-grid .tag span{font:400 .68rem/1 var(--mono);letter-spacing:.16em;color:var(--text-secondary)}
-.gal-grid li.big .tag b{font-size:clamp(1.6rem,2.2vw,2.3rem)}
-.gal-grid button:hover img{transform:scale(1.045)}
-.gal-grid button:hover::before,.gal-grid button:focus-visible::before{opacity:1}
-.gal-grid button:hover .tag,.gal-grid button:focus-visible .tag{opacity:1;transform:none}
-.gal-more{display:flex;justify-content:center;margin-top:44px}
-.gal-more span{font:400 .72rem/1 var(--mono);letter-spacing:.12em;color:var(--text-secondary);margin-left:6px}
-.glb{position:fixed;inset:0;z-index:90;background:rgba(14,8,12,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:clamp(12px,3vw,40px)}
-.glb figure{margin:0;grid-column:2;display:flex;flex-direction:column;align-items:center;gap:18px;min-height:0;height:100%;justify-content:center}
-.glb img{max-width:100%;max-height:calc(100svh - 160px);object-fit:contain;border-radius:2px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9)}
-.glb figcaption{display:flex;align-items:center;justify-content:space-between;gap:16px 32px;width:min(100%,640px)}
-.glb figcaption div{display:flex;flex-direction:column;gap:8px}
-.glb figcaption .kicker{color:var(--accent)}
-.glb #glbCap{font:italic 400 1.35rem/1 var(--display);color:var(--text-primary)}
-.glb-nav,.glb-x{width:52px;height:52px;border-radius:50%;border:1px solid var(--line-strong);background:rgba(27,18,25,.6);color:var(--text-primary);font:300 2rem/1 var(--display);cursor:pointer;display:grid;place-items:center;transition:border-color .3s var(--ease-soft),background .3s var(--ease-soft)}
-.glb-nav:hover,.glb-x:hover{border-color:var(--accent);background:rgba(227,163,160,.12)}
-.glb-x{position:absolute;top:clamp(12px,2vw,24px);right:clamp(12px,2vw,24px);z-index:2}
-@media (max-width:900px){
-  .gal-head{grid-template-columns:1fr}
-  .gal-stats{gap:20px}.gal-stats div{padding-left:14px}.gal-stats dd{font-size:1.7rem;white-space:nowrap}
-  .gal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .gtabs{flex-wrap:nowrap;overflow-x:auto;margin-left:-16px;margin-right:-16px;padding:0 16px;scrollbar-width:none;gap:24px}
-  .gtab{flex:none}
-  .gal-grid .tag{opacity:1;transform:none}
-  .gal-grid button::before{opacity:.8}
-  .gal-grid .tag span{display:none}
-  .gal-grid .tag b{font-size:1.05rem}
-}
-@media (max-width:640px){.glb{grid-template-columns:1fr;padding:60px 8px 84px}.glb-nav{position:absolute;bottom:18px;z-index:2}.glb-nav.pv{left:16px}.glb-nav.nx{right:16px}.glb figure{grid-column:1}.glb img{max-height:calc(100svh - 230px)}.glb figcaption{padding:0 8px}}
-@media (prefers-reduced-motion:reduce){.gal-grid li{animation:none;opacity:1;transform:none}}
 
 /* 5. nasil: a stem grows down the page, each step blooms when it arrives */
 #nasil .head{text-align:center}
@@ -629,7 +576,22 @@ body.lv-open{overflow:hidden}
 @media (max-width:640px){.mk-float{display:none}.wz-row{grid-template-columns:1fr}.wz-dot span{font-size:.62rem}}
 @media (prefers-reduced-motion: reduce){.mk-float{animation:none}.wz-pane{transition:none}}
 [hidden]{display:none!important}
+
+/* contact: address, phone and the shop on the map */
+.contact{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:stretch;margin-top:clamp(56px,9vh,96px);padding-top:clamp(40px,6vh,64px);border-top:1px solid var(--line)}
+.contact h3{font-size:clamp(2rem,3.2vw,3rem);margin:14px 0 30px;max-width:14ch}
+.contact dl{margin:0;display:grid;gap:22px}
+.contact dl div{display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:baseline;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.contact dt{font:400 .74rem/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--text-secondary)}
+.contact dd{margin:0;font-size:1.1rem;line-height:1.55;color:var(--text-primary)}
+.contact dd a{color:var(--text-primary);text-decoration:none;border-bottom:1px solid rgba(227,163,160,.45);transition:border-color .3s var(--ease-soft),color .3s var(--ease-soft)}
+.contact dd a:hover{color:var(--accent);border-color:var(--accent)}
+.contact .row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.c-map{position:relative;min-height:380px;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:var(--panel)}
+.c-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:saturate(.85) contrast(1.02)}
+@media (max-width:900px){.contact{grid-template-columns:1fr}.c-map{min-height:300px}.contact dl div{grid-template-columns:96px 1fr}}
 </style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Florist","name":"Doğukan Genç Flowers","alternateName":"Karasu Doğukan Genç Çiçekçilik","telephone":"+90 531 455 63 56","address":{"@type":"PostalAddress","streetAddress":"İncilli, Cumhuriyet Cd. No:11","postalCode":"54500","addressLocality":"Karasu","addressRegion":"Sakarya","addressCountry":"TR"},"areaServed":"Karasu"}</script>
 </head>
 <body>
 <a class="skip" href="#main">İçeriğe geç</a>
@@ -785,15 +747,15 @@ body.lv-open{overflow:hidden}
           <p>Kaydırdıkça bak. Fotoğrafların hepsi dükkanımızdan. Beğendiğinin fiyatını tek dokunuşla sor.</p>
         </div>
         <article class="bq">
-          <div class="ph"><img src="assets/buket-gul.jpg" alt="Kırmızı güllerden, palmiye yapraklarıyla bağlanmış buket" width="1200" height="1500" loading="lazy" decoding="async"></div>
+          <div class="ph"><img src="assets/bq-gul.jpg" alt="Kırmızı güllerden, palmiye yapraklarıyla bağlanmış buket" width="1200" height="1500" loading="lazy" decoding="async"></div>
           <div class="cap"><div><h3>Güller</h3><p>Kırmızı, pembe, beyaz. En açık haliyle.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, gül buketi için fiyat almak istiyorum.">Fiyat sor</a></div>
         </article>
         <article class="bq">
-          <div class="ph"><img src="assets/buket-mevsim.jpg" alt="Pembe güller ve krizantemlerle renkli mevsim buketi" width="1200" height="1500" loading="lazy" decoding="async"></div>
+          <div class="ph"><img src="assets/bq-mevsim.jpg" alt="Pembe güller ve krizantemlerle renkli mevsim buketi" width="1200" height="1500" loading="lazy" decoding="async"></div>
           <div class="cap"><div><h3>Mevsim buketi</h3><p>O hafta en güzel ne açtıysa.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, mevsim buketi için fiyat almak istiyorum.">Fiyat sor</a></div>
         </article>
         <article class="bq">
-          <div class="ph"><img src="assets/buket-beyaz.jpg" alt="Beyaz lilyum ve krizantemlerden zarif buket" width="1200" height="1500" loading="lazy" decoding="async"></div>
+          <div class="ph"><img src="assets/bq-beyaz.jpg" alt="Beyaz lilyum ve krizantemlerden zarif buket" width="1200" height="1500" loading="lazy" decoding="async"></div>
           <div class="cap"><div><h3>Beyazlar</h3><p>Teşekkür, tebrik, başsağlığı.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, beyaz çiçek buketi için fiyat almak istiyorum.">Fiyat sor</a></div>
         </article>
         <article class="bq">
@@ -826,13 +788,13 @@ body.lv-open{overflow:hidden}
     </div>
   </section>
 
-  <section id="galeri" class="gut pad" aria-labelledby="galeri-h">
-    <div class="wrap">
+  <section id="galeri" class="pad" aria-labelledby="galeri-h">
+    <div class="wrap gut">
       <div class="gal-head reveal">
         <div class="head">
           <span class="kicker part">Galeri</span>
           <h2 id="galeri-h" class="part" style="--i:1">Bugüne kadar bağladıklarımız.</h2>
-          <p class="part" style="--i:2">Her biri Karasu'daki dükkanımızda, elde hazırlandı. Beğendiğini büyüt, aynısını ya da benzerini iste.</p>
+          <p class="part" style="--i:2">Her biri Karasu'daki dükkanımızda, elde hazırlandı. Birine dokun, büyüt, aynısını ya da benzerini iste.</p>
         </div>
         <dl class="gal-stats part" style="--i:3">
           <div><dt>Çalışma</dt><dd id="galTotal">81</dd></div>
@@ -840,15 +802,13 @@ body.lv-open{overflow:hidden}
           <div><dt>Teslimat</dt><dd>Aynı gün</dd></div>
         </dl>
       </div>
-      <div class="gtabs" role="toolbar" aria-label="Galeriyi filtrele"><button type="button" class="gtab on" data-f="hepsi" aria-pressed="true">Hepsi <em>81</em></button><button type="button" class="gtab" data-f="buket" aria-pressed="false">Buketler <em>58</em></button><button type="button" class="gtab" data-f="orkide" aria-pressed="false">Orkideler <em>9</em></button><button type="button" class="gtab" data-f="kutu" aria-pressed="false">Kutu ve hediye <em>4</em></button><button type="button" class="gtab" data-f="gelin" aria-pressed="false">Gelin arabası <em>4</em></button><button type="button" class="gtab" data-f="bitki" aria-pressed="false">Saksı bitkileri <em>3</em></button><button type="button" class="gtab" data-f="celenk" aria-pressed="false">Ayaklı çelenk <em>3</em></button></div>
-      <ul class="gal-grid" id="galGrid"></ul>
-      <div class="gal-more"><button type="button" class="btn btn-ghost" id="galMore">Daha fazla göster <span id="galLeft"></span></button></div>
     </div>
-    <div class="glb" id="glb" role="dialog" aria-modal="true" aria-label="Fotoğraf" hidden>
-      <button type="button" class="glb-x" aria-label="Kapat">×</button>
-      <button type="button" class="glb-nav pv" aria-label="Önceki fotoğraf">‹</button>
-      <figure><img alt=""><figcaption><div><span class="kicker" id="glbCat"></span><span id="glbCap"></span></div><a class="btn btn-accent" id="glbAsk" href="#iletisim">Bunu sor</a></figcaption></figure>
-      <button type="button" class="glb-nav nx" aria-label="Sonraki fotoğraf">›</button>
+    <div class="gstrip" id="gstrip" aria-label="Galeriden son çalışmalar"></div>
+    <div class="wrap gut">
+      <div class="gal-all">
+        <p>Orkideler, gelin arabaları, ayaklı çelenkler ve dahası galeride.</p>
+        <a class="btn btn-ghost" href="galeri.html">Tüm galeriyi gör <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
     </div>
   </section>
 
@@ -949,7 +909,7 @@ body.lv-open{overflow:hidden}
       </div>
       <div class="mk-stage reveal">
         <figure class="mk-phonewrap part" style="--i:1">
-          <div class="mk-float f-pol" aria-hidden="true"><img src="assets/buket-gul.jpg" alt=""></div>
+          <div class="mk-float f-pol" aria-hidden="true"><img src="assets/bq-gul.jpg" alt=""></div>
           <div class="mk-float f-song" aria-hidden="true"><span class="eqs"><i></i><i></i><i></i></span>Senin şarkın</div>
           <div class="mk-float f-qr" aria-hidden="true" id="mkFloatQr"></div>
           <div class="mk-phone">
@@ -985,10 +945,26 @@ body.lv-open{overflow:hidden}
       <p>Söylemek istediğin bir şey varsa, çiçekler hazır.</p>
       <a class="btn btn-accent" href="#iletisim" data-wa data-msg="Merhaba, çiçek siparişi vermek istiyorum.">WhatsApp'tan sipariş ver</a>
     </div>
+    <div class="contact">
+      <div class="c-info">
+        <span class="kicker">İletişim</span>
+        <h3>Dükkanımıza uğra ya da yaz.</h3>
+        <dl>
+          <div><dt>Adres</dt><dd>İncilli, Cumhuriyet Cd. No:11<br>54500 Karasu / Sakarya</dd></div>
+          <div><dt>Telefon</dt><dd><a href="tel:+905314556356">0531 455 63 56</a></dd></div>
+          <div><dt>WhatsApp</dt><dd><a href="#iletisim" data-wa data-msg="Merhaba, çiçek siparişi vermek istiyorum.">Mesaj gönder</a></dd></div>
+        </dl>
+        <div class="row">
+          <a class="btn btn-accent" href="https://www.google.com/maps/dir/?api=1&amp;destination=Karasu%20Do%C4%9Fukan%20Gen%C3%A7%20%C3%87i%C3%A7ek%C3%A7ilik%2C%20%C4%B0ncilli%2C%20Cumhuriyet%20Cd.%20No%3A11%2C%2054500%20Karasu/Sakarya" target="_blank" rel="noopener">Yol tarifi al</a>
+          <a class="btn btn-ghost" href="tel:+905314556356">Hemen ara</a>
+        </div>
+      </div>
+      <div class="c-map"><iframe title="Doğukan Genç Çiçekçilik, Karasu haritada" src="https://www.google.com/maps?q=Karasu%20Do%C4%9Fukan%20Gen%C3%A7%20%C3%87i%C3%A7ek%C3%A7ilik%2C%20%C4%B0ncilli%2C%20Cumhuriyet%20Cd.%20No%3A11%2C%2054500%20Karasu/Sakarya&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+    </div>
     <span class="wordmark" aria-hidden="true">Doğukan Genç<em>.</em></span>
     <div class="meta">
       <span>Doğukan Genç Flowers · Karasu, Sakarya</span>
-      <span>41.10° K · 30.69° D</span>
+      <a href="tel:+905314556356">0531 455 63 56</a>
       <a href="#iletisim" data-wa data-msg="Merhaba, çiçek siparişi vermek istiyorum.">WhatsApp</a>
     </div>
   </div>
@@ -996,12 +972,13 @@ body.lv-open{overflow:hidden}
 <a class="fab" href="#iletisim" data-wa data-msg="Merhaba, çiçek siparişi vermek istiyorum." aria-label="WhatsApp'tan sipariş ver"><span class="tip">Sipariş için yaz</span><span class="bub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></span></a>
 
 
-<script>window.GALERI = [[85,"buket"],[84,"kutu"],[83,"buket"],[81,"buket"],[80,"buket"],[79,"buket"],[78,"buket"],[77,"buket"],[76,"buket"],[75,"orkide"],[74,"buket"],[73,"buket"],[72,"buket"],[70,"buket"],[69,"buket"],[68,"buket"],[67,"buket"],[66,"buket"],[65,"buket"],[64,"buket"],[63,"bitki"],[62,"bitki"],[61,"gelin"],[60,"bitki"],[59,"gelin"],[58,"gelin"],[57,"orkide"],[56,"buket"],[55,"buket"],[54,"orkide"],[53,"buket"],[52,"orkide"],[51,"buket"],[50,"orkide"],[49,"buket"],[48,"buket"],[47,"kutu"],[46,"buket"],[45,"buket"],[44,"buket"],[43,"buket"],[42,"celenk"],[41,"buket"],[40,"buket"],[39,"buket"],[38,"buket"],[37,"buket"],[36,"buket"],[35,"buket"],[34,"buket"],[32,"buket"],[31,"buket"],[30,"buket"],[29,"buket"],[28,"buket"],[27,"buket"],[26,"buket"],[25,"buket"],[24,"celenk"],[23,"celenk"],[22,"buket"],[21,"buket"],[20,"buket"],[19,"buket"],[18,"buket"],[17,"buket"],[16,"buket"],[15,"buket"],[14,"gelin"],[13,"orkide"],[12,"buket"],[11,"kutu"],[10,"buket"],[9,"orkide"],[8,"orkide"],[7,"kutu"],[6,"orkide"],[5,"buket"],[4,"buket"],[2,"buket"],[1,"buket"]];</script>
+<script src="assets/site-ayar.js"></script>
+<script src="assets/galeri.js"></script>
 <script src="assets/qrcode.js"></script>
 <script>
 (() => {
   /* ---------- config ---------- */
-  const WA_NUMBER = '';                 // örn. '905XXXXXXXXX'; boşken butonlar sipariş bölümüne kayar
+  const WA_NUMBER = (window.SITE && window.SITE.whatsapp) || '';   // assets/site-ayar.js; boşken butonlar sipariş bölümüne kayar
   const VIDEO_URL = 'assets/hero-scrub.mp4';
   const VIDEO_BYTES = 6360586;
   const POSTER_URL = 'assets/hero-poster.jpg';
@@ -1674,69 +1651,8 @@ body.lv-open{overflow:hidden}
     $('.lv-cta a', lv).focus({ preventScroll: true });
   })();
 
-  /* ---------- gallery ---------- */
-  (function gallery() {
-    const items = window.GALERI || [], grid = $('#galGrid'), more = $('#galMore'), lb = $('#glb');
-    if (!grid || !items.length) return;
-    $('#galTotal').textContent = items.length;
-    const NAMES = { buket: 'Buket', orkide: 'Orkide', kutu: 'Kutu ve hediye', gelin: 'Gelin arabası', bitki: 'Saksı bitkisi', celenk: 'Ayaklı çelenk' };
-    const pad = n => String(n).padStart(2, '0');
-    const PAGE = innerWidth < 900 ? 8 : 12;
-    let filter = 'hepsi', list = items, shown = 0, cur = 0, lastFocus = null;
-    function draw(reset) {
-      if (reset) { grid.textContent = ''; shown = 0; }
-      const next = list.slice(shown, shown + PAGE);
-      grid.append(...next.map(([n, c], i) => {
-        const li = document.createElement('li'); li.style.setProperty('--d', i);
-        const b = document.createElement('button'); b.type = 'button'; b.dataset.i = shown + i;
-        b.setAttribute('aria-label', NAMES[c] + ', fotoğraf ' + n + ', büyüt');
-        const im = new Image(); im.src = 'assets/galeri/kucuk/' + pad(n) + '.jpg'; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async'; im.width = 640; im.height = 800;
-        const tag = document.createElement('span'); tag.className = 'tag'; tag.innerHTML = '<b></b><span></span>'; tag.firstChild.textContent = NAMES[c]; tag.lastChild.textContent = 'No ' + n;
-        if ((shown + i) % 9 === 0 && innerWidth >= 640) li.className = 'big';
-        b.append(im, tag); li.appendChild(b); return li;
-      }));
-      shown += next.length;
-      more.hidden = shown >= list.length; $('#galLeft').textContent = '· ' + (list.length - shown);
-    }
-    $$('.gtab').forEach(ch => ch.addEventListener('click', () => {
-      filter = ch.dataset.f;
-      $$('.gtab').forEach(x => { x.classList.toggle('on', x === ch); x.setAttribute('aria-pressed', x === ch); });
-      list = filter === 'hepsi' ? items : items.filter(it => it[1] === filter);
-      draw(true);
-    }));
-    more.addEventListener('click', () => draw(false));
-    draw(true);
-
-    /* lightbox: large photo, arrows, swipe, and a WhatsApp question that carries the photo link */
-    const img = $('img', lb), cap = $('#glbCap'), ask = $('#glbAsk');
-    const site = () => (/^https?:$/.test(location.protocol) ? location.origin + location.pathname.replace(/[^/]*$/, '') : 'https://dogukangencflowers.com/');
-    function show(i) {
-      cur = (i + list.length) % list.length;
-      const [n, c] = list[cur];
-      img.src = 'assets/galeri/' + pad(n) + '.jpg'; img.alt = NAMES[c] + ', fotoğraf ' + n;
-      $('#glbCat').textContent = (cur + 1) + ' / ' + list.length; cap.textContent = NAMES[c] + ', No ' + n;
-      const msg = 'Merhaba, galerinizdeki ' + n + ' numaralı ' + NAMES[c].toLowerCase() + ' için fiyat almak istiyorum. ' + site() + 'assets/galeri/' + pad(n) + '.jpg';
-      ask.href = WA_NUMBER ? waHref(msg) : '#iletisim';
-      if (WA_NUMBER) { ask.target = '_blank'; ask.rel = 'noopener'; }
-      const nx = list[(cur + 1) % list.length]; new Image().src = 'assets/galeri/' + pad(nx[0]) + '.jpg';
-    }
-    function open(i) { lastFocus = document.activeElement; show(i); lb.hidden = false; document.documentElement.style.overflow = 'hidden'; $('.glb-x', lb).focus(); }
-    function close() { lb.hidden = true; document.documentElement.style.overflow = ''; if (lastFocus) lastFocus.focus({ preventScroll: true }); }
-    grid.addEventListener('click', e => { const b = e.target.closest('button[data-i]'); if (b) open(+b.dataset.i); });
-    $('.glb-x', lb).addEventListener('click', close);
-    $('.pv', lb).addEventListener('click', () => show(cur - 1));
-    $('.nx', lb).addEventListener('click', () => show(cur + 1));
-    ask.addEventListener('click', () => { if (!WA_NUMBER) close(); });
-    lb.addEventListener('click', e => { if (e.target === lb || e.target.tagName === 'FIGURE') close(); });
-    addEventListener('keydown', e => {
-      if (lb.hidden) return;
-      if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(cur - 1); else if (e.key === 'ArrowRight') show(cur + 1);
-      else if (e.key === 'Tab') { const f = $$('button, a', lb).filter(x => x.offsetParent), a = f[0], z = f[f.length - 1]; if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } }
-    });
-    let sx = null;
-    lb.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
-    lb.addEventListener('touchend', e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1)); });
-  })();
+  /* ---------- gallery strip (assets/galeri.js) ---------- */
+  if (window.Galeri) { Galeri.strip($('#gstrip')); $('#galTotal').textContent = Galeri.ITEMS.length; }
 
   /* ---------- pause on hidden tab ---------- */
   document.addEventListener('visibilitychange', () => document.body.classList.toggle('paused', document.hidden));

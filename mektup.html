@@ -310,7 +310,7 @@ footer.sent a{font:400 .78rem/1 var(--mono);letter-spacing:.16em;text-transform:
   const show = el => { $('#loading').hidden = true; el.hidden = false; };
   const SAMPLE = { id: 'ornek', to: 'Zeynep', from: 'Emre', head: 'Seninle her gün bahar', song: 'sp:4uLU6hMCjMI75M1A2tKUQC', created: new Date().toISOString(),
     body: 'Seni ilk gördüğüm gün Karasu sahilinde rüzgar saçlarını savuruyordu.\nO günden beri her sabah aklımdaki ilk şey sensin.\nBu çiçekleri senin için seçtim, her biri bir gülüşün kadar güzel.\nİyi ki varsın, iyi ki benimlesin.',
-    photos: ['assets/buket-gul.jpg', 'assets/buket-mevsim.jpg', 'assets/buket-beyaz.jpg'] };
+    photos: ['assets/bq-gul.jpg', 'assets/bq-mevsim.jpg', 'assets/bq-beyaz.jpg'] };
   if (id === 'ornek') return render(SAMPLE, true);
   // live preview from the form on the site: the page that holds this frame sends the letter
   if (id === 'onizleme') {
@@ -343,7 +343,7 @@ footer.sent a{font:400 .78rem/1 var(--mono);letter-spacing:.16em;text-transform:
       try { $('#date').textContent = new Date(m.created).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }); } catch (e) {}
     } else $('.cue').href = m.photos?.length ? '#anilar' : (m.song ? '#sarki' : '.sent');
 
-    const photos = (m.photos || []).filter(p => /^mektup-foto\/[a-z0-9]{10}-\d+\.jpg$/.test(p) || (sample && (/^assets\/buket-[a-z]+\.jpg$/.test(p) || /^blob:/.test(p))));
+    const photos = (m.photos || []).filter(p => /^mektup-foto\/[a-z0-9]{10}-\d+\.jpg$/.test(p) || (sample && (/^assets\/bq-[a-z]+\.jpg$/.test(p) || /^blob:/.test(p))));
     if (photos.length) {
       $('#anilar').hidden = false;
       const rot = [-5, 3, -2, 4, -4, 2];
