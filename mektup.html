@@ -135,8 +135,23 @@ section{position:relative;padding:clamp(90px,14vh,150px) max(20px,env(safe-area-
 .vinyl::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 30deg,transparent 0 10%,rgba(255,255,255,.08) 14%,transparent 20% 60%,rgba(255,255,255,.06) 64%,transparent 70%)}
 .vinyl .lbl{width:36%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 35%,#EBB0B4,#C26A7C);display:grid;place-items:center;position:relative}
 .vinyl .lbl::after{content:"";width:12%;aspect-ratio:1;border-radius:50%;background:var(--canvas)}
-.vinyl .lbl span{position:absolute;font:italic 600 clamp(.7rem,1.2vw,.95rem)/1 var(--display);color:#3A1E2A;top:26%}
+.vinyl .lbl span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:30%;font:italic 600 clamp(1.1rem,2.2vw,1.6rem)/1 var(--display);color:#3A1E2A}
+.vinyl .lbl.photo{background:var(--canvas) center/cover no-repeat;box-shadow:inset 0 0 0 3px rgba(243,211,176,.55),inset 0 0 18px rgba(0,0,0,.45)}
+.vinyl .lbl.photo span{display:none}
+.vinyl .lbl span b{font-weight:600}
+.vinyl .lbl.photo::after{box-shadow:0 0 0 2px rgba(243,211,176,.6)}
+.vinyl .ring{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.vinyl .ring text{font:500 8.4px var(--mono);letter-spacing:.16em;fill:#F3D3B0;opacity:.85}
 .vinyl.spin{animation:spin 3.2s linear infinite}
+.vinyl.spin.paused{animation-play-state:paused}
+/* little notes and petals rising off the record while it plays */
+.notes{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.note{position:absolute;left:50%;top:40%;font:400 var(--fs,22px)/1 var(--display);color:var(--c,#E3A3A0);opacity:0;animation:rise var(--d,3s) cubic-bezier(.2,.6,.3,1) forwards;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+.note.pt{width:12px;height:9px;border-radius:70% 0 70% 0;background:var(--c,#E3A3A0)}
+@keyframes rise{0%{opacity:0;transform:translate(0,0) rotate(0) scale(.6)}15%{opacity:.95}100%{opacity:0;transform:translate(var(--x,40px),-190px) rotate(var(--r,40deg)) scale(1.1)}}
+.song .hint{margin-top:12px;font-size:.92rem;color:var(--text-2)}
+.song .player{display:block}
+@media (prefers-reduced-motion: reduce){.note{display:none}}
 @keyframes spin{to{transform:rotate(360deg)}}
 .deck h2{font:500 clamp(2.4rem,5vw,3.6rem)/1.05 var(--display);margin:12px 0 10px}
 .deck p{color:var(--text-2);margin:0 0 22px}
@@ -147,6 +162,8 @@ section{position:relative;padding:clamp(90px,14vh,150px) max(20px,env(safe-area-
 .player.sp{height:152px}
 .player.yt{aspect-ratio:16/9;height:auto}
 .player.spl{height:352px}
+.player > iframe,.player > div,.player iframe{display:block;width:100%;height:100%;border:0;border-radius:14px}
+div.player{overflow:hidden}
 .open-song.solo{font:500 1rem/1 var(--body);letter-spacing:0;text-transform:none;background:var(--accent);color:var(--canvas);border:0;border-radius:999px;padding:16px 26px}
 .open-song{display:inline-block;margin-top:16px;font:400 .76rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;padding:8px 0;border-bottom:1px solid rgba(227,163,160,.4)}
 
@@ -280,12 +297,13 @@ footer.sent a{font:400 .78rem/1 var(--mono);letter-spacing:.16em;text-transform:
   <div class="divider" aria-hidden="true"><svg class="vine" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true"><path class="vl" pathLength="1" d="M0 30C80 6 120 54 200 30S320 6 400 30 520 54 600 30"/><g class="vb"><circle cx="200" cy="30" r="5" fill="#E3A3A0"/><circle cx="300" cy="22" r="3.5" fill="#F3D3B0"/><circle cx="400" cy="30" r="5" fill="#E3A3A0"/><path d="M200 30c-8-8-18-8-24-2 8 6 18 6 24 2zM400 30c8-8 18-8 24-2-8 6-18 6-24 2z" fill="#8FA393"/></g></svg></div>
   <section class="song" id="sarki" hidden>
     <div class="deck rv">
-      <div class="turntable" aria-hidden="true"><div class="vinyl" id="vinyl"><div class="lbl"><span>senin için</span></div></div><svg class="arm" id="arm" viewBox="0 0 120 220"><circle cx="96" cy="22" r="14" fill="#3A2A33" stroke="#C9A98F" stroke-width="2"/><circle cx="96" cy="22" r="5" fill="#C9A98F"/><path d="M96 22 L96 150 L70 196" fill="none" stroke="#C9A98F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="58" y="190" width="22" height="14" rx="3" fill="#2A1E25" stroke="#C9A98F" stroke-width="2" transform="rotate(30 69 197)"/></svg></div>
+      <div class="turntable" aria-hidden="true"><div class="vinyl" id="vinyl"><div class="lbl"><span></span></div><svg class="ring" viewBox="0 0 100 100"><defs><path id="ringPath" d="M50 50m-22 0a22 22 0 1 1 44 0a22 22 0 1 1-44 0"/></defs><text><textPath href="#ringPath" textLength="136"></textPath></text></svg></div><div class="notes" id="notes"></div><svg class="arm" id="arm" viewBox="0 0 120 220"><circle cx="96" cy="22" r="14" fill="#3A2A33" stroke="#C9A98F" stroke-width="2"/><circle cx="96" cy="22" r="5" fill="#C9A98F"/><path d="M96 22 L96 150 L70 196" fill="none" stroke="#C9A98F" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><rect x="58" y="190" width="22" height="14" rx="3" fill="#2A1E25" stroke="#C9A98F" stroke-width="2" transform="rotate(30 69 197)"/></svg></div>
       <div>
         <span class="kicker">Senin şarkın</span>
-        <h2>Bu şarkı sana.</h2>
-        <p>Sesi aç, gözlerini kapat.</p>
+        <h2 id="songH">Bu şarkı sana.</h2>
+        <p id="songP">Sesi aç, gözlerini kapat.</p>
         <div id="playWrap"><button class="play" type="button" id="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>Şarkıyı çal</button></div>
+        <p class="hint" id="songHint" hidden>Şarkı başlamadıysa oynatıcıdaki ▶ düğmesine dokun.</p>
         <a class="open-song" id="openSong" href="#" target="_blank" rel="noopener">Spotify'da aç</a>
       </div>
     </div>
@@ -377,10 +395,66 @@ footer.sent a{font:400 .78rem/1 var(--mono);letter-spacing:.16em;text-transform:
       $('#sarki').hidden = false;
       const op = $('#openSong'); op.href = emb.open; op.textContent = emb.label;
       if (!emb.src) { $('#playWrap').hidden = true; op.classList.add('solo'); }
-      $('#play').addEventListener('click', () => {
+
+      // the record is theirs: the letter's first photo as its label (or both initials), both names around it
+      const up = t => String(t || '').toLocaleUpperCase('tr');
+      const lbl = $('#vinyl .lbl');
+      if (photos.length) { lbl.classList.add('photo'); lbl.style.backgroundImage = 'url("' + photos[0] + '")'; }
+      const ini = lbl.querySelector('span'); ini.replaceChildren(...[m.to, m.from].map(t => { const b = document.createElement('b'); b.textContent = up(t).charAt(0); return b; }));   // either side of the hole
+      $('#vinyl textPath').textContent = up(m.to) + ' İÇİN  ♥  ' + up(m.from) + '  ♥  ';
+      if (m.to && m.to !== 'sana') $('#songH').textContent = 'Bu şarkı sana, ' + m.to + '.';
+      if (m.from && m.from !== 'Seni seven biri') $('#songP').textContent = m.from + ' bu şarkıyı senin için seçti. Sesi aç, gözlerini kapat.';
+
+      /* playing: the official player APIs, so the song starts as soon as the player is ready */
+      const vinyl = $('#vinyl'), deck = $('.turntable');
+      let playing = false, started = false, noteT = null, gotState = false;
+      function setPlaying(on) {
+        playing = on; gotState = true; if (on) started = true;
+        deck.classList.add('on'); vinyl.classList.add('spin'); vinyl.classList.toggle('paused', !on);
+        if (on) $('#songHint').hidden = true;
+        clearInterval(noteT); if (on && !rmq) { note(); noteT = setInterval(note, 650); }
+      }
+      function note() {
+        const n = document.createElement('span'), petal = Math.random() < .35;
+        n.className = 'note' + (petal ? ' pt' : ''); if (!petal) n.textContent = Math.random() < .5 ? '♪' : '♫';
+        n.style.cssText = '--x:' + Math.round(Math.random() * 120 - 40) + 'px;--r:' + Math.round(Math.random() * 90 - 45) + 'deg;--d:' + (2.6 + Math.random() * 1.4).toFixed(1) + 's;--fs:' + Math.round(18 + Math.random() * 14) + 'px;--c:' + ['#E3A3A0', '#F3D3B0', '#A9BEAE'][Math.floor(Math.random() * 3)] + ';left:' + Math.round(35 + Math.random() * 30) + '%';
+        $('#notes').appendChild(n); setTimeout(() => n.remove(), 4200);
+      }
+      const loadScript = src => new Promise((res, rej) => { const sc = document.createElement('script'); sc.src = src; sc.async = true; sc.onload = res; sc.onerror = rej; document.head.appendChild(sc); });
+      let apiP = null;
+      function api() {                                          // loaded once, as the song comes into view
+        if (apiP) return apiP;
+        if (emb.cls === 'yt') apiP = new Promise(res => { window.onYouTubeIframeAPIReady = () => res(window.YT); loadScript('https://www.youtube.com/iframe_api').catch(() => res(null)); setTimeout(() => res(window.YT && window.YT.Player ? window.YT : null), 8000); });
+        else apiP = new Promise(res => { window.onSpotifyIframeApiReady = a => res(a); loadScript('https://open.spotify.com/embed/iframe-api/v1').catch(() => res(null)); setTimeout(() => res(null), 8000); });
+        return apiP;
+      }
+      if (emb.src) new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { api(); o.disconnect(); } }, { rootMargin: '600px' }).observe($('#sarki'));
+      function plainFrame() {                                    // no API: the plain player, as before
         const f = document.createElement('iframe'); f.className = 'player ' + emb.cls; f.src = emb.src; f.title = 'Senin şarkın';
         f.allow = 'autoplay; clipboard-write; encrypted-media; picture-in-picture'; f.setAttribute('allowfullscreen', '');
-        $('#playWrap').replaceChildren(f); $('.turntable').classList.add('on'); setTimeout(() => $('#vinyl').classList.add('spin'), 900);
+        $('#playWrap').replaceChildren(f); setPlaying(true);
+      }
+      $('#play').addEventListener('click', async () => {
+        const btn = $('#play'); btn.disabled = true; btn.lastChild.textContent = 'Hazırlanıyor...';
+        deck.classList.add('on');
+        const box = document.createElement('div'); box.className = 'player ' + emb.cls;
+        const A = await api();
+        if (!A) return plainFrame();
+        $('#playWrap').replaceChildren(box);
+        const id = emb.open.split('/').pop().split('=').pop();
+        if (emb.cls === 'yt') {
+          const holder = document.createElement('div'); box.appendChild(holder);
+          new A.Player(holder, { videoId: id, host: 'https://www.youtube-nocookie.com', width: '100%', height: '100%',
+            playerVars: { autoplay: 1, playsinline: 1, rel: 0 },
+            events: { onReady: e => e.target.playVideo(), onStateChange: e => { if (e.data === 1) setPlaying(true); else if (e.data === 2 || e.data === 0) setPlaying(false); } } });
+        } else {
+          const kind = emb.open.split('/').slice(-2, -1)[0];
+          A.createController(box, { uri: 'spotify:' + kind + ':' + id, width: '100%', height: emb.cls === 'sp' ? 152 : 352 }, c => {
+            c.addListener('ready', () => { try { c.play(); } catch (e) {} });
+            c.addListener('playback_update', e => { const d = e && e.data; if (d && d.duration) setPlaying(!d.isPaused); });
+          });
+        }
+        setTimeout(() => { if (!started) $('#songHint').hidden = false; if (!gotState) { vinyl.classList.add('spin'); } }, 4500);
       });
     }
 
