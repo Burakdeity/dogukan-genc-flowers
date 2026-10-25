@@ -86,13 +86,9 @@ main{position:relative}
 .head p{color:var(--text-secondary);margin-top:20px;max-width:44ch}
 .pad{padding-top:clamp(110px,16vh,180px);padding-bottom:clamp(110px,16vh,180px)}
 
-footer{position:relative;overflow:hidden;padding-top:clamp(80px,12vh,140px);padding-bottom:28px;border-top:1px solid var(--line)}
+footer{position:relative;overflow:hidden;padding-top:clamp(80px,12vh,140px);padding-bottom:clamp(56px,9vh,96px);border-top:1px solid var(--line)}
 footer .cta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px}
 footer .cta p{font:300 clamp(1.8rem,3vw,2.6rem)/1.15 var(--display);max-width:18ch}
-.wordmark{display:block;margin-top:clamp(40px,8vh,90px);padding-bottom:.12em;font:300 clamp(4rem,15.5vw,15rem)/1 var(--display);letter-spacing:-.04em;white-space:nowrap;transform:translateY(calc((1 - var(--p,1)) * 40%));opacity:calc(.25 + .75 * var(--p,1))}
-.wordmark em{color:var(--accent);font-weight:400}
-footer .meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;margin-top:28px;font:400 .72rem/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary)}
-footer .meta a{color:var(--text-primary);text-decoration:none}
 
 /* nav: hide on the way down, return on the way up, mark the section */
 .nav{transition:background .5s var(--ease-soft),backdrop-filter .5s var(--ease-soft),transform .6s var(--ease-out)}
@@ -143,8 +139,6 @@ label{font-size:.8rem}
 input,textarea{font-weight:400;font-size:1.05rem}
 .cardnote{font-size:.8rem}
 footer .cta p{font-weight:500}
-footer .meta{font-size:.8rem}
-.wordmark{font-weight:400}
 .brand small{font-size:.7rem}
 .gal-count{font-size:.8rem}
 .dil-nav li{font-size:.8rem;opacity:.6}
@@ -262,10 +256,6 @@ footer{margin-top:clamp(90px,14vh,160px)}
         </div>
       </div>
       <div class="c-map"><iframe title="Doğukan Genç Çiçekçilik, Karasu haritada" src="https://www.google.com/maps?q=Karasu%20Do%C4%9Fukan%20Gen%C3%A7%20%C3%87i%C3%A7ek%C3%A7ilik%2C%20%C4%B0ncilli%2C%20Cumhuriyet%20Cd.%20No%3A11%2C%2054500%20Karasu/Sakarya&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
-    </div>
-    <div class="meta">
-      <span>Doğukan Genç Flowers · Karasu, Sakarya</span>
-      <a href="index.html">Ana sayfa</a>
     </div>
   </div>
 </footer>

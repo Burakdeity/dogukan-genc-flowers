@@ -19,13 +19,12 @@
 .gs-track button:hover::before,.gs-track button:focus-visible::before,.gal-grid button:hover::before,.gal-grid button:focus-visible::before{opacity:1}
 .gs-track button:hover .tag,.gs-track button:focus-visible .tag,.gal-grid button:hover .tag,.gal-grid button:focus-visible .tag{opacity:1;transform:none}
 
-/* home page strip: two rows drift in opposite directions; hovering a row stops it */
+/* home page strip: one row drifts slowly; hovering stops it */
 .gstrip{margin-top:48px;display:grid;gap:clamp(10px,1.4vw,18px);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .gs-row{overflow:hidden}
 .gs-track{display:flex;gap:clamp(10px,1.4vw,18px);width:max-content;animation:gsdrift var(--dur,80s) linear infinite}
-.gs-track.rev{animation-direction:reverse}
 .gs-row:hover .gs-track,.gs-row:focus-within .gs-track{animation-play-state:paused}
-.gs-track button{flex:none;width:clamp(170px,17vw,260px)}
+.gs-track button{flex:none;width:clamp(210px,21vw,320px)}
 @keyframes gsdrift{to{transform:translate3d(calc(-50% - clamp(10px,1.4vw,18px) / 2),0,0)}}
 .gal-all{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;margin-top:40px}
 .gal-all p{color:var(--text-secondary);max-width:44ch}
@@ -72,7 +71,7 @@
   .gal-grid button::before,.gs-track button::before{opacity:.8}
   .gal-grid .tag span,.gs-track .tag span{display:none}
   .gal-grid .tag b,.gs-track .tag b{font-size:1.05rem}
-  .gs-track button{width:42vw}
+  .gs-track button{width:56vw}
   .gstrip{margin-left:-16px;margin-right:-16px}
 }
 @media (max-width:640px){

@@ -63,20 +63,17 @@
   }
   function close() { lb.hidden = true; document.documentElement.style.overflow = ''; if (lastFocus) lastFocus.focus({ preventScroll: true }); }
 
-  /* ---------- home page: two rows drifting in opposite directions, paused on hover ---------- */
+  /* ---------- home page: one row drifting slowly, paused on hover ---------- */
   function strip(root) {
-    const pick = ITEMS.slice(0, 32);
-    [0, 1].forEach(r => {
-      const row = pick.map((it, i) => [it, i]).filter(([, i]) => i % 2 === r);
-      const track = document.createElement('div'); track.className = 'gs-track' + (r ? ' rev' : '');
-      track.style.setProperty('--dur', row.length * 5 + 's');
-      for (let k = 0; k < 2; k++) row.forEach(([[n, c], i]) => {      // drawn twice so the loop has no seam
-        const b = tile(n, c, i);
-        if (k) { b.tabIndex = -1; b.setAttribute('aria-hidden', 'true'); }
-        track.appendChild(b);
-      });
-      const line = document.createElement('div'); line.className = 'gs-row'; line.appendChild(track); root.appendChild(line);
+    const pick = ITEMS.slice(0, 20);
+    const track = document.createElement('div'); track.className = 'gs-track';
+    track.style.setProperty('--dur', pick.length * 5 + 's');
+    for (let k = 0; k < 2; k++) pick.forEach(([n, c], i) => {          // drawn twice so the loop has no seam
+      const b = tile(n, c, i);
+      if (k) { b.tabIndex = -1; b.setAttribute('aria-hidden', 'true'); }
+      track.appendChild(b);
     });
+    const line = document.createElement('div'); line.className = 'gs-row'; line.appendChild(track); root.appendChild(line);
     root.addEventListener('click', e => { const b = e.target.closest('button[data-i]'); if (b) open(pick, +b.dataset.i); });
   }
 

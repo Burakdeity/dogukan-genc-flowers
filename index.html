@@ -305,14 +305,10 @@ form .btn{justify-self:start;margin-top:8px}
 .faq details[open] summary i::after{transform:rotate(0)}
 .faq .a p{color:var(--text-secondary);padding-bottom:28px;max-width:52ch}
 
-/* 8. footer: the wordmark rises */
-footer{position:relative;overflow:hidden;padding-top:clamp(80px,12vh,140px);padding-bottom:28px;border-top:1px solid var(--line)}
+/* 8. footer */
+footer{position:relative;overflow:hidden;padding-top:clamp(80px,12vh,140px);padding-bottom:clamp(56px,9vh,96px);border-top:1px solid var(--line)}
 footer .cta{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px}
 footer .cta p{font:300 clamp(1.8rem,3vw,2.6rem)/1.15 var(--display);max-width:18ch}
-.wordmark{display:block;margin-top:clamp(40px,8vh,90px);padding-bottom:.12em;font:300 clamp(4rem,15.5vw,15rem)/1 var(--display);letter-spacing:-.04em;white-space:nowrap;transform:translateY(calc((1 - var(--p,1)) * 40%));opacity:calc(.25 + .75 * var(--p,1))}
-.wordmark em{color:var(--accent);font-weight:400}
-footer .meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;margin-top:28px;font:400 .72rem/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text-secondary)}
-footer .meta a{color:var(--text-primary);text-decoration:none}
 
 @media (max-width:900px){
   #sss .grid{grid-template-columns:1fr}
@@ -339,7 +335,7 @@ footer .meta a{color:var(--text-primary);text-decoration:none}
   #buketler .pin{overflow-x:auto}
   .marquee .row{transform:none!important}
   #buketler .rail{transform:none}
-  .bq,.endcard,.step,.wordmark,.journey{--r:1!important;--b:1!important;--p:1!important}
+  .bq,.endcard,.step,.journey{--r:1!important;--b:1!important;--p:1!important}
 }
 
 /* ---------- polish pass: rhythm, intro, nav, cursor, fab ---------- */
@@ -407,8 +403,6 @@ label{font-size:.8rem}
 input,textarea{font-weight:400;font-size:1.05rem}
 .cardnote{font-size:.8rem}
 footer .cta p{font-weight:500}
-footer .meta{font-size:.8rem}
-.wordmark{font-weight:400}
 .brand small{font-size:.7rem}
 .gal-count{font-size:.8rem}
 .dil-nav li{font-size:.8rem;opacity:.6}
@@ -960,12 +954,6 @@ body.lv-open{overflow:hidden}
         </div>
       </div>
       <div class="c-map"><iframe title="Doğukan Genç Çiçekçilik, Karasu haritada" src="https://www.google.com/maps?q=Karasu%20Do%C4%9Fukan%20Gen%C3%A7%20%C3%87i%C3%A7ek%C3%A7ilik%2C%20%C4%B0ncilli%2C%20Cumhuriyet%20Cd.%20No%3A11%2C%2054500%20Karasu/Sakarya&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
-    </div>
-    <span class="wordmark" aria-hidden="true">Doğukan Genç<em>.</em></span>
-    <div class="meta">
-      <span>Doğukan Genç Flowers · Karasu, Sakarya</span>
-      <a href="tel:+905314556356">0531 455 63 56</a>
-      <a href="#iletisim" data-wa data-msg="Merhaba, çiçek siparişi vermek istiyorum.">WhatsApp</a>
     </div>
   </div>
 </footer>
