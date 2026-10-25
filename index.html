@@ -112,11 +112,6 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .ib{left:50%;top:50%;width:min(86vw,720px);transform:translate(-50%,-50%);text-align:center;display:flex;flex-direction:column;align-items:center;--sa:.72}
 .ib-kicker{font:400 .74rem/1.4 var(--mono);letter-spacing:.3em;text-transform:uppercase;color:var(--accent);opacity:clamp(0,var(--k,0)*2,1)}
 .ib-line{margin-top:22px;font:400 clamp(.95rem,1.15vw,1.1rem)/1.5 var(--body);letter-spacing:.02em;color:var(--text-primary);padding:8px 16px;border-radius:999px;background:rgba(18,10,16,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);--kl:clamp(0,(var(--k,0) - .45)*2.4,1);opacity:var(--kl);transform:translateY(calc((1 - var(--kl))*14px))}
-.seal{width:clamp(150px,19vw,230px);height:auto;color:var(--text-primary);overflow:visible;--ks:clamp(0,var(--k,0)*1.6,1);opacity:var(--ks);transform:scale(calc(.7 + .3*var(--ks)))}
-.seal text{font:400 13.5px var(--mono);letter-spacing:.12em;fill:var(--text-primary)}
-.seal-ring{transform-origin:100px 100px;transform:rotate(calc(var(--hp,0) * 540deg))}
-.seal-rose{fill:var(--accent);transform-origin:100px 100px;transform:scale(calc(.4 + .6*var(--ks)))}
-.seal-stem{fill:none;stroke:var(--accent-muted);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:80;stroke-dashoffset:calc((1 - var(--ks)) * 80)}
 .ib-quote{margin-top:18px;font:italic 400 clamp(2.8rem,6.4vw,6.2rem)/1 var(--display);letter-spacing:-.02em}
 .ib-quote .line{display:block;--kq:clamp(0,var(--k,0)*2,1);opacity:var(--kq);transform:translateY(calc((1 - var(--kq))*24px))}
 .ib-quote .line + .line{--kq:clamp(0,(var(--k,0) - .25)*2,1);color:var(--accent)}
@@ -629,22 +624,11 @@ body.lv-open{overflow:hidden}
       <div class="scrim" aria-hidden="true"></div>
       <div class="hero-mark" aria-hidden="true"><span>Doğukan Genç</span></div>
 
-      <div class="band b1" data-a="0" data-b="0.17">
+      <div class="band b1" data-a="0" data-b="0.22">
         <span class="brandline-hero"><span class="rg">Doğukan Genç Flowers</span><span class="loc">Karasu</span></span>
         <h2>Bazı duygular kelimeye sığmaz.</h2>
       </div>
-      <div class="band ib i1" data-a="0.17" data-b="0.29" data-ramp="0.075" aria-hidden="true">
-        <svg class="seal" viewBox="0 0 200 200">
-          <defs><path id="sealPath" d="M100 100m-78 0a78 78 0 1 1 156 0a78 78 0 1 1-156 0"/></defs>
-          <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-opacity=".35"/>
-          <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" stroke-opacity=".25"/>
-          <g class="seal-ring"><text><textPath href="#sealPath" textLength="480">DOĞUKAN GENÇ FLOWERS · KARASU · EL YAPIMI · </textPath></text></g>
-          <path class="seal-rose" d="M100 66c-12 10-15 20-10 29 3 5 10 7 10 7s7-2 10-7c5-9 2-19-10-29z"/>
-          <path class="seal-stem" d="M100 102v30M100 120c-7-2-12-7-14-14M100 114c7-2 11-6 12-12"/>
-        </svg>
-        <p class="ib-line">Her buket elde, tek tek hazırlanır.</p>
-      </div>
-      <div class="band b2" data-a="0.29" data-b="0.45">
+      <div class="band b2" data-a="0.24" data-b="0.45">
         <h2 class="fx-drift" data-split="words">Onları çiçekler anlatır.</h2>
       </div>
       <div class="band ib i2" data-a="0.45" data-b="0.56" data-ramp="0.07" aria-hidden="true">
