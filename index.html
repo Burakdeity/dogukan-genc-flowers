@@ -127,8 +127,6 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 /* split text */
 .vis .w{display:inline-block;white-space:nowrap}
 .vis .c{display:inline-block}
-/* band 1: petal fall, characters drift down and turn like petals settling */
-.fx-petal .c{--kc:clamp(0,(var(--k,0) - var(--th,0))*2.6,1);opacity:var(--kc);transform:translate(calc((1 - var(--kc))*var(--jx,0px)),calc((1 - var(--kc))*var(--jy,0px))) rotate(calc((1 - var(--kc))*var(--jr,0deg)))}
 /* band 2: drift down word by word */
 .fx-drift .w{--kc:clamp(0,(var(--k,0) - var(--th,0))*2.8,1);opacity:var(--kc);transform:translateY(calc((1 - var(--kc))*-26px))}
 /* band 3: approach from depth, the camera moving toward the table */
@@ -633,7 +631,7 @@ body.lv-open{overflow:hidden}
 
       <div class="band b1" data-a="0" data-b="0.17">
         <span class="brandline-hero"><span class="rg">Doğukan Genç Flowers</span><span class="loc">Karasu</span></span>
-        <h2 class="fx-petal" data-split="chars" data-spread="0.5">Bazı duygular kelimeye sığmaz.</h2>
+        <h2>Bazı duygular kelimeye sığmaz.</h2>
       </div>
       <div class="band ib i1" data-a="0.17" data-b="0.29" data-ramp="0.075" aria-hidden="true">
         <svg class="seal" viewBox="0 0 200 200">
