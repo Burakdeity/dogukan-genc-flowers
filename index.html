@@ -261,30 +261,57 @@ main{position:relative}
 .gal-count b::after{content:"";position:absolute;inset:0;background:var(--accent);transform:scaleX(var(--gp,0));transform-origin:left}
 
 /* 4. gallery: every real photo from the shop, filterable, opens large */
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
-.chip{font:400 .92rem/1 var(--body);color:var(--text-secondary);background:transparent;border:1px solid var(--line-strong);border-radius:999px;padding:11px 16px;min-height:44px;cursor:pointer;transition:color .3s var(--ease-soft),border-color .3s var(--ease-soft),background .3s var(--ease-soft)}
-.chip em{font:400 .72rem/1 var(--mono);font-style:normal;opacity:.6;margin-left:4px}
-.chip:hover{border-color:var(--accent);color:var(--text-primary)}
-.chip.on{background:var(--accent);border-color:var(--accent);color:var(--canvas)}
-.chip.on em{opacity:.75}
-.gal-grid{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.2vw,16px)}
-.gal-grid li{opacity:0;transform:translateY(18px);animation:galin .7s var(--ease-out) forwards;animation-delay:calc(var(--d,0) * 45ms)}
+.gal-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:32px 64px}
+.gal-stats{display:flex;gap:clamp(24px,4vw,56px);margin:0;padding-bottom:6px}
+.gal-stats div{display:flex;flex-direction:column-reverse;gap:10px;border-left:1px solid var(--line);padding-left:18px}
+.gal-stats dt{font:400 .7rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--text-secondary)}
+.gal-stats dd{margin:0;font:300 clamp(2rem,3.4vw,3.2rem)/1 var(--display);color:var(--text-primary)}
+.gtabs{display:flex;flex-wrap:wrap;gap:4px 28px;margin-top:56px;padding-bottom:2px;border-bottom:1px solid var(--line)}
+.gtab{position:relative;font:400 .98rem/1 var(--body);color:var(--text-secondary);background:none;border:0;padding:14px 0 16px;min-height:44px;cursor:pointer;transition:color .3s var(--ease-soft)}
+.gtab em{font:400 .66rem/1 var(--mono);font-style:normal;vertical-align:super;margin-left:3px;color:var(--accent-muted)}
+.gtab::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease-out)}
+.gtab:hover{color:var(--text-primary)}
+.gtab.on{color:var(--text-primary)}
+.gtab.on::after{transform:scaleX(1)}
+.gal-grid{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-flow:dense;gap:clamp(10px,1.4vw,20px)}
+.gal-grid li{opacity:0;transform:translateY(22px);animation:galin .8s var(--ease-out) forwards;animation-delay:calc(var(--d,0) * 50ms)}
+.gal-grid li.big{grid-column:span 2;grid-row:span 2}
 @keyframes galin{to{opacity:1;transform:none}}
-.gal-grid button{display:block;width:100%;padding:0;border:0;background:var(--panel);border-radius:4px;overflow:hidden;cursor:zoom-in;aspect-ratio:3/4;position:relative}
-.gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease-out),filter .5s var(--ease-soft)}
-.gal-grid button::after{content:"Büyüt";position:absolute;left:12px;bottom:12px;font:400 .68rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--text-primary);background:rgba(18,10,16,.6);padding:8px 10px;border-radius:999px;opacity:0;transform:translateY(6px);transition:opacity .35s var(--ease-soft),transform .35s var(--ease-out)}
-.gal-grid button:hover img{transform:scale(1.05)}
-.gal-grid button:hover::after,.gal-grid button:focus-visible::after{opacity:1;transform:none}
-.gal-more{display:flex;justify-content:center;margin-top:36px}
-.glb{position:fixed;inset:0;z-index:90;background:rgba(14,8,12,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;padding:clamp(12px,3vw,40px)}
-.glb figure{margin:0;grid-column:2;display:flex;flex-direction:column;align-items:center;gap:16px;min-height:0;height:100%;justify-content:center}
-.glb img{max-width:100%;max-height:calc(100svh - 150px);object-fit:contain;border-radius:4px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9)}
-.glb figcaption{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 20px;font:400 .74rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--text-secondary)}
-.glb-nav,.glb-x{width:52px;height:52px;border-radius:50%;border:1px solid var(--line-strong);background:rgba(27,18,25,.6);color:var(--text-primary);font:300 2rem/1 var(--display);cursor:pointer;display:grid;place-items:center;transition:border-color .3s var(--ease-soft)}
-.glb-nav:hover,.glb-x:hover{border-color:var(--accent)}
+.gal-grid button{display:block;width:100%;height:100%;padding:0;border:0;background:var(--panel);border-radius:2px;overflow:hidden;cursor:zoom-in;aspect-ratio:4/5;position:relative;color:var(--text-primary);text-align:left}
+.gal-grid li.big button{aspect-ratio:auto}
+.gal-grid img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-out)}
+.gal-grid button::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(transparent 55%,rgba(14,8,12,.82));opacity:0;transition:opacity .5s var(--ease-soft)}
+.gal-grid .tag{position:absolute;left:clamp(14px,1.4vw,22px);right:clamp(14px,1.4vw,22px);bottom:clamp(14px,1.4vw,20px);z-index:2;display:flex;justify-content:space-between;align-items:baseline;gap:12px;opacity:0;transform:translateY(10px);transition:opacity .45s var(--ease-soft),transform .5s var(--ease-out)}
+.gal-grid .tag b{font:italic 400 clamp(1.2rem,1.5vw,1.6rem)/1 var(--display)}
+.gal-grid .tag span{font:400 .68rem/1 var(--mono);letter-spacing:.16em;color:var(--text-secondary)}
+.gal-grid li.big .tag b{font-size:clamp(1.6rem,2.2vw,2.3rem)}
+.gal-grid button:hover img{transform:scale(1.045)}
+.gal-grid button:hover::before,.gal-grid button:focus-visible::before{opacity:1}
+.gal-grid button:hover .tag,.gal-grid button:focus-visible .tag{opacity:1;transform:none}
+.gal-more{display:flex;justify-content:center;margin-top:44px}
+.gal-more span{font:400 .72rem/1 var(--mono);letter-spacing:.12em;color:var(--text-secondary);margin-left:6px}
+.glb{position:fixed;inset:0;z-index:90;background:rgba(14,8,12,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:clamp(12px,3vw,40px)}
+.glb figure{margin:0;grid-column:2;display:flex;flex-direction:column;align-items:center;gap:18px;min-height:0;height:100%;justify-content:center}
+.glb img{max-width:100%;max-height:calc(100svh - 160px);object-fit:contain;border-radius:2px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9)}
+.glb figcaption{display:flex;align-items:center;justify-content:space-between;gap:16px 32px;width:min(100%,640px)}
+.glb figcaption div{display:flex;flex-direction:column;gap:8px}
+.glb figcaption .kicker{color:var(--accent)}
+.glb #glbCap{font:italic 400 1.35rem/1 var(--display);color:var(--text-primary)}
+.glb-nav,.glb-x{width:52px;height:52px;border-radius:50%;border:1px solid var(--line-strong);background:rgba(27,18,25,.6);color:var(--text-primary);font:300 2rem/1 var(--display);cursor:pointer;display:grid;place-items:center;transition:border-color .3s var(--ease-soft),background .3s var(--ease-soft)}
+.glb-nav:hover,.glb-x:hover{border-color:var(--accent);background:rgba(227,163,160,.12)}
 .glb-x{position:absolute;top:clamp(12px,2vw,24px);right:clamp(12px,2vw,24px);z-index:2}
-@media (max-width:900px){.gal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.chips{flex-wrap:nowrap;overflow-x:auto;margin-left:-16px;margin-right:-16px;padding:0 16px 6px;scrollbar-width:none}.chip{flex:none}}
-@media (max-width:640px){.glb{grid-template-columns:1fr;padding:56px 8px 16px}.glb-nav{position:absolute;bottom:18px;z-index:2}.glb-nav.pv{left:16px}.glb-nav.nx{right:16px}.glb figure{grid-column:1}.glb img{max-height:calc(100svh - 190px)}.glb figcaption{flex-direction:column;padding:0 64px}}
+@media (max-width:900px){
+  .gal-head{grid-template-columns:1fr}
+  .gal-stats{gap:20px}.gal-stats div{padding-left:14px}.gal-stats dd{font-size:1.7rem;white-space:nowrap}
+  .gal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gtabs{flex-wrap:nowrap;overflow-x:auto;margin-left:-16px;margin-right:-16px;padding:0 16px;scrollbar-width:none;gap:24px}
+  .gtab{flex:none}
+  .gal-grid .tag{opacity:1;transform:none}
+  .gal-grid button::before{opacity:.8}
+  .gal-grid .tag span{display:none}
+  .gal-grid .tag b{font-size:1.05rem}
+}
+@media (max-width:640px){.glb{grid-template-columns:1fr;padding:60px 8px 84px}.glb-nav{position:absolute;bottom:18px;z-index:2}.glb-nav.pv{left:16px}.glb-nav.nx{right:16px}.glb figure{grid-column:1}.glb img{max-height:calc(100svh - 230px)}.glb figcaption{padding:0 8px}}
 @media (prefers-reduced-motion:reduce){.gal-grid li{animation:none;opacity:1;transform:none}}
 
 /* 5. nasil: a stem grows down the page, each step blooms when it arrives */
@@ -743,11 +770,11 @@ body.lv-open{overflow:hidden}
   </section>
 
   <div class="marquee" aria-hidden="true">
-    <div class="row r1" data-dir="-1" data-speed="38"><div class="set"><span class="w" data-img=gul>Gül</span><i></i><span class="w" data-img=sakayik>Şakayık</span><i></i><span class="w">Lisianthus</span><i></i><span class="w" data-img=ranunculus>Ranunculus</span><i></i><span class="w">Orkide</span><i></i><span class="w" data-img=okaliptus>Okaliptüs</span><i></i><span class="w" data-img=lisianthus>Beyaz gül</span><i></i><span class="w">Lavanta</span><i></i></div><div class="set"><span class="w" data-img=gul>Gül</span><i></i><span class="w" data-img=sakayik>Şakayık</span><i></i><span class="w">Lisianthus</span><i></i><span class="w" data-img=ranunculus>Ranunculus</span><i></i><span class="w">Orkide</span><i></i><span class="w" data-img=okaliptus>Okaliptüs</span><i></i><span class="w" data-img=lisianthus>Beyaz gül</span><i></i><span class="w">Lavanta</span><i></i></div></div>
+    <div class="row r1" data-dir="-1" data-speed="38"><div class="set"><span class="w" data-img=gul>Gül</span><i></i><span class="w" data-img=lilyum>Lilyum</span><i></i><span class="w" data-img=orkide>Orkide</span><i></i><span class="w" data-img=papatya>Papatya</span><i></i><span class="w" data-img=aycicegi>Ayçiçeği</span><i></i><span class="w" data-img=lale>Lale</span><i></i><span class="w" data-img=gerbera>Gerbera</span><i></i><span class="w" data-img=krizantem>Krizantem</span><i></i></div><div class="set"><span class="w" data-img=gul>Gül</span><i></i><span class="w" data-img=lilyum>Lilyum</span><i></i><span class="w" data-img=orkide>Orkide</span><i></i><span class="w" data-img=papatya>Papatya</span><i></i><span class="w" data-img=aycicegi>Ayçiçeği</span><i></i><span class="w" data-img=lale>Lale</span><i></i><span class="w" data-img=gerbera>Gerbera</span><i></i><span class="w" data-img=krizantem>Krizantem</span><i></i></div></div>
     <div class="row r2" data-dir="1" data-speed="30"><div class="set"><span class="w">Sevgiliye</span><i></i><span class="w">Anneme</span><i></i><span class="w">Tebrikler</span><i></i><span class="w">Teşekkürler</span><i></i><span class="w">Doğum günü</span><i></i><span class="w">Geçmiş olsun</span><i></i><span class="w">Yeni eve</span><i></i><span class="w">İyi ki varsın</span><i></i></div><div class="set"><span class="w">Sevgiliye</span><i></i><span class="w">Anneme</span><i></i><span class="w">Tebrikler</span><i></i><span class="w">Teşekkürler</span><i></i><span class="w">Doğum günü</span><i></i><span class="w">Geçmiş olsun</span><i></i><span class="w">Yeni eve</span><i></i><span class="w">İyi ki varsın</span><i></i></div></div>
     <div class="row r3" data-dir="-1" data-speed="22"><div class="set"><span>Karasu</span><i></i><span>Aynı gün teslim</span><i></i><span>Göndermeden önce fotoğraf</span><i></i><span>Elde bağlanır</span><i></i><span>Kapına kadar</span><i></i><span>Karasu</span><i></i><span>Aynı gün teslim</span><i></i><span>Göndermeden önce fotoğraf</span><i></i><span>Elde bağlanır</span><i></i><span>Kapına kadar</span><i></i></div><div class="set"><span>Karasu</span><i></i><span>Aynı gün teslim</span><i></i><span>Göndermeden önce fotoğraf</span><i></i><span>Elde bağlanır</span><i></i><span>Kapına kadar</span><i></i><span>Karasu</span><i></i><span>Aynı gün teslim</span><i></i><span>Göndermeden önce fotoğraf</span><i></i><span>Elde bağlanır</span><i></i><span>Kapına kadar</span><i></i></div></div>
   </div>
-  <div class="peek" aria-hidden="true"><img src="assets/fl-gul.jpg" data-k="gul" alt=""><img src="assets/fl-sakayik.jpg" data-k="sakayik" alt=""><img src="assets/fl-ranunculus.jpg" data-k="ranunculus" alt=""><img src="assets/fl-okaliptus.jpg" data-k="okaliptus" alt=""><img src="assets/fl-lisianthus.jpg" data-k="lisianthus" alt=""></div>
+  <div class="peek" aria-hidden="true"><img src="assets/pk-gul.jpg" data-k="gul" alt="" loading="lazy"><img src="assets/pk-lilyum.jpg" data-k="lilyum" alt="" loading="lazy"><img src="assets/pk-orkide.jpg" data-k="orkide" alt="" loading="lazy"><img src="assets/pk-papatya.jpg" data-k="papatya" alt="" loading="lazy"><img src="assets/pk-aycicegi.jpg" data-k="aycicegi" alt="" loading="lazy"><img src="assets/pk-lale.jpg" data-k="lale" alt="" loading="lazy"><img src="assets/pk-gerbera.jpg" data-k="gerbera" alt="" loading="lazy"><img src="assets/pk-krizantem.jpg" data-k="krizantem" alt="" loading="lazy"></div>
 
   <section id="buketler" aria-labelledby="buket-h" data-scrub="pin">
     <div class="pin">
@@ -778,6 +805,10 @@ body.lv-open{overflow:hidden}
           <div class="cap"><div><h3>Kutuda çiçek</h3><p>Kutuda, oyuncakla, çikolatayla.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, kutuda çiçek için fiyat almak istiyorum.">Fiyat sor</a></div>
         </article>
         <article class="bq">
+          <div class="ph"><img src="assets/bq-bitki.jpg" alt="Hasır sargılı saksıda yeşil şeflera bitkisi" width="1200" height="1500" loading="lazy" decoding="async"></div>
+          <div class="cap"><div><h3>Saksı bitkileri</h3><p>Yeni eve, yeni işe, yıllarca yeşil.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, saksı bitkisi için fiyat almak istiyorum.">Fiyat sor</a></div>
+        </article>
+        <article class="bq">
           <div class="ph"><img src="assets/bq-gelin.jpg" alt="Kaputu çiçekle süslenmiş beyaz gelin arabası" width="1200" height="1500" loading="lazy" decoding="async"></div>
           <div class="cap"><div><h3>Gelin arabası</h3><p>Düğün gününe çiçekten süs.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, gelin arabası süsü için fiyat almak istiyorum.">Fiyat sor</a></div>
         </article>
@@ -797,19 +828,26 @@ body.lv-open{overflow:hidden}
 
   <section id="galeri" class="gut pad" aria-labelledby="galeri-h">
     <div class="wrap">
-      <div class="head reveal">
-        <span class="kicker part">Galeri</span>
-        <h2 id="galeri-h" class="part" style="--i:1">Bugüne kadar bağladıklarımız.</h2>
-        <p class="part" style="--i:2">Hepsi Karasu'daki dükkanımızda elde hazırlandı. Birine dokun, büyüt, aynısını ya da benzerini iste.</p>
+      <div class="gal-head reveal">
+        <div class="head">
+          <span class="kicker part">Galeri</span>
+          <h2 id="galeri-h" class="part" style="--i:1">Bugüne kadar bağladıklarımız.</h2>
+          <p class="part" style="--i:2">Her biri Karasu'daki dükkanımızda, elde hazırlandı. Beğendiğini büyüt, aynısını ya da benzerini iste.</p>
+        </div>
+        <dl class="gal-stats part" style="--i:3">
+          <div><dt>Çalışma</dt><dd id="galTotal">81</dd></div>
+          <div><dt>Kategori</dt><dd>6</dd></div>
+          <div><dt>Teslimat</dt><dd>Aynı gün</dd></div>
+        </dl>
       </div>
-      <div class="chips" role="toolbar" aria-label="Galeriyi filtrele"><button type="button" class="chip on" data-f="hepsi" aria-pressed="true">Hepsi <em>81</em></button><button type="button" class="chip" data-f="buket" aria-pressed="false">Buketler <em>58</em></button><button type="button" class="chip" data-f="orkide" aria-pressed="false">Orkideler <em>9</em></button><button type="button" class="chip" data-f="kutu" aria-pressed="false">Kutu ve hediye <em>4</em></button><button type="button" class="chip" data-f="gelin" aria-pressed="false">Gelin arabası <em>4</em></button><button type="button" class="chip" data-f="bitki" aria-pressed="false">Saksı bitkileri <em>3</em></button><button type="button" class="chip" data-f="celenk" aria-pressed="false">Ayaklı çelenk <em>3</em></button></div>
+      <div class="gtabs" role="toolbar" aria-label="Galeriyi filtrele"><button type="button" class="gtab on" data-f="hepsi" aria-pressed="true">Hepsi <em>81</em></button><button type="button" class="gtab" data-f="buket" aria-pressed="false">Buketler <em>58</em></button><button type="button" class="gtab" data-f="orkide" aria-pressed="false">Orkideler <em>9</em></button><button type="button" class="gtab" data-f="kutu" aria-pressed="false">Kutu ve hediye <em>4</em></button><button type="button" class="gtab" data-f="gelin" aria-pressed="false">Gelin arabası <em>4</em></button><button type="button" class="gtab" data-f="bitki" aria-pressed="false">Saksı bitkileri <em>3</em></button><button type="button" class="gtab" data-f="celenk" aria-pressed="false">Ayaklı çelenk <em>3</em></button></div>
       <ul class="gal-grid" id="galGrid"></ul>
-      <div class="gal-more"><button type="button" class="btn btn-ghost" id="galMore">Daha fazla göster</button></div>
+      <div class="gal-more"><button type="button" class="btn btn-ghost" id="galMore">Daha fazla göster <span id="galLeft"></span></button></div>
     </div>
     <div class="glb" id="glb" role="dialog" aria-modal="true" aria-label="Fotoğraf" hidden>
       <button type="button" class="glb-x" aria-label="Kapat">×</button>
       <button type="button" class="glb-nav pv" aria-label="Önceki fotoğraf">‹</button>
-      <figure><img alt=""><figcaption><span id="glbCap"></span><a class="btn btn-accent" id="glbAsk" href="#iletisim">Bunu sor</a></figcaption></figure>
+      <figure><img alt=""><figcaption><div><span class="kicker" id="glbCat"></span><span id="glbCap"></span></div><a class="btn btn-accent" id="glbAsk" href="#iletisim">Bunu sor</a></figcaption></figure>
       <button type="button" class="glb-nav nx" aria-label="Sonraki fotoğraf">›</button>
     </div>
   </section>
@@ -1640,6 +1678,7 @@ body.lv-open{overflow:hidden}
   (function gallery() {
     const items = window.GALERI || [], grid = $('#galGrid'), more = $('#galMore'), lb = $('#glb');
     if (!grid || !items.length) return;
+    $('#galTotal').textContent = items.length;
     const NAMES = { buket: 'Buket', orkide: 'Orkide', kutu: 'Kutu ve hediye', gelin: 'Gelin arabası', bitki: 'Saksı bitkisi', celenk: 'Ayaklı çelenk' };
     const pad = n => String(n).padStart(2, '0');
     const PAGE = innerWidth < 900 ? 8 : 12;
@@ -1651,15 +1690,17 @@ body.lv-open{overflow:hidden}
         const li = document.createElement('li'); li.style.setProperty('--d', i);
         const b = document.createElement('button'); b.type = 'button'; b.dataset.i = shown + i;
         b.setAttribute('aria-label', NAMES[c] + ', fotoğraf ' + n + ', büyüt');
-        const im = new Image(); im.src = 'assets/galeri/kucuk/' + pad(n) + '.jpg'; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async'; im.width = 600; im.height = 800;
-        b.appendChild(im); li.appendChild(b); return li;
+        const im = new Image(); im.src = 'assets/galeri/kucuk/' + pad(n) + '.jpg'; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async'; im.width = 640; im.height = 800;
+        const tag = document.createElement('span'); tag.className = 'tag'; tag.innerHTML = '<b></b><span></span>'; tag.firstChild.textContent = NAMES[c]; tag.lastChild.textContent = 'No ' + n;
+        if ((shown + i) % 9 === 0 && innerWidth >= 640) li.className = 'big';
+        b.append(im, tag); li.appendChild(b); return li;
       }));
       shown += next.length;
-      more.hidden = shown >= list.length;
+      more.hidden = shown >= list.length; $('#galLeft').textContent = '· ' + (list.length - shown);
     }
-    $$('.chip').forEach(ch => ch.addEventListener('click', () => {
+    $$('.gtab').forEach(ch => ch.addEventListener('click', () => {
       filter = ch.dataset.f;
-      $$('.chip').forEach(x => { x.classList.toggle('on', x === ch); x.setAttribute('aria-pressed', x === ch); });
+      $$('.gtab').forEach(x => { x.classList.toggle('on', x === ch); x.setAttribute('aria-pressed', x === ch); });
       list = filter === 'hepsi' ? items : items.filter(it => it[1] === filter);
       draw(true);
     }));
@@ -1673,7 +1714,7 @@ body.lv-open{overflow:hidden}
       cur = (i + list.length) % list.length;
       const [n, c] = list[cur];
       img.src = 'assets/galeri/' + pad(n) + '.jpg'; img.alt = NAMES[c] + ', fotoğraf ' + n;
-      cap.textContent = NAMES[c] + ' · No ' + n + ' · ' + (cur + 1) + ' / ' + list.length;
+      $('#glbCat').textContent = (cur + 1) + ' / ' + list.length; cap.textContent = NAMES[c] + ', No ' + n;
       const msg = 'Merhaba, galerinizdeki ' + n + ' numaralı ' + NAMES[c].toLowerCase() + ' için fiyat almak istiyorum. ' + site() + 'assets/galeri/' + pad(n) + '.jpg';
       ask.href = WA_NUMBER ? waHref(msg) : '#iletisim';
       if (WA_NUMBER) { ask.target = '_blank'; ask.rel = 'noopener'; }
