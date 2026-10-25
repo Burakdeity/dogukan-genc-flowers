@@ -248,7 +248,7 @@ main{position:relative}
 @media (pointer:coarse){.peek{display:none}}
 
 /* 3. pinned horizontal bouquet gallery */
-#buketler{position:relative;height:360vh}
+#buketler{position:relative;height:600vh}
 #buketler .pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center}
 #buketler .rail{display:flex;align-items:center;gap:clamp(28px,4vw,72px);padding-left:max(clamp(16px,6vw,96px),env(safe-area-inset-left,0px));padding-right:12vw;transform:translate3d(calc(var(--gx,0) * -1px),0,0);will-change:transform}
 #buketler .intro{flex:none;width:min(36vw,500px)}
@@ -268,6 +268,33 @@ main{position:relative}
 .gal-count{position:absolute;right:max(clamp(16px,6vw,96px),env(safe-area-inset-right,0px));bottom:6vh;font:400 .74rem/1 var(--mono);letter-spacing:.18em;color:var(--text-secondary);display:flex;align-items:center;gap:14px}
 .gal-count b{display:block;width:120px;height:1px;background:var(--line);position:relative}
 .gal-count b::after{content:"";position:absolute;inset:0;background:var(--accent);transform:scaleX(var(--gp,0));transform-origin:left}
+
+/* 4. gallery: every real photo from the shop, filterable, opens large */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.chip{font:400 .92rem/1 var(--body);color:var(--text-secondary);background:transparent;border:1px solid var(--line-strong);border-radius:999px;padding:11px 16px;min-height:44px;cursor:pointer;transition:color .3s var(--ease-soft),border-color .3s var(--ease-soft),background .3s var(--ease-soft)}
+.chip em{font:400 .72rem/1 var(--mono);font-style:normal;opacity:.6;margin-left:4px}
+.chip:hover{border-color:var(--accent);color:var(--text-primary)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:var(--canvas)}
+.chip.on em{opacity:.75}
+.gal-grid{list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.2vw,16px)}
+.gal-grid li{opacity:0;transform:translateY(18px);animation:galin .7s var(--ease-out) forwards;animation-delay:calc(var(--d,0) * 45ms)}
+@keyframes galin{to{opacity:1;transform:none}}
+.gal-grid button{display:block;width:100%;padding:0;border:0;background:var(--panel);border-radius:4px;overflow:hidden;cursor:zoom-in;aspect-ratio:3/4;position:relative}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease-out),filter .5s var(--ease-soft)}
+.gal-grid button::after{content:"Büyüt";position:absolute;left:12px;bottom:12px;font:400 .68rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--text-primary);background:rgba(18,10,16,.6);padding:8px 10px;border-radius:999px;opacity:0;transform:translateY(6px);transition:opacity .35s var(--ease-soft),transform .35s var(--ease-out)}
+.gal-grid button:hover img{transform:scale(1.05)}
+.gal-grid button:hover::after,.gal-grid button:focus-visible::after{opacity:1;transform:none}
+.gal-more{display:flex;justify-content:center;margin-top:36px}
+.glb{position:fixed;inset:0;z-index:90;background:rgba(14,8,12,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:8px;padding:clamp(12px,3vw,40px)}
+.glb figure{margin:0;grid-column:2;display:flex;flex-direction:column;align-items:center;gap:16px;min-height:0;height:100%;justify-content:center}
+.glb img{max-width:100%;max-height:calc(100svh - 150px);object-fit:contain;border-radius:4px;box-shadow:0 40px 90px -30px rgba(0,0,0,.9)}
+.glb figcaption{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 20px;font:400 .74rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--text-secondary)}
+.glb-nav,.glb-x{width:52px;height:52px;border-radius:50%;border:1px solid var(--line-strong);background:rgba(27,18,25,.6);color:var(--text-primary);font:300 2rem/1 var(--display);cursor:pointer;display:grid;place-items:center;transition:border-color .3s var(--ease-soft)}
+.glb-nav:hover,.glb-x:hover{border-color:var(--accent)}
+.glb-x{position:absolute;top:clamp(12px,2vw,24px);right:clamp(12px,2vw,24px);z-index:2}
+@media (max-width:900px){.gal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.chips{flex-wrap:nowrap;overflow-x:auto;margin-left:-16px;margin-right:-16px;padding:0 16px 6px;scrollbar-width:none}.chip{flex:none}}
+@media (max-width:640px){.glb{grid-template-columns:1fr;padding:56px 8px 16px}.glb-nav{position:absolute;bottom:18px;z-index:2}.glb-nav.pv{left:16px}.glb-nav.nx{right:16px}.glb figure{grid-column:1}.glb img{max-height:calc(100svh - 190px)}.glb figcaption{flex-direction:column;padding:0 64px}}
+@media (prefers-reduced-motion:reduce){.gal-grid li{animation:none;opacity:1;transform:none}}
 
 /* 5. nasil: a stem grows down the page, each step blooms when it arrives */
 #nasil .head{text-align:center}
@@ -608,6 +635,7 @@ body.lv-open{overflow:hidden}
   </a>
   <ul>
     <li><a href="#buketler">Buketler</a></li>
+    <li><a href="#galeri">Galeri</a></li>
     <li><a href="#nasil">Nasıl çalışır</a></li>
     <li><a href="#mektup">Çiçek mektubu</a></li>
     <li><a href="#sss">Sorular</a></li>
@@ -746,19 +774,35 @@ body.lv-open{overflow:hidden}
         <div class="intro head">
           <span class="kicker">Buketler</span>
           <h2 id="buket-h">Her gün taze gelir, her gün yeniden bağlanır.</h2>
-          <p>Kaydırdıkça bak. Beğendiğinin fiyatını tek dokunuşla sor.</p>
+          <p>Kaydırdıkça bak. Fotoğrafların hepsi dükkanımızdan. Beğendiğinin fiyatını tek dokunuşla sor.</p>
         </div>
         <article class="bq">
-          <div class="ph"><img src="assets/buket-gul.jpg" alt="Toz pembe güllerden elde bağlanmış buket" width="1200" height="1500"></div>
-          <div class="cap"><div><h3>Güller</h3><p>Sevdiğine, en açık haliyle.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, gül buketi için fiyat almak istiyorum.">Fiyat sor</a></div>
+          <div class="ph"><img src="assets/buket-gul.jpg" alt="Kırmızı güllerden, palmiye yapraklarıyla bağlanmış buket" width="1200" height="1500" loading="lazy" decoding="async"></div>
+          <div class="cap"><div><h3>Güller</h3><p>Kırmızı, pembe, beyaz. En açık haliyle.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, gül buketi için fiyat almak istiyorum.">Fiyat sor</a></div>
         </article>
         <article class="bq">
-          <div class="ph"><img src="assets/buket-mevsim.jpg" alt="Mevsim çiçeklerinden renkli buket" width="1200" height="1500"></div>
+          <div class="ph"><img src="assets/buket-mevsim.jpg" alt="Pembe güller ve krizantemlerle renkli mevsim buketi" width="1200" height="1500" loading="lazy" decoding="async"></div>
           <div class="cap"><div><h3>Mevsim buketi</h3><p>O hafta en güzel ne açtıysa.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, mevsim buketi için fiyat almak istiyorum.">Fiyat sor</a></div>
         </article>
         <article class="bq">
-          <div class="ph"><img src="assets/buket-beyaz.jpg" alt="Beyaz çiçeklerden sade ve zarif buket" width="1200" height="1500"></div>
+          <div class="ph"><img src="assets/buket-beyaz.jpg" alt="Beyaz lilyum ve krizantemlerden zarif buket" width="1200" height="1500" loading="lazy" decoding="async"></div>
           <div class="cap"><div><h3>Beyazlar</h3><p>Teşekkür, tebrik, başsağlığı.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, beyaz çiçek buketi için fiyat almak istiyorum.">Fiyat sor</a></div>
+        </article>
+        <article class="bq">
+          <div class="ph"><img src="assets/bq-orkide.jpg" alt="Pembe kurdeleli saksıda mor orkide" width="1200" height="1500" loading="lazy" decoding="async"></div>
+          <div class="cap"><div><h3>Orkideler</h3><p>Saksıda, uzun ömürlü bir hediye.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, orkide için fiyat almak istiyorum.">Fiyat sor</a></div>
+        </article>
+        <article class="bq">
+          <div class="ph"><img src="assets/bq-kutu.jpg" alt="Pembe kutuda şeftali ve sarı güller" width="1200" height="1500" loading="lazy" decoding="async"></div>
+          <div class="cap"><div><h3>Kutuda çiçek</h3><p>Kutuda, oyuncakla, çikolatayla.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, kutuda çiçek için fiyat almak istiyorum.">Fiyat sor</a></div>
+        </article>
+        <article class="bq">
+          <div class="ph"><img src="assets/bq-gelin.jpg" alt="Kaputu çiçekle süslenmiş beyaz gelin arabası" width="1200" height="1500" loading="lazy" decoding="async"></div>
+          <div class="cap"><div><h3>Gelin arabası</h3><p>Düğün gününe çiçekten süs.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, gelin arabası süsü için fiyat almak istiyorum.">Fiyat sor</a></div>
+        </article>
+        <article class="bq">
+          <div class="ph"><img src="assets/bq-celenk.jpg" alt="Sarı, beyaz ve kırmızı çiçeklerle ayaklı çelenk" width="1200" height="1500" loading="lazy" decoding="async"></div>
+          <div class="cap"><div><h3>Ayaklı çelenk</h3><p>Açılış, düğün ve tören için.</p></div><a href="#iletisim" data-wa data-msg="Merhaba, ayaklı çelenk için fiyat almak istiyorum.">Fiyat sor</a></div>
         </article>
         <div class="endcard">
           <h3>Aklındaki buket burada yok mu?</h3>
@@ -767,6 +811,25 @@ body.lv-open{overflow:hidden}
         </div>
       </div>
       <div class="gal-count" aria-hidden="true"><span>Kaydır</span><b></b></div>
+    </div>
+  </section>
+
+  <section id="galeri" class="gut pad" aria-labelledby="galeri-h">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="kicker part">Galeri</span>
+        <h2 id="galeri-h" class="part" style="--i:1">Bugüne kadar bağladıklarımız.</h2>
+        <p class="part" style="--i:2">Hepsi Karasu'daki dükkanımızda elde hazırlandı. Birine dokun, büyüt, aynısını ya da benzerini iste.</p>
+      </div>
+      <div class="chips" role="toolbar" aria-label="Galeriyi filtrele"><button type="button" class="chip on" data-f="hepsi" aria-pressed="true">Hepsi <em>81</em></button><button type="button" class="chip" data-f="buket" aria-pressed="false">Buketler <em>58</em></button><button type="button" class="chip" data-f="orkide" aria-pressed="false">Orkideler <em>9</em></button><button type="button" class="chip" data-f="kutu" aria-pressed="false">Kutu ve hediye <em>4</em></button><button type="button" class="chip" data-f="gelin" aria-pressed="false">Gelin arabası <em>4</em></button><button type="button" class="chip" data-f="bitki" aria-pressed="false">Saksı bitkileri <em>3</em></button><button type="button" class="chip" data-f="celenk" aria-pressed="false">Ayaklı çelenk <em>3</em></button></div>
+      <ul class="gal-grid" id="galGrid"></ul>
+      <div class="gal-more"><button type="button" class="btn btn-ghost" id="galMore">Daha fazla göster</button></div>
+    </div>
+    <div class="glb" id="glb" role="dialog" aria-modal="true" aria-label="Fotoğraf" hidden>
+      <button type="button" class="glb-x" aria-label="Kapat">×</button>
+      <button type="button" class="glb-nav pv" aria-label="Önceki fotoğraf">‹</button>
+      <figure><img alt=""><figcaption><span id="glbCap"></span><a class="btn btn-accent" id="glbAsk" href="#iletisim">Bunu sor</a></figcaption></figure>
+      <button type="button" class="glb-nav nx" aria-label="Sonraki fotoğraf">›</button>
     </div>
   </section>
 
@@ -914,6 +977,7 @@ body.lv-open{overflow:hidden}
 <a class="fab" href="#iletisim" data-wa data-msg="Merhaba, çiçek siparişi vermek istiyorum." aria-label="WhatsApp'tan sipariş ver"><span class="tip">Sipariş için yaz</span><span class="bub"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.7 11.7 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></span></a>
 
 
+<script>window.GALERI = [[85,"buket"],[84,"kutu"],[83,"buket"],[81,"buket"],[80,"buket"],[79,"buket"],[78,"buket"],[77,"buket"],[76,"buket"],[75,"orkide"],[74,"buket"],[73,"buket"],[72,"buket"],[70,"buket"],[69,"buket"],[68,"buket"],[67,"buket"],[66,"buket"],[65,"buket"],[64,"buket"],[63,"bitki"],[62,"bitki"],[61,"gelin"],[60,"bitki"],[59,"gelin"],[58,"gelin"],[57,"orkide"],[56,"buket"],[55,"buket"],[54,"orkide"],[53,"buket"],[52,"orkide"],[51,"buket"],[50,"orkide"],[49,"buket"],[48,"buket"],[47,"kutu"],[46,"buket"],[45,"buket"],[44,"buket"],[43,"buket"],[42,"celenk"],[41,"buket"],[40,"buket"],[39,"buket"],[38,"buket"],[37,"buket"],[36,"buket"],[35,"buket"],[34,"buket"],[32,"buket"],[31,"buket"],[30,"buket"],[29,"buket"],[28,"buket"],[27,"buket"],[26,"buket"],[25,"buket"],[24,"celenk"],[23,"celenk"],[22,"buket"],[21,"buket"],[20,"buket"],[19,"buket"],[18,"buket"],[17,"buket"],[16,"buket"],[15,"buket"],[14,"gelin"],[13,"orkide"],[12,"buket"],[11,"kutu"],[10,"buket"],[9,"orkide"],[8,"orkide"],[7,"kutu"],[6,"orkide"],[5,"buket"],[4,"buket"],[2,"buket"],[1,"buket"]];</script>
 <script src="assets/qrcode.js"></script>
 <script>
 (() => {
@@ -959,7 +1023,7 @@ body.lv-open{overflow:hidden}
     if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + id));
     else navLinks.forEach(a => { if (a.getAttribute('href') === '#' + id) a.classList.remove('on'); });
   }), { rootMargin: '-45% 0px -50% 0px' });
-  ['buketler', 'nasil', 'mektup', 'sss'].forEach(id => { const el = document.getElementById(id); if (el) navObs.observe(el); });
+  ['buketler', 'galeri', 'nasil', 'mektup', 'sss'].forEach(id => { const el = document.getElementById(id); if (el) navObs.observe(el); });
 
   /* ---------- split text (seeded, identical every load) ---------- */
   function rng(seed) { let s = seed >>> 0; return () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296; }
@@ -1589,6 +1653,67 @@ body.lv-open{overflow:hidden}
     addEventListener('keydown', e => { if (e.key === 'Escape' && lv.isConnected) close(); });
     fontReady().then(() => Letter.play($('.lv-canvas', lv), { msg: d.m }, lv));
     $('.lv-cta a', lv).focus({ preventScroll: true });
+  })();
+
+  /* ---------- gallery ---------- */
+  (function gallery() {
+    const items = window.GALERI || [], grid = $('#galGrid'), more = $('#galMore'), lb = $('#glb');
+    if (!grid || !items.length) return;
+    const NAMES = { buket: 'Buket', orkide: 'Orkide', kutu: 'Kutu ve hediye', gelin: 'Gelin arabası', bitki: 'Saksı bitkisi', celenk: 'Ayaklı çelenk' };
+    const pad = n => String(n).padStart(2, '0');
+    const PAGE = innerWidth < 900 ? 8 : 12;
+    let filter = 'hepsi', list = items, shown = 0, cur = 0, lastFocus = null;
+    function draw(reset) {
+      if (reset) { grid.textContent = ''; shown = 0; }
+      const next = list.slice(shown, shown + PAGE);
+      grid.append(...next.map(([n, c], i) => {
+        const li = document.createElement('li'); li.style.setProperty('--d', i);
+        const b = document.createElement('button'); b.type = 'button'; b.dataset.i = shown + i;
+        b.setAttribute('aria-label', NAMES[c] + ', fotoğraf ' + n + ', büyüt');
+        const im = new Image(); im.src = 'assets/galeri/kucuk/' + pad(n) + '.jpg'; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async'; im.width = 600; im.height = 800;
+        b.appendChild(im); li.appendChild(b); return li;
+      }));
+      shown += next.length;
+      more.hidden = shown >= list.length;
+    }
+    $$('.chip').forEach(ch => ch.addEventListener('click', () => {
+      filter = ch.dataset.f;
+      $$('.chip').forEach(x => { x.classList.toggle('on', x === ch); x.setAttribute('aria-pressed', x === ch); });
+      list = filter === 'hepsi' ? items : items.filter(it => it[1] === filter);
+      draw(true);
+    }));
+    more.addEventListener('click', () => draw(false));
+    draw(true);
+
+    /* lightbox: large photo, arrows, swipe, and a WhatsApp question that carries the photo link */
+    const img = $('img', lb), cap = $('#glbCap'), ask = $('#glbAsk');
+    const site = () => (/^https?:$/.test(location.protocol) ? location.origin + location.pathname.replace(/[^/]*$/, '') : 'https://dogukangencflowers.com/');
+    function show(i) {
+      cur = (i + list.length) % list.length;
+      const [n, c] = list[cur];
+      img.src = 'assets/galeri/' + pad(n) + '.jpg'; img.alt = NAMES[c] + ', fotoğraf ' + n;
+      cap.textContent = NAMES[c] + ' · No ' + n + ' · ' + (cur + 1) + ' / ' + list.length;
+      const msg = 'Merhaba, galerinizdeki ' + n + ' numaralı ' + NAMES[c].toLowerCase() + ' için fiyat almak istiyorum. ' + site() + 'assets/galeri/' + pad(n) + '.jpg';
+      ask.href = WA_NUMBER ? waHref(msg) : '#iletisim';
+      if (WA_NUMBER) { ask.target = '_blank'; ask.rel = 'noopener'; }
+      const nx = list[(cur + 1) % list.length]; new Image().src = 'assets/galeri/' + pad(nx[0]) + '.jpg';
+    }
+    function open(i) { lastFocus = document.activeElement; show(i); lb.hidden = false; document.documentElement.style.overflow = 'hidden'; $('.glb-x', lb).focus(); }
+    function close() { lb.hidden = true; document.documentElement.style.overflow = ''; if (lastFocus) lastFocus.focus({ preventScroll: true }); }
+    grid.addEventListener('click', e => { const b = e.target.closest('button[data-i]'); if (b) open(+b.dataset.i); });
+    $('.glb-x', lb).addEventListener('click', close);
+    $('.pv', lb).addEventListener('click', () => show(cur - 1));
+    $('.nx', lb).addEventListener('click', () => show(cur + 1));
+    ask.addEventListener('click', () => { if (!WA_NUMBER) close(); });
+    lb.addEventListener('click', e => { if (e.target === lb || e.target.tagName === 'FIGURE') close(); });
+    addEventListener('keydown', e => {
+      if (lb.hidden) return;
+      if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(cur - 1); else if (e.key === 'ArrowRight') show(cur + 1);
+      else if (e.key === 'Tab') { const f = $$('button, a', lb).filter(x => x.offsetParent), a = f[0], z = f[f.length - 1]; if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); } else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); } }
+    });
+    let sx = null;
+    lb.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1)); });
   })();
 
   /* ---------- pause on hidden tab ---------- */
