@@ -356,8 +356,14 @@ input,textarea{font-weight:400;font-size:1.05rem}
 #mektup .mk-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px);align-items:center}
 #mkForm{margin-top:30px}
 .mk-share{display:grid;gap:14px;margin-top:26px}
-.mk-share .row{display:flex;flex-wrap:wrap;gap:12px}
-.mk-share input{font-size:.95rem;color:var(--text-secondary)}
+.mk-share .mk-open{justify-self:start;min-height:52px;padding:14px 26px;font-size:1rem}
+.mk-share .mk-open svg{width:18px;height:18px}
+/* the letter, full screen over the page */
+.mk-full{position:fixed;inset:0;z-index:95;background:var(--canvas);animation:mkfull .45s var(--ease-out)}
+.mk-full iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mk-full .x{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;z-index:2;width:48px;height:48px;border-radius:50%;border:1px solid var(--line-strong);background:rgba(27,18,25,.7);color:var(--text-primary);font:300 1.9rem/1 var(--display);cursor:pointer;display:grid;place-items:center}
+.mk-full .x:hover{border-color:var(--accent)}
+@keyframes mkfull{from{opacity:0;transform:scale(.98)}}
 .mk-note{font:400 .8rem/1.4 var(--mono);letter-spacing:.1em;color:var(--accent-muted);min-height:1.2em}
 .mk-frame{position:relative;aspect-ratio:4/3.2;max-width:100%;border-radius:28px;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 50% 45%,rgba(227,163,160,.12),transparent 70%),linear-gradient(160deg,#241720,#170E14);outline:1px solid rgba(243,211,176,.28);outline-offset:12px;box-shadow:0 50px 100px -40px rgba(0,0,0,.8)}
 .mk-canvas{position:absolute;inset:0;width:100%;height:100%}
@@ -807,12 +813,7 @@ body.lv-open{overflow:hidden}
               <p>Bu QR, buketinle gelecek kartın üstünde olacak. Siparişini verirken mektubunu ekletmeyi unutma.</p>
             </div>
           </div>
-          <label for="mk-link">Mektubunun bağlantısı<input id="mk-link" type="text" readonly></label>
-          <div class="row">
-            <a class="btn btn-accent" id="mkOrder" href="#iletisim" target="_blank" rel="noopener">Siparişime ekle</a>
-            <button class="btn btn-ghost" type="button" id="mkCopy">Bağlantıyı kopyala</button>
-            <a class="btn btn-ghost" id="mkWa" href="#" target="_blank" rel="noopener">Kendin gönder</a>
-          </div>
+          <button class="btn btn-accent mk-open" type="button" id="mkOpen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Mektubu tam ekran aç</button>
         </div>
       </div>
       <div class="mk-stage reveal">
@@ -1349,15 +1350,31 @@ body.lv-open{overflow:hidden}
   const mkData = { to: 'Ayşe', msg: 'İyi ki varsın', from: 'Can' };
   const fontReady = () => (document.fonts && document.fonts.load) ? document.fonts.load('italic 500 80px "Cormorant Garamond"').catch(() => {}) : Promise.resolve();
   // preview without a server: the phone page asks, this page answers with the letter
-  let pendingPreview = null;
+  let pendingPreview = null, fullLetter = null, fullSrc = 'mektup.html?id=ornek';
   addEventListener('message', e => {
-    if (e.origin !== location.origin || !e.data || e.data.type !== 'dg-preview-ready' || !pendingPreview) return;
-    mkPhone.contentWindow.postMessage({ type: 'dg-preview', letter: pendingPreview }, location.origin);
+    if (e.origin !== location.origin || !e.data || e.data.type !== 'dg-preview-ready' || !e.source) return;
+    const fr = document.querySelector('.mk-full iframe'), letter = fr && e.source === fr.contentWindow ? fullLetter : pendingPreview;
+    if (letter) e.source.postMessage({ type: 'dg-preview', letter }, location.origin);
   });
+  // the letter full screen, over the page: the saved one, or this browser's preview when there is no server
+  function openFull() {
+    if ($('.mk-full')) return;
+    const d = document.createElement('div'); d.className = 'mk-full'; d.setAttribute('role', 'dialog'); d.setAttribute('aria-modal', 'true'); d.setAttribute('aria-label', 'Çiçek mektubu');
+    const f = document.createElement('iframe'); f.title = 'Çiçek mektubu'; f.allow = 'autoplay; encrypted-media; fullscreen';
+    f.src = fullLetter ? 'mektup.html?id=onizleme&t=' + Date.now() : fullSrc;
+    const x = document.createElement('button'); x.type = 'button'; x.className = 'x'; x.setAttribute('aria-label', 'Kapat'); x.textContent = '×';
+    const last = document.activeElement;
+    const close = () => { d.remove(); document.documentElement.style.overflow = ''; removeEventListener('keydown', esc); if (last) last.focus({ preventScroll: true }); };
+    const esc = e => { if (e.key === 'Escape') close(); };
+    x.addEventListener('click', close); addEventListener('keydown', esc);
+    d.append(f, x); document.body.appendChild(d); document.documentElement.style.overflow = 'hidden'; x.focus();
+  }
+  $('#mkOpen').addEventListener('click', openFull);
+  $('#mkFull').addEventListener('click', e => { e.preventDefault(); openFull(); });
   function showPreview(letter, live) {
     pendingPreview = letter;
     mkPhone.src = 'mektup.html?id=onizleme' + (live ? '&live=1' : '') + '&t=' + Date.now();
-    $('#mkTag').textContent = live ? 'Canlı önizleme' : 'Senin mektubun · önizleme'; $('#mkFull').hidden = true;
+    $('#mkTag').textContent = live ? 'Canlı önizleme' : 'Senin mektubun · önizleme';
   }
   // the phone shows the real letter page; it loads once the section comes near
   new IntersectionObserver((es, o) => { if (es[0].isIntersecting) { mkPhone.src = mkPhone.dataset.src; o.disconnect(); } }, { rootMargin: '300px' }).observe(mkPhone);
@@ -1484,19 +1501,10 @@ body.lv-open{overflow:hidden}
       showPreview({ to: mkData.to, head: mkData.msg, from: mkData.from, body: mkForm.body.value.trim(), song: sg || '', photos: mkPhotos.map(ph => ph.url) });
     }
     btn.disabled = false;
-    $('#mk-link').value = link;
-    if (!preview) { mkPhone.src = link; $('#mkFull').href = link; $('#mkFull').hidden = false; $('#mkTag').textContent = 'Senin mektubun'; }
+    if (preview) { fullLetter = pendingPreview; } else { fullLetter = null; fullSrc = link; mkPhone.src = link; $('#mkFull').href = link; $('#mkTag').textContent = 'Senin mektubun'; }
     $('#mkNote').textContent = preview ? 'Bu bir önizleme. Site yayındayken mektubun fotoğraflarıyla kaydedilir ve QR kodu oluşur.' : '';
     if (window.qrcode) { const q = qrcode(0, 'M'); q.addData(link); q.make(); $('#mkQr').innerHTML = q.createSvgTag({ cellSize: 4, margin: 12, scalable: true }); const pq = $('#mkQr path'); if (pq) pq.setAttribute('fill', '#2B1B25'); }
-    const orderMsg = 'Merhaba, çiçek siparişi vermek istiyorum. Buketin yanına bu mektubun QR kartını ekler misiniz? ' + link;
-    $('#mkOrder').href = WA_NUMBER ? waHref(orderMsg) : '#iletisim';
-    $('#mkWa').href = 'https://wa.me/?text=' + encodeURIComponent('Sana bir çiçek mektubu gönderdim. Aç bak: ' + link);
     $('#mkShare').hidden = false;
-  });
-  $('#mkCopy').addEventListener('click', () => {
-    const inp = $('#mk-link'), note = $('#mkNote');
-    const fallback = () => { inp.select(); note.textContent = 'Bağlantı seçildi, kopyalayabilirsin.'; };
-    try { navigator.clipboard.writeText(inp.value).then(() => { note.textContent = 'Kopyalandı.'; }, fallback); } catch (err) { fallback(); }
   });
 
   /* recipient view: open when the link carries a letter */
