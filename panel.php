@@ -10,7 +10,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FFF6EA'/%3E%3Cstop offset='1' stop-color='%23E3A3A0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%231B1219'/%3E%3Ccircle cx='32' cy='32' r='26' fill='none' stroke='url%28%23g%29' stroke-width='2'/%3E%3Ctext x='31.5' y='42' text-anchor='middle' font-family='Georgia,serif' font-style='italic' font-weight='700' font-size='26' letter-spacing='-1.5' fill='url%28%23g%29'%3EDG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Mono&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Mono&family=Jost:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme:dark;
@@ -18,7 +18,7 @@
   --line:rgba(205,184,180,.16);--line-strong:#6E5A66;
   --accent:#E3A3A0;--accent-hover:#EDB8B5;--sage:#A9BEAE;--danger:#E8877F;--ok:#9CC4A4;
   --text:#F5ECE8;--text-2:#CDBDB8;--text-3:#9C8A92;
-  --display:"Cormorant Garamond",Georgia,serif;--body:"Jost",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace;
+  --display:"Cormorant Garamond",Georgia,serif;--script:"Great Vibes","Cormorant Garamond",cursive;--body:"Jost",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace;
   --ease:cubic-bezier(.22,.8,.24,1);
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -60,7 +60,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 .login form{width:min(100%,400px);background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:36px 30px;display:grid;gap:18px;box-shadow:0 40px 90px -40px rgba(0,0,0,.8)}
 .login .logo{display:flex;align-items:center;gap:12px;margin-bottom:6px}
 .login .logo svg{width:40px;height:40px}
-.login .logo b{font:600 1.35rem/1 var(--display)}
+.login .logo b{font:400 2.1rem/1 var(--script);color:#FBE0D2}
 .login .logo small{display:block;font:400 .66rem/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--text-2);margin-top:3px}
 .login h1{font-size:2rem}
 .login .msg{min-height:1.4em;color:var(--danger);font-size:.95rem}
@@ -70,7 +70,7 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 .side{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:6px;padding:26px 16px;border-right:1px solid var(--line);background:var(--panel)}
 .side .logo{display:flex;align-items:center;gap:11px;padding:0 10px 22px}
 .side .logo svg{width:34px;height:34px;flex:none}
-.side .logo b{font:600 1.15rem/1 var(--display)}
+.side .logo b{font:400 1.8rem/1 var(--script);color:#FBE0D2}
 .side .logo small{display:block;font:400 .62rem/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--text-2);margin-top:3px}
 .tab{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border:0;border-radius:12px;background:none;color:var(--text-2);cursor:pointer;text-align:left;font-size:.98rem;text-decoration:none;transition:background .2s,color .2s}
 .tab svg{width:20px;height:20px;flex:none}
@@ -185,7 +185,7 @@ main{padding:clamp(22px,4vw,48px);padding-bottom:120px;max-width:1240px;width:10
   .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:30;padding:12px 16px;background:rgba(27,18,25,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
   .topbar .logo{display:flex;align-items:center;gap:10px}
   .topbar .logo svg{width:30px;height:30px}
-  .topbar .logo b{font:600 1.05rem/1 var(--display)}
+  .topbar .logo b{font:400 1.6rem/1 var(--script);color:#FBE0D2}
   .tabbar{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(36,24,33,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px))}
   .tabbar .tab{flex-direction:column;gap:4px;padding:8px 2px;font-size:.68rem;text-align:center;justify-content:center;border-radius:10px}
   .tabbar .tab svg{width:22px;height:22px}
@@ -209,7 +209,7 @@ main{padding:clamp(22px,4vw,48px);padding-bottom:120px;max-width:1240px;width:10
 <body>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-logo" viewBox="0 0 64 64"><defs><linearGradient id="dgG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF6EA"/><stop offset=".45" stop-color="#F7D3BE"/><stop offset="1" stop-color="#E3A3A0"/></linearGradient></defs><circle cx="32" cy="32" r="30.5" fill="#1B1219" fill-opacity=".45" stroke="url(#dgG)" stroke-width="1.4"/><circle cx="32" cy="32" r="26.6" fill="none" stroke="url(#dgG)" stroke-width=".6" stroke-opacity=".55"/><text x="31.5" y="41" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-style="italic" font-weight="600" font-size="26" letter-spacing="-1.6" fill="url(#dgG)">DG</text></symbol>
+  
   <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
   <symbol id="i-photo" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="10" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
   <symbol id="i-flower" viewBox="0 0 24 24"><path d="M12 3c-3 2.6-3.9 5.2-2.6 7.4.9 1.4 2.6 1.8 2.6 1.8s1.7-.4 2.6-1.8C15.9 8.2 15 5.6 12 3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 12v9M12 17c-2-.4-3.6-1.8-4.2-3.8M12 15.4c1.8-.4 3.2-1.4 3.8-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
@@ -231,7 +231,7 @@ main{padding:clamp(22px,4vw,48px);padding-bottom:120px;max-width:1240px;width:10
 <!-- login -->
 <section class="login" id="login" hidden>
   <form id="loginForm" novalidate>
-    <div class="logo"><svg aria-hidden="true"><use href="#i-logo"/></svg><div><b>Doğukan Genç</b><small>Flowers · Karasu</small></div></div>
+    <div class="logo"><div><b>Doğukan Genç</b><small>Flowers · Karasu</small></div></div>
     <div>
       <span class="kicker" id="loginKicker">Yönetim paneli</span>
       <h1 id="loginTitle">Hoş geldin</h1>
@@ -247,7 +247,7 @@ main{padding:clamp(22px,4vw,48px);padding-bottom:120px;max-width:1240px;width:10
 <!-- app -->
 <div class="app" id="app" hidden>
   <aside class="side">
-    <div class="logo"><svg aria-hidden="true"><use href="#i-logo"/></svg><div><b>Doğukan Genç</b><small>Yönetim paneli</small></div></div>
+    <div class="logo"><div><b>Doğukan Genç</b><small>Yönetim paneli</small></div></div>
     <button class="tab" data-v="ozet"><svg><use href="#i-home"/></svg>Özet</button>
     <button class="tab" data-v="galeri"><svg><use href="#i-photo"/></svg>Galeri</button>
     <button class="tab" data-v="buketler"><svg><use href="#i-flower"/></svg>Buket kartları</button>
@@ -260,7 +260,7 @@ main{padding:clamp(22px,4vw,48px);padding-bottom:120px;max-width:1240px;width:10
   </aside>
 
   <header class="topbar">
-    <div class="logo"><svg aria-hidden="true"><use href="#i-logo"/></svg><b>Panel</b></div>
+    <div class="logo"><b>Panel</b></div>
     <div style="display:flex;gap:8px">
       <a class="icon-btn" href="index.html" target="_blank" rel="noopener" aria-label="Siteyi aç"><svg><use href="#i-ext"/></svg></a>
       <button class="icon-btn" data-cikis aria-label="Çıkış yap"><svg><use href="#i-out"/></svg></button>
