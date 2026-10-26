@@ -115,7 +115,9 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .ib-quote{margin-top:18px;font:italic 400 clamp(2.3rem,5.4vw,5.4rem)/1.05 var(--display);letter-spacing:-.02em;text-wrap:balance}
 .ib-quote .line{display:block;--kq:clamp(0,var(--k,0)*2,1);opacity:var(--kq);transform:translateY(calc((1 - var(--kq))*24px))}
 .ib-quote .line + .line{--kq:clamp(0,(var(--k,0) - .25)*2,1);color:var(--accent)}
-.sign{display:block;font:italic 600 min(14vw,143px)/1.08 var(--display);letter-spacing:-.02em;white-space:nowrap;color:#FFF5EC;text-shadow:0 0 22px rgba(255,214,196,.55),0 2px 8px rgba(10,5,8,.75);padding:.1em .12em .22em;margin:-.1em 0 -.22em;-webkit-mask-image:linear-gradient(90deg,#000 var(--sm,100%),transparent calc(var(--sm,100%) + 14%));mask-image:linear-gradient(90deg,#000 var(--sm,100%),transparent calc(var(--sm,100%) + 14%))}
+.sign{width:min(84vw,860px);height:auto;overflow:visible}
+/* fill and stroke offset are SVG attributes set by the scene loop (CSS-driven values left iPhone Safari stuck half-filled) */
+.sign text{font:italic 600 150px var(--display);letter-spacing:-.02em;fill:#FFF5EC;stroke:#FFE6D8;stroke-width:1.6;stroke-dasharray:900}
 .i3 .ib-kicker{margin-top:10px;opacity:clamp(0,(var(--k,0) - .6)*3,1)}
 
 /* split text */
@@ -610,7 +612,7 @@ body.lv-open{overflow:hidden}
         <p class="ib-quote"><span class="line">Kalbinden geçeni</span><span class="line">çiçeğe dönüştürüyoruz.</span></p>
       </div>
       <div class="band ib i3" data-a="0.50" data-b="0.72" data-ramp="0.10" aria-hidden="true">
-        <span class="sign">Doğukan Genç</span>
+        <svg class="sign" viewBox="0 0 900 200"><text x="450" y="140" text-anchor="middle" fill-opacity="0" stroke-dashoffset="900">Doğukan Genç</text></svg>
         <span class="ib-kicker">Flowers · Karasu</span>
       </div>
       <div class="band b4 fx-rise" data-a="0.72" data-b="1.0" data-ramp="0.08">
@@ -983,7 +985,7 @@ body.lv-open{overflow:hidden}
   const posterLayer = $('.poster', stage), endingLayer = $('.ending', stage), ring = $('.ring', stage);
   const bands = $$('.band', stage).map((el, i, arr) => ({
     el, a: +el.dataset.a, b: +el.dataset.b, ramp: el.dataset.ramp ? +el.dataset.ramp : null,
-    first: i === 0, last: i === arr.length - 1, op: -1, k: -1, sg: $('.sign', el)
+    first: i === 0, last: i === arr.length - 1, op: -1, k: -1, sg: $('.sign text', el)
   }));
   const heroProgress = () => {
     const r = hero.getBoundingClientRect();
@@ -1006,8 +1008,8 @@ body.lv-open{overflow:hidden}
         b.el.style.pointerEvents = o > 0.5 ? 'auto' : 'none';
       }
       if (Math.abs(k - b.k) > 0.008 || (k === 1 && b.k !== 1) || (k === 0 && b.k !== 0)) { b.k = k; b.el.style.setProperty('--k', k.toFixed(3));
-        // the name is written in from left to right; set inline so iPhone Safari repaints it as reliably as a desktop browser
-        if (b.sg) { const m = (clamp(k * 1.4, 0, 1) * 114 - 14).toFixed(1); b.sg.style.webkitMaskImage = b.sg.style.maskImage = 'linear-gradient(90deg,#000 ' + m + '%,transparent ' + (+m + 14) + '%)'; }
+        // the name is drawn as an outline, then fills; set as attributes so iPhone Safari repaints it like a desktop browser
+        if (b.sg) { b.sg.setAttribute('fill-opacity', clamp((k - .55) * 2.6, 0, 1).toFixed(3)); b.sg.setAttribute('stroke-dashoffset', ((1 - clamp(k * 1.5, 0, 1)) * 900).toFixed(1)); }
       }
     }
     if (videoFailed) {
@@ -1124,7 +1126,7 @@ body.lv-open{overflow:hidden}
     if (!scrubOn) return; scrubOn = false;
     removeEventListener('scroll', onScroll);
     if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
-    bands.forEach(b => { b.el.style.removeProperty('opacity'); b.el.style.removeProperty('--k'); if (b.sg) b.sg.removeAttribute('style'); b.el.style.removeProperty('pointer-events'); b.op = -1; b.k = -1; });
+    bands.forEach(b => { b.el.style.removeProperty('opacity'); b.el.style.removeProperty('--k'); if (b.sg) { b.sg.setAttribute('fill-opacity', '0'); b.sg.setAttribute('stroke-dashoffset', '900'); } b.el.style.removeProperty('pointer-events'); b.op = -1; b.k = -1; });
   }
   function applyHeroMode() { if (GATES.some(q => matchMedia(q).matches)) disableScrub(); else enableScrub(); }
   const MQLS = GATES.map(q => matchMedia(q));
