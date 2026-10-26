@@ -178,45 +178,6 @@ main{position:relative}
 .reveal.in .part{opacity:1;transform:none}
 .reveal.done .part{transition-delay:0s}
 
-/* 1. the language of flowers: pinned, one flower blooms per screen */
-#dil{position:relative;height:580vh}
-#dil::before{content:"";position:absolute;left:0;right:0;top:0;height:26vh;z-index:4;pointer-events:none;background:linear-gradient(var(--canvas),rgba(27,18,25,0))}
-#dil .pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
-.dil-head{position:absolute;top:clamp(84px,13vh,130px);left:0;z-index:3}
-.dil-head h2{font:300 clamp(1.5rem,2.2vw,2.1rem)/1.1 var(--display);margin-top:10px;color:var(--text-secondary)}
-.dil-nav{position:absolute;z-index:3;right:max(clamp(16px,6vw,96px),env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);list-style:none;margin:0;padding:0;display:grid;gap:14px;text-align:right}
-.dil-nav li{font:400 .72rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--text-secondary);opacity:.45;display:flex;align-items:center;justify-content:flex-end;gap:10px;transition:opacity .5s var(--ease-soft),color .5s var(--ease-soft)}
-.dil-nav li::after{content:"";width:18px;height:1px;background:currentColor;transform:scaleX(.5);transform-origin:right;transition:transform .5s var(--ease-out)}
-.dil-nav li.on{opacity:1;color:var(--accent)}
-.dil-nav li.on::after{transform:scaleX(1.6)}
-.slides{position:absolute;inset:0}
-.fl{position:absolute;inset:0;opacity:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;padding-left:max(clamp(16px,6vw,96px),env(safe-area-inset-left,0px));padding-right:max(clamp(120px,14vw,220px),env(safe-area-inset-right,0px))}
-.fl .glow{position:absolute;left:58%;top:50%;width:80vmin;height:80vmin;margin:-40vmin 0 0 -40vmin;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 66%);transform:scale(calc(.6 + .4*var(--k,0)))}
-.fl .giant{position:absolute;left:0;right:0;top:50%;text-align:center;font:italic 300 clamp(5rem,19vw,19rem)/1 var(--display);letter-spacing:-.03em;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(245,236,232,.16);transform:translate3d(calc((1 - var(--k,0)) * 14vw + var(--x,0) * -10vw),-50%,0);pointer-events:none}
-.fl .media{grid-column:2;grid-row:1;justify-self:center;position:relative;width:min(70vh,42vw);aspect-ratio:1;max-width:100%;-webkit-mask-image:radial-gradient(circle at 50% 50%,#000 46%,transparent 71%);mask-image:radial-gradient(circle at 50% 50%,#000 46%,transparent 71%);transform:scale(calc(.86 + .14*var(--k,0) - var(--x,0)*.12)) translateY(calc(var(--x,0) * -6vh))}
-.fl .media img,.fl .media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.fl .media video{opacity:0;transition:opacity .8s var(--ease-soft);transform:translateZ(0)}
-.fl.vready .media video{opacity:1}
-.fl .say{grid-column:1;grid-row:1;position:relative;z-index:2;max-width:30rem}
-.fl .say .kicker{display:block;opacity:clamp(0,var(--k,0)*3,1)}
-.fl h3{font:400 clamp(3.4rem,7vw,7rem)/.95 var(--display);letter-spacing:-.02em;margin:18px 0 22px;--kh:clamp(0,(var(--k,0) - .1)*2.4,1);opacity:var(--kh);transform:translateY(calc((1 - var(--kh)) * 40px))}
-.fl .line{font:300 clamp(1.25rem,1.7vw,1.6rem)/1.4 var(--display);font-style:italic;max-width:24ch;--kl:clamp(0,(var(--k,0) - .3)*2.6,1);opacity:var(--kl);transform:translateY(calc((1 - var(--kl)) * 20px))}
-.fl .when{color:var(--text-secondary);margin-top:14px;font-size:.98rem;--kw:clamp(0,(var(--k,0) - .45)*3,1);opacity:var(--kw)}
-.fl .link{display:inline-block;margin-top:26px;font:400 .76rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);text-decoration:none;padding:12px 0;border-bottom:1px solid rgba(227,163,160,.4);--kb:clamp(0,(var(--k,0) - .55)*3,1);opacity:var(--kb);transition:border-color .3s var(--ease-soft)}
-.fl .link:hover{border-color:var(--accent)}
-@media (max-width:820px), (orientation: portrait){
-  #dil{height:560vh}
-  .dil-head{top:clamp(78px,11vh,110px)}
-  .dil-nav{top:auto;bottom:24px;transform:none;left:16px;right:16px;display:flex;justify-content:center;gap:8px}
-  .dil-nav li{font-size:0;gap:0}
-  .dil-nav li::after{width:22px;transform:scaleX(1)}
-  .fl{grid-template-columns:1fr;grid-template-rows:auto auto;align-content:center;row-gap:10px;padding:0 max(20px,env(safe-area-inset-right,0px)) 0 max(20px,env(safe-area-inset-left,0px));padding-top:14vh}
-  .fl .media{grid-column:1;grid-row:1;width:min(46vh,82vw)}
-  .fl .say{grid-column:1;grid-row:2}
-  .fl h3{font-size:clamp(2.8rem,13vw,4.4rem);margin:10px 0 12px}
-  .fl .glow{left:50%;top:38%}
-  .fl .giant{top:36%;font-size:30vw}
-}
 
 /* 2. marquee: endless drift, speeds and leans with the scroll, flowers peek on hover */
 .marquee{position:relative;overflow:hidden;padding:clamp(30px,5.5vh,60px) 0;border-block:1px solid var(--line);display:grid;gap:clamp(6px,1.6vh,18px)}
@@ -316,12 +277,8 @@ footer{position:relative;overflow:hidden;padding-top:clamp(80px,12vh,140px);padd
   *,*::before,*::after{animation:none!important;transition:none!important;transition-delay:0s!important}
   .reveal .part{opacity:1;transform:none}
   .env .petal{display:none}
-  #dil,#buketler{height:auto}
-  #dil .pin,#buketler .pin{position:relative;height:auto;padding:120px 0}
-  .dil-head{position:relative;top:auto}
-  .dil-nav{display:none}
-  .slides{position:relative}
-  .fl{position:relative;opacity:1!important;--k:1!important;--x:0!important;min-height:80vh}
+  #buketler{height:auto}
+  #buketler .pin{position:relative;height:auto;padding:120px 0}
   #buketler .pin{overflow-x:auto}
   .marquee .row{transform:none!important}
   #buketler .rail{transform:none}
@@ -371,11 +328,7 @@ h1,h2,h3{font-weight:500}
 .kicker{font-size:.82rem;letter-spacing:.14em;color:#A9BEAE}
 .nav ul a{font-size:1rem;font-weight:500;color:var(--text-primary)}
 .head p{font-size:1.15rem}
-.dil-head h2{font-weight:500;color:var(--text-primary)}
-.fl h3{font-weight:500}
-.fl .line{font-weight:500;font-size:clamp(1.35rem,1.8vw,1.7rem)}
-.fl .when{font-size:1.05rem}
-.fl .link,.bq a,.endcard a.link{font-size:.84rem}
+.bq a,.endcard a.link{font-size:.84rem}
 .bq h3{font-weight:500}
 .bq p,.endcard p{font-size:1.05rem}
 .marquee .r2{font-weight:400}
@@ -388,8 +341,6 @@ input,textarea{font-weight:400;font-size:1.05rem}
 .cardnote{font-size:.8rem}
 .brand small{font-size:.7rem}
 .gal-count{font-size:.8rem}
-.dil-nav li{font-size:.8rem;opacity:.6}
-@media (max-width:820px), (orientation: portrait){.dil-nav li{font-size:0}}
 
 /* ---------- rose gold brand name ---------- */
 .rg{background:linear-gradient(100deg,#E3A3A0 0%,#EDBFA8 22%,#F7DFC2 40%,#FFF4E4 50%,#F2CDB0 62%,#E6A9A0 80%,#E3A3A0 100%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;text-shadow:none;animation:shine 9s linear infinite}
@@ -400,31 +351,6 @@ input,textarea{font-weight:400;font-size:1.05rem}
 .brandline-hero .loc{font:400 .8rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--text-primary);text-shadow:var(--tshadow)}
 @media (prefers-reduced-motion: reduce){.rg{animation:none;background-position:50% 0}}
 
-/* ---------- flower language: no frame, the bloom fades into the dark ---------- */
-.fl{padding-top:clamp(140px,21vh,210px);padding-bottom:4vh}
-.fl .media{width:min(66vh,40vw);aspect-ratio:1;--fe:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent),linear-gradient(transparent,#000 9%,#000 91%,transparent);-webkit-mask-image:var(--fe);mask-image:var(--fe);-webkit-mask-composite:source-in;mask-composite:intersect}
-.fl .glow{left:auto;right:calc(max(clamp(120px,14vw,220px),env(safe-area-inset-right,0px)) + 25vw - 40vmin);top:56%}
-.fl .giant{top:auto;bottom:-.16em;font-size:clamp(5rem,16vw,16rem);-webkit-text-stroke:1px rgba(243,211,176,.22);transform:translate3d(calc((1 - var(--k,0)) * 8vw + var(--x,0) * -6vw),0,0)}
-.fl h3 .dot{color:var(--accent)}
-.fl .say .kicker{color:#E8C9B0;letter-spacing:.18em}
-@media (max-width:820px), (orientation: portrait){
-  .fl{padding-top:clamp(120px,16vh,150px)}
-  .fl .media{width:min(44vh,86vw)}
-  .fl .glow{left:50%;right:auto;top:34%}
-  .fl .giant{bottom:auto;top:34%;font-size:28vw;transform:translate3d(calc((1 - var(--k,0)) * 8vw),-50%,0)}
-  .fl h3{font-size:clamp(2.6rem,12vw,4rem)}
-  .fl{row-gap:26px}
-}
-/* short phones: a smaller bloom so the words and the link clear the dots and the order button */
-@media (max-width:820px) and (max-height:720px){
-  .fl .media{width:min(34vh,72vw)}
-  .fl{padding-top:clamp(96px,14vh,120px);row-gap:14px}
-  .fl h3{font-size:clamp(2.2rem,10vw,3rem);margin:10px 0 12px}
-  .fl .line{font-size:1.15rem}
-  .fl .when{font-size:.95rem;margin-top:8px}
-  .fl .link{margin-top:12px;padding:10px 0}
-}
-@media (min-width:821px) and (orientation: landscape) and (max-height:760px){.fl .giant{display:none}.fl .media{width:min(56vh,34vw)}}
 
 /* ---------- digital flower letter ---------- */
 #mektup .mk-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px);align-items:center}
@@ -682,77 +608,6 @@ body.lv-open{overflow:hidden}
 
 <main id="main" tabindex="-1">
 
-  <section id="dil" aria-labelledby="dil-h" data-scrub="pin">
-    <div class="pin">
-      <div class="dil-head gut">
-        <span class="kicker">Çiçeklerin dili</span>
-        <h2 id="dil-h">Her çiçeğin bir sözü var.</h2>
-      </div>
-      <ol class="dil-nav" aria-hidden="true"><li>Pembe gül</li><li>Beyaz gül</li><li>Ranunculus</li><li>Şakayık</li><li>Okaliptüs</li></ol>
-      <div class="slides">
-        <article class="fl" data-flower="gul" style="--glow:rgba(227,140,150,.30)">
-          <div class="glow" aria-hidden="true"></div>
-          <span class="giant" aria-hidden="true">Gül</span>
-          <div class="media" aria-hidden="true"><img class="still" src="assets/fl-gul.jpg" alt="" loading="lazy" width="720" height="720"><video class="flv" data-src="assets/fl-gul.mp4" muted playsinline preload="none" tabindex="-1"></video></div>
-          <div class="say">
-            <span class="kicker">01 · Pembe gül</span>
-            <h3>Hayranlık<span class="dot">.</span></h3>
-            <p class="line">Sana bakmaya doyamıyorum demenin en kısa yolu.</p>
-            <p class="when">Sevgiliye, ilk buluşmaya, yıl dönümüne.</p>
-            <a class="link" href="#iletisim" data-wa data-msg="Merhaba, içinde pembe gül olan bir buket istiyorum.">Bu sözle buket iste</a>
-          </div>
-        </article>
-        <article class="fl" data-flower="lisianthus" style="--glow:rgba(235,226,240,.22)">
-          <div class="glow" aria-hidden="true"></div>
-          <span class="giant" aria-hidden="true">Beyaz</span>
-          <div class="media" aria-hidden="true"><img class="still" src="assets/fl-lisianthus.jpg" alt="" loading="lazy" width="720" height="720"><video class="flv" data-src="assets/fl-lisianthus.mp4" muted playsinline preload="none" tabindex="-1"></video></div>
-          <div class="say">
-            <span class="kicker">02 · Beyaz gül</span>
-            <h3>Saygı<span class="dot">.</span></h3>
-            <p class="line">Teşekkürün ve saygının en zarif hali.</p>
-            <p class="when">Öğretmene, doktora, emeği geçen herkese.</p>
-            <a class="link" href="#iletisim" data-wa data-msg="Merhaba, içinde beyaz gül olan bir buket istiyorum.">Bu sözle buket iste</a>
-          </div>
-        </article>
-        <article class="fl" data-flower="ranunculus" style="--glow:rgba(240,165,120,.26)">
-          <div class="glow" aria-hidden="true"></div>
-          <span class="giant" aria-hidden="true">Ranunculus</span>
-          <div class="media" aria-hidden="true"><img class="still" src="assets/fl-ranunculus.jpg" alt="" loading="lazy" width="720" height="720"><video class="flv" data-src="assets/fl-ranunculus.mp4" muted playsinline preload="none" tabindex="-1"></video></div>
-          <div class="say">
-            <span class="kicker">03 · Ranunculus</span>
-            <h3>Çekicilik<span class="dot">.</span></h3>
-            <p class="line">Söylemesi zor olanı katman katman anlatır.</p>
-            <p class="when">Yeni tanıştığın birine, cesaret isteyen bir güne.</p>
-            <a class="link" href="#iletisim" data-wa data-msg="Merhaba, içinde ranunculus olan bir buket istiyorum.">Bu sözle buket iste</a>
-          </div>
-        </article>
-        <article class="fl" data-flower="sakayik" style="--glow:rgba(232,170,190,.28)">
-          <div class="glow" aria-hidden="true"></div>
-          <span class="giant" aria-hidden="true">Şakayık</span>
-          <div class="media" aria-hidden="true"><img class="still" src="assets/fl-sakayik.jpg" alt="" loading="lazy" width="720" height="720"><video class="flv" data-src="assets/fl-sakayik.mp4" muted playsinline preload="none" tabindex="-1"></video></div>
-          <div class="say">
-            <span class="kicker">04 · Şakayık</span>
-            <h3>Mutluluk<span class="dot">.</span></h3>
-            <p class="line">Yeni bir başlangıca, bolluğa ve şansa.</p>
-            <p class="when">Düğüne, yeni eve, yeni işe.</p>
-            <a class="link" href="#iletisim" data-wa data-msg="Merhaba, içinde şakayık olan bir buket istiyorum.">Bu sözle buket iste</a>
-          </div>
-        </article>
-        <article class="fl" data-flower="okaliptus" style="--glow:rgba(143,175,152,.26)">
-          <div class="glow" aria-hidden="true"></div>
-          <span class="giant" aria-hidden="true">Okaliptüs</span>
-          <div class="media" aria-hidden="true"><img class="still" src="assets/fl-okaliptus.jpg" alt="" loading="lazy" width="720" height="720"><video class="flv" data-src="assets/fl-okaliptus.mp4" muted playsinline preload="none" tabindex="-1"></video></div>
-          <div class="say">
-            <span class="kicker">05 · Okaliptüs</span>
-            <h3>İyileşme<span class="dot">.</span></h3>
-            <p class="line">Yanındayım demenin sessiz yolu.</p>
-            <p class="when">Geçmiş olsun ziyaretine, zor bir haftaya.</p>
-            <a class="link" href="#iletisim" data-wa data-msg="Merhaba, içinde okaliptüs olan bir buket istiyorum.">Bu sözle buket iste</a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
 
   <div class="marquee" aria-hidden="true">
     <div class="row r1" data-dir="-1" data-speed="38"><div class="set"><span class="w" data-img=gul>Gül</span><i></i><span class="w" data-img=lilyum>Lilyum</span><i></i><span class="w" data-img=orkide>Orkide</span><i></i><span class="w" data-img=papatya>Papatya</span><i></i><span class="w" data-img=aycicegi>Ayçiçeği</span><i></i><span class="w" data-img=lale>Lale</span><i></i><span class="w" data-img=gerbera>Gerbera</span><i></i><span class="w" data-img=krizantem>Krizantem</span><i></i></div><div class="set"><span class="w" data-img=gul>Gül</span><i></i><span class="w" data-img=lilyum>Lilyum</span><i></i><span class="w" data-img=orkide>Orkide</span><i></i><span class="w" data-img=papatya>Papatya</span><i></i><span class="w" data-img=aycicegi>Ayçiçeği</span><i></i><span class="w" data-img=lale>Lale</span><i></i><span class="w" data-img=gerbera>Gerbera</span><i></i><span class="w" data-img=krizantem>Krizantem</span><i></i></div></div>
@@ -1244,28 +1099,6 @@ body.lv-open{overflow:hidden}
   }), { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
   $$('.reveal').forEach(el => io.observe(el));
 
-  /* ---------- the language of flowers: real bloom videos, scrubbed ---------- */
-  async function loadFlower(sl) {
-    if (sl.loading) return; sl.loading = true;
-    const v = sl.v, url = v.dataset.src;
-    const ready = () => { v.addEventListener('loadeddata', () => { const pr = v.play(); if (pr) pr.then(() => v.pause()).catch(() => {}); sl.el.classList.add('vready'); sl.want = -1; scenes[0].s = -1; kickScenes(); }, { once: true }); };
-    try {
-      const res = await fetch(url, { priority: 'low' });
-      if (!res.ok) throw 0;
-      v.dataset.blob = '1'; ready(); v.src = URL.createObjectURL(await res.blob()); v.load();
-    } catch (e) { v.dataset.blob = ''; v.preload = 'auto'; ready(); v.src = url; v.load(); }
-    v.addEventListener('error', () => { if (v.dataset.blob) { v.dataset.blob = ''; ready(); v.src = url; v.load(); } else sl.el.classList.remove('vready'); });
-    v.addEventListener('seeked', () => { sl.busy = false; if (sl.pend !== null) { const t = sl.pend; sl.pend = null; seekFlower(sl, t); } });
-  }
-  function seekFlower(sl, t) {
-    const v = sl.v; if (!v.duration) return;
-    if (sl.busy) { sl.pend = t; return; }
-    sl.busy = true; v.currentTime = t;
-  }
-  const dil = $('#dil'), dilNav = $$('.dil-nav li', dil);
-  const slides = $$('.fl', dil).map((el, i, arr) => ({ el, i, n: arr.length, c: {}, op: -1, v: $('video', el), busy: false, pend: null, want: -1 }));
-  new IntersectionObserver((es, o) => { if (es[0].isIntersecting && !rmq.matches) { slides.forEach(loadFlower); o.disconnect(); } }, { rootMargin: '150% 0px' }).observe(dil);
-  let dilActive = -1;
 
   /* ---------- scroll scenes: one loop, eased, rests when converged ---------- */
   const setVar = (el, name, v, cache, key) => { if (Math.abs(v - (cache[key] ?? -9)) > 0.002 || (v === 1 && cache[key] !== 1) || (v === 0 && cache[key] !== 0)) { cache[key] = v; el.style.setProperty(name, v.toFixed(4)); } };
@@ -1284,22 +1117,6 @@ body.lv-open{overflow:hidden}
   const journey = $('.journey'), steps = $$('.step', journey).map(el => ({ el, c: {} }));
   const foot = $('footer');
   const scenes = [
-    { el: dil, mode: 'pin', s: 0, c: {}, draw(p) {
-        const f = 0.035;
-        slides.forEach(sl => {
-          const a = sl.i / sl.n, b = (sl.i + 1) / sl.n, first = sl.i === 0, last = sl.i === sl.n - 1;
-          const op = (first ? 1 : smoothstep(p, a - f / 2, a + f / 2)) * (last ? 1 : 1 - smoothstep(p, b - f / 2, b + f / 2));
-          if (Math.abs(op - sl.op) > 0.004 || (op !== sl.op && (op === 0 || op === 1))) { sl.op = op; sl.el.style.opacity = op.toFixed(3); sl.el.style.visibility = op === 0 ? 'hidden' : 'visible'; sl.el.style.pointerEvents = op > 0.5 ? 'auto' : 'none'; }
-          setVar(sl.el, '--k', clamp((p - a + (first ? 0.06 : 0)) / ((b - a) * 0.5), 0, 1), sl.c, 'k');
-          setVar(sl.el, '--x', last ? 0 : clamp((p - (b - 0.05)) / 0.06, 0, 1), sl.c, 'x');
-          if (sl.v.duration && op > 0) {
-            const bt = clamp((p - a + (first ? 0.04 : 0.01)) / ((b - a) * 0.8), 0, 1) * (sl.v.duration - 0.05);
-            if (Math.abs(bt - sl.want) > 0.02) { sl.want = bt; seekFlower(sl, bt); }
-          }
-        });
-        const act = Math.min(slides.length - 1, Math.floor(p * slides.length));
-        if (act !== dilActive) { dilNav.forEach((li, i) => li.classList.toggle('on', i === act)); dilActive = act; }
-      } },
     { el: gal, mode: 'pin', s: 0, c: {}, skip: () => PHONE.matches, draw(p) {
         const max = Math.max(0, rail.scrollWidth - innerWidth);
         setVar(rail, '--gx', p * max, this.c, 'gx');

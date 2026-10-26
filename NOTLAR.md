@@ -6,7 +6,7 @@ Son güncelleme: 26 Ekim 2026. Depo: https://github.com/Burakdeity/dogukan-genc-
 
 | Sayfa | Ne işe yarar |
 |---|---|
-| `index.html` | Ana sayfa: kaydırmalı giriş videosu, çiçeklerin dili, buket kartları, galeri şeridi, nasıl çalışır, çiçek mektubu formu, iletişim ve harita |
+| `index.html` | Ana sayfa: kaydırmalı giriş videosu, buket kartları, galeri şeridi, nasıl çalışır, çiçek mektubu formu, iletişim ve harita |
 | `galeri.html` | Tüm galeri: filtreler, büyük görünüm, "Bunu sor" (WhatsApp) |
 | `bakim.html` | Çiçek bakımı: ilk 5 dakika, 9 çiçek için bakım rehberi, sorular (ana sayfadan buraya taşındı) |
 | `mektup.html` | Dijital çiçek mektubu: zarf, gül yaprakları, fotoğraflar, kişiye özel plak ve şarkı |
@@ -37,11 +37,17 @@ Sunucu dosyaları (PHP): `mektup-api.php` (mektup kaydet / aç), `mektup-yukle.p
 3. Site: http://localhost/cicek/dogukan-genc-flowers/ — Panel: …/panel.php
 4. `guncelle.bat` açık kaldıkça GitHub'daki yeni sürüm otomatik iner; sonra tarayıcıda Ctrl + F5.
 
+## Mobil
+
+- Telefonlar ve dikey ekranlar `hero-scrub-m.mp4` kullanır (dikey kesim, her kare anahtar kare: kaydırırken ucuz). Bilgisayar `hero-scrub.mp4`.
+- Telefonda buketler kaydırmalı şerit; menü arkası bulanıklığı, hareketli arka plan ışıkları ve şerit maskesi kapalı.
+- "Çiçeklerin dili" bölümü 26 Ekim'de kaldırıldı (ağırdı, çiçekler dükkanda yoktu).
+
 ## Sırada / bekleyenler
 
 - [ ] **Şarkının kendiliğinden başlaması**: gerçek Spotify ve YouTube ile telefonda dene (sahte oynatıcıyla test edildi).
+- [ ] **Mobil akıcılık**: gerçek telefonda kontrol et (burada sadece yavaş telefon taklidi yapılabildi).
 - [ ] **Harita**: Google Haritalar'ın doğru yeri gösterdiğini kontrol et (bu ortamdan Google'a bağlanılamadı).
-- [ ] **"Çiçeklerin dili"** bölümündeki şakayık, ranunculus, okaliptüs videoları dükkanda yok; gerçekten satılan çiçeklerle (lilyum, orkide, ayçiçeği…) değiştirilsin mi? Kullanıcıya soruldu, cevap bekleniyor.
 - [ ] **Hostinger'a yükleme**: alan adı belli olunca.
   - `index.html` içindeki `og:url` ve `og:image` hâlâ `example.com` (WhatsApp'ta paylaşım önizlemesi için gerçek adres yazılmalı).
   - `kart.html` "Sitenin adresi" varsayılanı `https://dogukangencflowers.com/`.
