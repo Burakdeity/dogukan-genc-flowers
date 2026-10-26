@@ -532,7 +532,7 @@ body.lv-open{overflow:hidden}
 #uzat{position:relative;height:240vh}
 .uz-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center}
 .uz-glow{position:absolute;right:8%;top:50%;width:70vmin;height:70vmin;margin-top:-35vmin;border-radius:50%;background:radial-gradient(circle,rgba(227,163,160,.26),rgba(227,163,160,0) 66%);opacity:var(--u,0);transform:scale(calc(.6 + .4 * var(--u,0)));pointer-events:none}
-.uz-el{position:absolute;right:0;bottom:-3vh;height:min(94vh,1000px);aspect-ratio:1107/1337;transform:translate3d(calc((1 - var(--u,0)) * 105%),0,0) rotate(calc((1 - var(--u,0)) * 10deg));transform-origin:100% 75%;will-change:transform}
+.uz-el{position:absolute;right:0;bottom:-3vh;height:min(94vh,1000px);aspect-ratio:1700/1964;transform:translate3d(calc((1 - var(--u,0)) * 105%),0,0) rotate(calc((1 - var(--u,0)) * 10deg));transform-origin:100% 75%;will-change:transform}
 .uz-el img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 40px 50px rgba(8,4,7,.6))}
 .uz-txt{position:relative;z-index:2;max-width:min(560px,46vw);--tt:clamp(0,var(--t,0),1)}
 .uz-txt .kicker{display:block;margin-bottom:18px;opacity:var(--tt)}
@@ -638,7 +638,7 @@ body.lv-open{overflow:hidden}
       </div>
       <picture class="uz-el">
         <source media="(max-width: 820px)" srcset="assets/el-buket-m.webp">
-        <img src="assets/el-buket.webp" alt="Doğukan Genç Flowers'ta hazırlanan buket, sağdan uzanan bir elde" width="1107" height="1337" loading="lazy" decoding="async">
+        <img src="assets/el-buket.webp" alt="Doğukan Genç Flowers'ta hazırlanan buket, sağdan uzanan bir elde" width="1700" height="1964" loading="lazy" decoding="async">
       </picture>
     </div>
   </section>
@@ -1169,7 +1169,7 @@ body.lv-open{overflow:hidden}
       } },
     { el: foot, mode: 'view', s: 0, c: {}, draw(p) { setVar(foot, '--p', clamp(p / 0.85, 0, 1), this.c, 'p'); } }
   ];
-  const near = new IntersectionObserver(es => es.forEach(e => { const sc = scenes.find(s => s.el === e.target); if (sc) sc.on = e.isIntersecting; }), { rootMargin: '25% 0px 25% 0px' });
+  const near = new IntersectionObserver(es => { es.forEach(e => { const sc = scenes.find(s => s.el === e.target); if (sc) sc.on = e.isIntersecting; }); kickScenes(); }, { rootMargin: '25% 0px 25% 0px' });   // a jump straight into a scene redraws it at once
   scenes.forEach(s => near.observe(s.el));
   let sceneRaf = null, sceneLast = 0, scenesLive = true;
   function sceneTick(now) {

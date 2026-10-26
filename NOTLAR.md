@@ -42,7 +42,7 @@ Sunucu dosyaları (PHP): `mektup-api.php` (mektup kaydet / aç), `mektup-yukle.p
 - Telefonlar ve dikey ekranlar `hero-scrub-m.mp4` kullanır (dikey kesim, her kare anahtar kare: kaydırırken ucuz). Bilgisayar `hero-scrub.mp4`.
 - Telefonda menü arkası bulanıklığı, hareketli arka plan ışıkları ve şerit maskesi kapalı. Buketler telefonda da bilgisayardaki gibi aşağı kaydırınca yana kayar (kullanıcı isteği).
 - "Çiçeklerin dili" bölümü 26 Ekim'de kaldırıldı (ağırdı, çiçekler dükkanda yoktu).
-- Yerine girişten hemen sonra "Bu buket senin için" bölümü geldi: 76 numaralı fotoğraftaki el ve buket arka planından ayrıldı (`assets/el-buket.webp`, telefonda `el-buket-m.webp`), kaydırınca sağdan uzanıyor. Video değil, tek resim; telefonda hafif.
+- Yerine girişten hemen sonra "Bu buket senin için" bölümü geldi: 76 numaralı fotoğraftaki el ve buket arka planından ayrıldı (`assets/el-buket.webp`, telefonda `el-buket-m.webp`), kaydırınca sağdan uzanıyor. Video değil, tek resim; telefonda hafif. 26 Ekim'de kalitesi artırıldı: fotoğraf önce Real-ESRGAN (realesr-general-x4v3, torch'suz ONNX ile) temizlendi, kenarlar alpha matting ile yeniden hesaplandı, 2x çözünürlükte kaydedildi.
 - İstenirse yapay zekâyla gerçek video da yapılabilir (~13 Higgsfield kredisi; hesapta 1,5 kredi vardı).
 
 ## Sırada / bekleyenler
