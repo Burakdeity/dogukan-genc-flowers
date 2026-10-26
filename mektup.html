@@ -214,10 +214,8 @@ footer.sent{position:relative;z-index:1;display:flex;flex-direction:column;align
 footer.sent p{margin:0;color:var(--text-2)}
 footer.sent b{font:italic 600 1.2rem/1 var(--display);background:linear-gradient(100deg,#E3A3A0,#F7DFC2 50%,#E3A3A0);-webkit-background-clip:text;background-clip:text;color:transparent}
 footer.sent a{font:400 .78rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);text-decoration:none;padding:12px 0;border-bottom:1px solid rgba(227,163,160,.4)}
-.heart{width:18px;height:18px;background:var(--accent);transform:rotate(45deg);position:relative;margin-bottom:8px;animation:beat 1.6s ease-in-out infinite}
-.heart::before,.heart::after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;background:var(--accent)}
-.heart::before{left:-9px}.heart::after{top:-9px}
-@keyframes beat{0%,100%{transform:rotate(45deg) scale(1)}15%{transform:rotate(45deg) scale(1.18)}30%{transform:rotate(45deg) scale(1)}}
+.heart{display:block;width:26px;height:24px;color:var(--accent);margin-bottom:8px;animation:beat 1.6s ease-in-out infinite;filter:drop-shadow(0 4px 10px rgba(227,163,160,.35))}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}}
 @media (max-width:640px){.sprig{width:118px}.sprig.tl{left:-30px;top:-62px}.sprig.br{right:-28px;bottom:-58px}.arm{right:-12px}}
 @media (prefers-reduced-motion: reduce){.bgpetals{display:none}.vine .vl{stroke-dashoffset:0}.vine .vb{opacity:1}}
 [hidden]{display:none!important}
@@ -309,7 +307,7 @@ footer.sent a{font:400 .78rem/1 var(--mono);letter-spacing:.16em;text-transform:
     </div>
   </section>
 
-  <footer class="sent"><span class="heart" aria-hidden="true"></span><p>Bu mektup <b>Doğukan Genç Flowers</b> ile gönderildi.</p><a href="./#mektup">Sen de birine gönder</a></footer>
+  <footer class="sent"><svg class="heart" viewBox="0 0 24 22" aria-hidden="true"><path fill="currentColor" d="M12 21.3c-.3 0-.6-.1-.8-.3C5.5 16.3 1.5 12.6 1.5 7.9 1.5 4.6 4 2 7.2 2c1.9 0 3.6.9 4.8 2.4C13.2 2.9 14.9 2 16.8 2 20 2 22.5 4.6 22.5 7.9c0 4.7-4 8.4-9.7 13.1-.2.2-.5.3-.8.3z"/></svg><p>Bu mektup <b>Doğukan Genç Flowers</b> ile gönderildi.</p><a href="./#mektup">Sen de birine gönder</a></footer>
 </main>
 
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Fotoğraf">
