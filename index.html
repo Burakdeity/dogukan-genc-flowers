@@ -117,7 +117,7 @@ body.paused *,body.paused *::before,body.paused *::after{animation-play-state:pa
 .ib-quote .line + .line{--kq:clamp(0,(var(--k,0) - .25)*2,1);color:var(--accent)}
 .sign{width:min(84vw,860px);height:auto;overflow:visible}
 .sign{filter:drop-shadow(0 0 22px rgba(255,214,196,.55)) drop-shadow(0 2px 8px rgba(10,5,8,.75))}
-.sign text{font:400 175px var(--script);letter-spacing:0;word-spacing:.2em;fill:url(#signG);fill-opacity:clamp(0,(var(--k,0) - .55)*2.6,1);stroke:#FFE6D8;stroke-width:1.6;stroke-dasharray:2600;stroke-dashoffset:calc((1 - clamp(0,var(--k,0)*1.5,1)) * 2600)}
+.sign text{font:italic 600 150px var(--display);letter-spacing:-.02em;fill:url(#signG);fill-opacity:clamp(0,(var(--k,0) - .55)*2.6,1);stroke:#FFE6D8;stroke-width:1.6;stroke-dasharray:900;stroke-dashoffset:calc((1 - clamp(0,var(--k,0)*1.5,1)) * 900)}
 .i3 .ib-kicker{margin-top:10px;opacity:clamp(0,(var(--k,0) - .6)*3,1)}
 
 /* split text */
@@ -348,7 +348,7 @@ input,textarea{font-weight:400;font-size:1.05rem}
 @keyframes shine{from{background-position:110% 0}to{background-position:-110% 0}}
 .brand .rg{display:inline-block;font:400 2.05rem/1 var(--script);letter-spacing:0;word-spacing:.18em;padding:.12em .22em .16em;margin:-.12em -.22em -.16em;text-shadow:none;background-image:linear-gradient(100deg,#F4BFBA 0%,#F9D6C2 22%,#FFE8D2 40%,#FFF9F0 50%,#FCDFC6 62%,#F3C2B8 80%,#F4BFBA 100%);filter:drop-shadow(0 0 8px rgba(255,214,190,.35)) drop-shadow(0 1px 3px rgba(12,6,10,.8))}
 .brandline-hero{display:flex;align-items:baseline;gap:14px;margin-bottom:20px;text-shadow:none}
-.brandline-hero .rg{font:400 clamp(2.1rem,2.9vw,2.9rem)/1.1 var(--script);letter-spacing:0;word-spacing:.18em;white-space:nowrap;padding:.1em .2em .16em;margin:-.1em -.2em -.16em;filter:drop-shadow(0 2px 10px rgba(12,6,10,.85))}
+.brandline-hero .rg{font:italic 500 clamp(1.5rem,2.1vw,2.1rem)/1.1 var(--display);letter-spacing:.01em;filter:drop-shadow(0 2px 10px rgba(12,6,10,.85))}
 .brandline-hero .loc{font:400 .8rem/1 var(--mono);white-space:nowrap;letter-spacing:.2em;text-transform:uppercase;color:var(--text-primary);text-shadow:var(--tshadow)}
 @media (prefers-reduced-motion: reduce){.rg{animation:none;background-position:50% 0}}
 
@@ -559,13 +559,7 @@ body.lv-open{overflow:hidden}
   .uz-el img{filter:none}
   .uz-glow{right:auto;left:5%;top:auto;bottom:12%;margin-top:0;width:95vw;height:95vw}
 }
-}
 @media (prefers-reduced-motion: reduce){#uzat{height:auto}.uz-pin{position:relative;min-height:100svh}.uz-el,.uz-txt,.uz-glow{--u:1!important;--t:1!important;--tpe:auto!important}}
-/* phones: the rose-gold name a touch lighter, with a soft glow, so it reads as bright as on a large screen */
-@media (max-width:820px){
-  .brand .rg,.brandline-hero .rg{background-image:linear-gradient(100deg,#F4BFBA 0%,#F9D6C2 22%,#FFE8D2 40%,#FFF9F0 50%,#FCDFC6 62%,#F3C2B8 80%,#F4BFBA 100%);filter:drop-shadow(0 0 8px rgba(255,214,190,.35)) drop-shadow(0 1px 3px rgba(12,6,10,.8))}
-  .brandline-hero .rg{font-size:2.3rem}
-}
 /* pinned scenes fill the large viewport so no strip shows when the phone's address bar slides away;
    things pinned to their bottom edge stay above the bar while it is showing */
 @supports (height:100lvh){:root{--tb:calc(100lvh - 100svh)}}
@@ -611,7 +605,7 @@ body.lv-open{overflow:hidden}
       <div class="hero-mark" aria-hidden="true"><span>Doğukan Genç</span></div>
 
       <div class="band b1" data-a="0" data-b="0.25">
-        <span class="brandline-hero"><span class="rg">Doğukan Genç</span><span class="loc">Flowers · Karasu</span></span>
+        <span class="brandline-hero"><span class="rg">Doğukan Genç Flowers</span><span class="loc">Karasu</span></span>
         <h2>Kelimeler yetmediğinde, çiçekler konuşur.</h2>
       </div>
       <div class="band ib i2" data-a="0.25" data-b="0.50" data-ramp="0.09">
