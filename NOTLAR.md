@@ -1,13 +1,14 @@
 # Doğukan Genç Flowers — çalışma notları
 
-Son güncelleme: 25 Ekim 2026. Depo: https://github.com/Burakdeity/dogukan-genc-flowers
+Son güncelleme: 26 Ekim 2026. Depo: https://github.com/Burakdeity/dogukan-genc-flowers
 
 ## Sitede neler var
 
 | Sayfa | Ne işe yarar |
 |---|---|
-| `index.html` | Ana sayfa: kaydırmalı giriş videosu, çiçeklerin dili, buket kartları, galeri şeridi, nasıl çalışır, çiçek mektubu formu, sorular, iletişim ve harita |
+| `index.html` | Ana sayfa: kaydırmalı giriş videosu, çiçeklerin dili, buket kartları, galeri şeridi, nasıl çalışır, çiçek mektubu formu, iletişim ve harita |
 | `galeri.html` | Tüm galeri: filtreler, büyük görünüm, "Bunu sor" (WhatsApp) |
+| `bakim.html` | Çiçek bakımı: ilk 5 dakika, 9 çiçek için bakım rehberi, sorular (ana sayfadan buraya taşındı) |
 | `mektup.html` | Dijital çiçek mektubu: zarf, gül yaprakları, fotoğraflar, kişiye özel plak ve şarkı |
 | `kart.html` | QR kart paneli (gizli sayfa): kartı PNG indir ya da yazdır |
 | `panel.php` | Yönetim paneli: galeri, buket kartları, mektuplar, iletişim ayarları, şifre |
